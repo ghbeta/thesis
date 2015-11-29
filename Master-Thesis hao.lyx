@@ -1363,23 +1363,47 @@ Implementations
 \end_layout
 
 \begin_layout Standard
-bla
+how to implement the functions from chapter4
 \end_layout
 
 \begin_layout Section
-bla
+User management
 \end_layout
 
-\begin_layout Standard
-bla
+\begin_layout Section
+Course management
+\end_layout
+
+\begin_layout Section
+Assignment management
+\end_layout
+
+\begin_layout Section
+Forum
+\end_layout
+
+\begin_layout Section
+Message system
+\end_layout
+
+\begin_layout Section
+Integration of Git
+\end_layout
+
+\begin_layout Section
+Database design
 \end_layout
 
 \begin_layout Chapter
-Use case
+System usage
+\end_layout
+
+\begin_layout Standard
+Test run?
 \end_layout
 
 \begin_layout Section
-bla
+First run
 \end_layout
 
 \begin_layout Chapter
