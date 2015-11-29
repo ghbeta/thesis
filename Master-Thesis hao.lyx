@@ -1094,7 +1094,268 @@ HMS
 \end_layout
 
 \begin_layout Enumerate
-adsfa
+User management including 
+\begin_inset Quotes sld
+\end_inset
+
+Registration
+\begin_inset Quotes srd
+\end_inset
+
+ , 
+\begin_inset Quotes sld
+\end_inset
+
+Role based access control
+\begin_inset Quotes srd
+\end_inset
+
+,
+\begin_inset Quotes srd
+\end_inset
+
+User self service
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Course management including 
+\begin_inset Quotes sld
+\end_inset
+
+Creation of Course
+\begin_inset Quotes srd
+\end_inset
+
+,
+\begin_inset Quotes srd
+\end_inset
+
+Modification of Course
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Assignment management including 
+\begin_inset Quotes sld
+\end_inset
+
+Creation of Assignment
+\begin_inset Quotes srd
+\end_inset
+
+,
+\begin_inset Quotes srd
+\end_inset
+
+Distribution of Assignment
+\begin_inset Quotes srd
+\end_inset
+
+,
+\begin_inset Quotes srd
+\end_inset
+
+Collecting of Assignment
+\begin_inset Quotes srd
+\end_inset
+
+,
+\begin_inset Quotes srd
+\end_inset
+
+Evaluation of Assginment
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Besides the above listed capabilities, the new hms should also provide a
+ way that the students and teachears can communicate with each other.
+ Like the moodle and current hms system from chapter 3, firstly a private
+ message system will be needed for the students and teachers to exchange
+ the information about assignments problem or evaluations problem individual.
+ secondly unlike the message system in moodle and current hms can only read
+ the new message after the web page been reloaded, the new message system
+ should work as a instant message system,in this way the questions or the
+ problems between the studetns and teachers can resolve more efficently.
+ finally, a course forum is also not a bad idea, a common senario is that
+ more students may have a same question for a new assignment, if a students
+ write a new post about this question, and the teacher gives a answer to
+ the question, the other students with the same question can also get the
+ answers and avoding asking the same questions again.
+ This saves the time from both side.
+ So the commnucations system for the new HMS has following features:
+\end_layout
+
+\begin_layout Enumerate
+Instant private message system.
+\end_layout
+
+\begin_layout Enumerate
+A public course forum for each course.
+\end_layout
+
+\begin_layout Subsection
+User management
+\end_layout
+
+\begin_layout Standard
+The user management of the 
+\begin_inset Quotes sld
+\end_inset
+
+HMS
+\begin_inset Quotes srd
+\end_inset
+
+ system consists of several modules(Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-Modules-of-usermanagement"
+
+\end_inset
+
+), first is the registration module, with this module the user can use their
+ email address to registrate a account in HMS system.
+ second is the self management module.
+ after the user has logged into the system, they should able to change their
+ emails and passwort or other personal details.third is the user role control
+ module, this is necessary for system to arrange the proper functions to
+ the current user based on their user role, the user obtains a startup role
+ at the registration, later on the user role can be changed by the system
+ admin.
+ In the rest of this section, all the modules will be detailed discussed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/module usermanagement.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Modules of user management
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-Modules-of-usermanagement"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+a.
+ Registration
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/Registration activity_cut.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Registration activity
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Registration-activity"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Registration-activity"
+
+\end_inset
+
+ shows a general workflow when a user registrate a new account.
+ the user first use the registration form to fill in all the relevant informatio
+n for instance the password, email, and students number, after clicking
+ the sign up button, the whole process begint, first the validation of the
+ registration form will be performed to check whether the user has fill
+ in all the required field and without error, if user passed the form validation
+, the hms system will then send a confirmation email with a confirmation
+ url to the email address from the registration form, if the user click
+ the confirmation link, the user will be redirect to the website and can
+ directly starting using the account.
+ Otherwise the user has to start over the registration process.
+ The step of email adress confirmation is important because this procedure
+ allows the system to check that the user actually signed up for the account
+ and guarantee the user will successfully received the system information
+ from the registrated email address.
+\end_layout
+
+\begin_layout Subsubsection
+b.
+ Self Management
+\end_layout
+
+\begin_layout Section
+Specific functions
 \end_layout
 
 \begin_layout Chapter
