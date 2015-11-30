@@ -1002,7 +1002,7 @@ HMS
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1114,7 +1114,7 @@ Role based access control
 \begin_inset Quotes srd
 \end_inset
 
-User self service
+Self management
 \begin_inset Quotes srd
 \end_inset
 
@@ -1332,7 +1332,7 @@ reference "fig:Registration-activity"
 
 \end_inset
 
- shows a general workflow when a user registrate a new account.
+ shows the workflow when a user registrate a new account.
  the user first use the registration form to fill in all the relevant informatio
 n for instance the password, email, and students number, after clicking
  the sign up button, the whole process begint, first the validation of the
@@ -1345,13 +1345,380 @@ n for instance the password, email, and students number, after clicking
  Otherwise the user has to start over the registration process.
  The step of email adress confirmation is important because this procedure
  allows the system to check that the user actually signed up for the account
- and guarantee the user will successfully received the system information
- from the registrated email address.
+ and guarantee the email of this user is valid and ready to receive the
+ system information.
 \end_layout
 
 \begin_layout Subsubsection
 b.
  Self Management
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/self management.png
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The functions of self management
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-functions-of-selfmanagement"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is a very common that user may forget their passwords or even worse their
+ registered email becomes invalid, so it is neccessary to develop the functions
+ user can use to reset their email and passwords.
+ The resetting of email address or the passwords works similar as registration.
+ If user choose to reset their email address, first they will be asked to
+ type in the new email address,after that user click the reset button, the
+ system should send a new confirmation email to the new address, when user
+ click the hyper link in the email, a new web page will be generated and
+ user can confirm the address change.
+ if user choose to reset their passwords, they just need to click the reset
+ password button, the system will send another confirmation email with a
+ hyper link, the user can use this link to type in their new passwords.
+ Besides the modification of passwords and email address,there is another
+ function should be added to self management, thus the HMS system use git
+ server to control all the homework files, and this git server use ssh to
+ authenticate the connections, the system should also provide a function
+ that user can add their ssh public key to the git server, so that they
+ can connect their computer direct to the git server.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-functions-of-selfmanagement"
+
+\end_inset
+
+gives a overview for all the components of the self management.
+\end_layout
+
+\begin_layout Subsubsection
+c.
+ Role based access control
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/user role.png
+	scale 85
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Different user role in hms system
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Different-user-role"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The user of the hms system has different roles, and they need different
+ functions.
+ for instance a teacher can create new course but students can not, so it
+ is important for the system to distinguish the user based on their user
+ roles, so that the system can serve different functions to different user.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Different-user-role"
+
+\end_inset
+
+ shows all the user role in hms system,from the top is the system admin,
+ the system admin account will be generated at the first boot up of hms
+ system,the user name and password of the system admin will be saved under
+ the home directory of the current server admin.
+ it means only the admin of the server can access the username and passwords
+ of hms systemadmin account, this can ensure that only trusted personal
+ can access the systemadmin account of hms.The job of system admin is to
+ manage other user's role and the system database(backup the database after
+ semester ends).
+ At the bottem are the normal user roles.
+ first is the default user,every user obtains this role after registration.if
+ you don't give a students number.The user with this role can not do much
+ things within the system other than updating their email address or passwords.
+ if the default user wants to promote their user role to another level,
+ they have to contact system admin.
+ second user role is students,if user registrate the account with their
+ students nummber, they will automatically obtain a student account, with
+ student account the user can browse all the availabel course and join the
+ course, download and upload homeworks, using the communication system liken
+ chat and forum.
+ third user role is assistants, besides all the functions of students, assistant
+s can create new assignment and review all the handing in homeworks and
+ make a evaluation,last one is the teacher, the teacher account has all
+ the functions of assistant account additionally the teacher can also create
+ new course.
+\end_layout
+
+\begin_layout Subsection
+Course management
+\end_layout
+
+\begin_layout Standard
+There are two types of course for informatics students, in the first type
+ of course the students have to hand in various homeworks, and the points
+ gained from those homeworks are usually used as a prerequisite for the
+ final exam.
+ in the second type of course the students will get a semester assignment,
+ normally a whole software project, the points gained from this project
+ usally is the final points for this course.
+ additionally every students will get a git repository after user haved
+ signed up the course,this repository will also worked in two modus according
+ to the type of course,the details of git working modus will be disscussed
+ in more detail.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="6cm">
+<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="top" width="3cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Features
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Precondition to final exam
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Git repository Modus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Performance Evaluation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type I
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Enumerate
+Students have to hand in at least amount of valid homeworks.
+\end_layout
+
+\begin_layout Enumerate
+A valid homework requires normally for students to gain more than 50% points
+ of a assignment.
+\end_layout
+
+\begin_layout Enumerate
+A student should gain at least 50% of total points for final exam
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Git repository works under local modus
+\begin_inset Newline newline
+\end_inset
+
+(Student can only hand in the homeworks through course homepage)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+need detail evaluation of assignments
+\begin_inset Newline newline
+\end_inset
+
+(number of valid handin, percentage of gained points)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type II
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+None,Students just need to hand in the final project
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Git repository works under remote modus
+\begin_inset Newline newline
+\end_inset
+
+(Student can use the course repository as any remote git repository)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Only final evaluation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Features of different types of course
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Features-of-course"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Features-of-course"
+
+\end_inset
+
+ shows the diffrent features of different types of course
 \end_layout
 
 \begin_layout Section
@@ -1363,23 +1730,47 @@ Implementations
 \end_layout
 
 \begin_layout Standard
-bla
+how to implement the functions from chapter4
 \end_layout
 
 \begin_layout Section
-bla
+User management
 \end_layout
 
-\begin_layout Standard
-bla
+\begin_layout Section
+Course management
+\end_layout
+
+\begin_layout Section
+Assignment management
+\end_layout
+
+\begin_layout Section
+Forum
+\end_layout
+
+\begin_layout Section
+Message system
+\end_layout
+
+\begin_layout Section
+Integration of Git
+\end_layout
+
+\begin_layout Section
+Database design
 \end_layout
 
 \begin_layout Chapter
-Use case
+System usage
+\end_layout
+
+\begin_layout Standard
+Test run?
 \end_layout
 
 \begin_layout Section
-bla
+First run
 \end_layout
 
 \begin_layout Chapter
