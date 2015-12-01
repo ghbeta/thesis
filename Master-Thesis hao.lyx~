@@ -929,11 +929,11 @@ or?
 \end_layout
 
 \begin_layout Section
-Used works
+Related works
 \end_layout
 
 \begin_layout Standard
-what were used?
+moodle?
 \end_layout
 
 \begin_layout Chapter
@@ -1180,9 +1180,9 @@ Evaluation of Assginment
 \begin_layout Standard
 Besides the above listed capabilities, the new hms should also provide a
  way that the students and teachears can communicate with each other.
- Like the moodle and current hms system from chapter 3, firstly a private
- message system will be needed for the students and teachers to exchange
- the information about assignments problem or evaluations problem individual.
+ Like the moodle from chapter 3, firstly a private message system will be
+ needed for the students and teachers to exchange the information about
+ assignments problem or evaluations problem individual.
  secondly unlike the message system in moodle and current hms can only read
  the new message after the web page been reloaded, the new message system
  should work as a instant message system,in this way the questions or the
@@ -1201,7 +1201,7 @@ Instant private message system.
 \end_layout
 
 \begin_layout Enumerate
-A public course forum for each course.
+a public course forum for each course.
 \end_layout
 
 \begin_layout Subsection
@@ -1534,7 +1534,7 @@ There are two types of course for informatics students, in the first type
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -1718,11 +1718,299 @@ reference "tab:Features-of-course"
 
 \end_inset
 
- shows the diffrent features of different types of course
+ shows the diffrent features of different types of course.The function of
+ 
+\begin_inset Quotes sld
+\end_inset
+
+creating course
+\begin_inset Quotes srd
+\end_inset
+
+ should take all the features from above into consideration.
+ 
+\end_layout
+
+\begin_layout Subsection
+Assignment management
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/assignment management.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sequence diagram for assignment management
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sequenz-diagram-for-assignment"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Sequenz-diagram-for-assignment"
+
+\end_inset
+
+ shows the sequence of handing in and handing out a assignment, after creating
+ a new course, teacher can start adding assignments to the course, when
+ a new assignment has been successfully added to the course, the course
+ homepage for students will show this new assignment and with a download
+ link, student can download the assignment and start working on the new
+ assignment.
+ later when students finished the assignment,the solution will be uploaded
+ to the according assignment and teacher can review them at the evaluation
+ part of the course's homepage and add a evaluation to the solution.
+ When the evaluation is successfully saved to the assignment, the student
+ will get the results directly at course homepage.
+\end_layout
+
+\begin_layout Subsection
+Communication system
+\end_layout
+
+\begin_layout Subsubsection
+a.
+ Forum
+\end_layout
+
+\begin_layout Standard
+The HMS system has a standard client-server structure, the client and server
+ communicate with each other over internet using http protocol.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "daa"
+
+\end_inset
+
+ Http has a typical 
+\begin_inset Quotes sld
+\end_inset
+
+Request-Response
+\begin_inset Quotes srd
+\end_inset
+
+ pattern, the web client sends a request to the web server, web server serves
+ a response according to the web client request.
+ It is a simple but powerful solution to provide a two-way conversation
+ for two party over one channel.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hohpe2012"
+
+\end_inset
+
+ The forum function within the hms system works also after this pattern,
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Forum-message-pattern"
+
+\end_inset
+
+ shows the communication between the clients and hms server based on the
+ different forum action request.for instance: a client sends a 
+\begin_inset Quotes sld
+\end_inset
+
+create new post
+\begin_inset Quotes srd
+\end_inset
+
+ request to the server, the hms server accepts the request and save this
+ new post to the related course forum, and return the content of this post
+ to the client again.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/forum.png
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Forum message pattern
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Forum-message-pattern"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+b.
+ Instant message
+\end_layout
+
+\begin_layout Standard
+The standard http protocol however is not suited for the instant message
+ system, because of the 
+\begin_inset Quotes sld
+\end_inset
+
+Request-Response
+\begin_inset Quotes srd
+\end_inset
+
+ message pattern, user has to manully ask for a content upgrade.
+ But a instant message system needs automaticly update the chat contents
+ on both side of a conversations while a new message has been added
+\begin_inset CommandInset citation
+LatexCommand cite
+key "day2000model"
+
+\end_inset
+
+.
+ therefore a full-duplex communication system 
+\begin_inset Quotes sld
+\end_inset
+
+WebSocket
+\begin_inset Quotes srd
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mozilla"
+
+\end_inset
+
+will be used to back up the message module.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Websocket-message-pattern"
+
+\end_inset
+
+ illustrate a simple use case of websocket,aftter logging into their hms
+ account user A and user B are both connecting to the hms websocket server,
+ later on user A send a new message to user B,first the request from user
+ A are passing to the websocket server,the server processed the request
+ accordingly and served the response not only to the user A but also automatical
+ly served the response to the user B,this ensure the both side of the conversati
+on can have their message received in real time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/message.png
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Websocket message pattern
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Websocket-message-pattern"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Specific functions
+\end_layout
+
+\begin_layout Standard
+In this section a new approach will be introduced to resolve the problems
+ raised in chapter 3.
+ firstly,the git based submission management, in the documentation
 \end_layout
 
 \begin_layout Chapter
@@ -1746,11 +2034,7 @@ Assignment management
 \end_layout
 
 \begin_layout Section
-Forum
-\end_layout
-
-\begin_layout Section
-Message system
+Communication system
 \end_layout
 
 \begin_layout Section

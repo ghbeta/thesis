@@ -1082,7 +1082,7 @@ Tabelle mit Untertitel
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1174,7 +1174,7 @@ Titel über zwei Spalten
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Enumerate
 
 \end_layout
 

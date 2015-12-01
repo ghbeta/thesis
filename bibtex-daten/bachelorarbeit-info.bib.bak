@@ -9,12 +9,6 @@
   Year                     = {2009}
 }
 
-@TechReport{day2000model,
-  Title                    = {A model for presence and instant messaging},
-  Author                   = {Day, Mark and Rosenberg, Jonathan and Sugano, Hiroyasu},
-  Year                     = {2000}
-}
-
 @Book{Hohpe2012,
   Title                    = {Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions},
   Author                   = {Hohpe, G. and Woolf, B.},
