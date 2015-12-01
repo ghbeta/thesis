@@ -937,28 +937,17 @@ moodle?
 \end_layout
 
 \begin_layout Chapter
-Analyse
-\end_layout
-
-\begin_layout Standard
-analyse the current hms system and moodle.
- introducing the diffculty of the backup and file management of current
- systems.
- lead to the solutions of dynamic database and git.
-\end_layout
-
-\begin_layout Chapter
 Design
 \end_layout
 
 \begin_layout Standard
-After analysing the problems of the current systems and introducing the
- solutions to those problems from the last chapter, the detailed design
- of this project will be presend in this chapter.
+The HMS is a web platform to manage the activities related to the homeworks.
+ In this chapter the detailed design of funtions to support those activities
+ will be discussed.
 \end_layout
 
 \begin_layout Standard
-The design of the 
+The functions of the 
 \begin_inset Quotes sld
 \end_inset
 
@@ -967,12 +956,12 @@ HMS
 \end_inset
 
  system is devided into two parts.
- The first part is to develop the common features which are similar the
- both systems from the chapter 3 such as 
+ The first part is to develop the common features which are similar to other
+ similar platform,for instance 
 \begin_inset Quotes sld
 \end_inset
 
-user management
+registrate a user account
 \begin_inset Quotes srd
 \end_inset
 
@@ -1180,14 +1169,12 @@ Evaluation of Assginment
 \begin_layout Standard
 Besides the above listed capabilities, the new hms should also provide a
  way that the students and teachears can communicate with each other.
- Like the moodle from chapter 3, firstly a private message system will be
- needed for the students and teachers to exchange the information about
- assignments problem or evaluations problem individually.
- secondly unlike the message system in moodle and current hms can only read
- the new message after the web page been reloaded, the new message system
- should work as a instant message system,in this way the questions or the
- problems between the studetns and teachers can resolve more efficently.
- finally, a course forum is also not a bad idea, a common senario is that
+ firstly a private message system will be needed for the students and teachers
+ to exchange the information about assignments problem or evaluations problem
+ individually,also the new message system should work as a instant message
+ system,in this way the questions or the problems between the studetns and
+ teachers can resolve more efficently.
+ secondly, a course forum is also not a bad idea, a common senario is that
  more students may have a same question for a new assignment, if a students
  write a new post about this question, and the teacher gives a answer to
  the question, the other students with the same question can also get the
@@ -2008,9 +1995,154 @@ Specific functions
 \end_layout
 
 \begin_layout Standard
-In this section a new approach will be introduced to resolve the problems
- raised in chapter 3.
- firstly,the git based submission management, in the documentation
+The functions from last section needs two critical preconditions to work:
+\end_layout
+
+\begin_layout Enumerate
+The files of assignment and student's submissions can be saved.
+\end_layout
+
+\begin_layout Enumerate
+The result of the activities can be persistant in a database.
+\end_layout
+
+\begin_layout Standard
+There are already plenty solutions to those problems,for instance the file
+ upload and the database support are the standard functions within the playframe
+work.
+ The developer just need to decide where to put the files and configure
+ the config file for database to work.
+ However there are still some disadvantages with the standard approch,this
+ will be discussed in the rest of this section and the new approches for
+ both will be introduced.
+\end_layout
+
+\begin_layout Subsection
+Submisson management
+\end_layout
+
+\begin_layout Standard
+The normal approch for file upload as in Playframework is pretty simple,the
+ developer just need to defined the extra file atttribute for a html form
+ and send the form using http protocol,and defined a java controller on
+ the server side to save the file to a desired location.
+ Also if the user want to retrieve this file again, the developer just need
+ to save the path of this file under the name of the user in a database.
+ But when considering this file is a homework submisson,there is still need
+ a lot work to do than just upload a file to the server.
+ The documentation of the moodle system has suggests several submission
+ type related to file submission
+\begin_inset CommandInset citation
+LatexCommand cite
+key "documoodle"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Student submit a work and teacher download it later.
+\end_layout
+
+\begin_layout Enumerate
+Student submit a work multiple times.
+\end_layout
+
+\begin_layout Enumerate
+Student submit a work with a response.
+\end_layout
+
+\begin_layout Standard
+The first type can direct use the default file upload function with a database
+ record the file path.
+ For second type there are two ways to solve it, first way is that every
+ time when students submit a new version, the old version will be deleted,
+ and teacher will always get the latest version,the downside of this solution
+ is that the previous upload will be all gone,there is no way for teacher
+ to track the submission history.
+ another is that wenn a new version is submitted,the old version will not
+ be deleted,however with this solution the teacher do can track the history
+ but will taken two much hard drive capacity.For the last type it is just
+ need to put a extra column in the database to save the response with the
+ filepath.
+ 
+\end_layout
+
+\begin_layout Standard
+All these submission type can be solved just using the standard technics.
+ But this is still too complicated, not only for development but also for
+ the user of the system.
+ At this point the GIT will be introduced to resolve the problem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/git.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Workflow of git
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Workflow-of-git"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Workflow-of-git"
+
+\end_inset
+
+ shows the workflow for this 3 type of submission.
+ Every students when they join a course, they will automatically get a git
+ repository from the system,all the submissions of the student will be written
+ into this repository.
+ all this scenario from above can be solved just using the git commit.
+ no matter what submission was chousen by the students,the only difference
+ how many commits were made.
+ on the teacher side they just need to checkout the students git repository
+ and read the commit history.
+ only the repository addresss is also needed to be saved into the database.
+ 
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Chapter
@@ -2063,6 +2195,80 @@ Evaluation
 
 \begin_layout Chapter
 Summary and Outlook
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Glossary}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "HMS"
+description "Homework Management System"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
