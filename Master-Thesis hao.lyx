@@ -379,8 +379,8 @@ Master Thesis
 \align left
 
 \size large
-Homework Manage System with Git-Support and hierarchical Filedatabase for
- Datamanagement
+Homework Manage System with Git-Support and hierarchical File database for
+ Data management
 \end_layout
 
 \begin_layout Standard
@@ -682,7 +682,7 @@ Declaration of Authorship
 \end_layout
 
 \begin_layout Standard
-Deutsch oder Englisch?
+Deutsch oder English?
 \end_layout
 
 \begin_layout Standard
@@ -727,7 +727,7 @@ today
 \begin_inset Text
 
 \begin_layout Plain Layout
-[[SIGNATURE]]
+
 \end_layout
 
 \end_inset
@@ -791,7 +791,7 @@ Summary
 \end_layout
 
 \begin_layout Standard
-Zusammenfassung über Deutsche?
+zusätzliche Zusammenfassung über Deutsch nötig?
 \end_layout
 
 \begin_layout Standard
@@ -941,8 +941,8 @@ Design
 \end_layout
 
 \begin_layout Standard
-The HMS is a web platform to manage the activities related to the homeworks.
- In this chapter the detailed design of funtions to support those activities
+The HMS is a web platform to manage the activities related to the homework.
+ In this chapter the detailed design of functions to support those activities
  will be discussed.
 \end_layout
 
@@ -955,13 +955,13 @@ HMS
 \begin_inset Quotes srd
 \end_inset
 
- system is devided into two parts.
+ system is divided into two parts.
  The first part is to develop the common features which are similar to other
- similar platform,for instance 
+ web platform,for instance 
 \begin_inset Quotes sld
 \end_inset
 
-registrate a user account
+register a user account
 \begin_inset Quotes srd
 \end_inset
 
@@ -991,7 +991,7 @@ HMS
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1052,19 +1052,19 @@ HMS
 \begin_inset Quotes srd
 \end_inset
 
-, after logging into the system the students can browsing all the availabe
+, after logging into the system the students can browsing all the available
  courses in the system and subscribing the target course.
- Then it is possible for the students to view the hompage of the course
- and download the available homeworks.
- and finally uploading the solutions to the homeworks accordingly.
+ Then it is possible for the students to view the homepage of the course
+ and download the available homework.
+ and finally uploading the solutions to the homework accordingly.
  the process of uploading a homework to the system is finished at the student
  side.
  now take a look at the side of Teacher and Assistant, besides the registration
  and logging process, the user group of teacher can create new course and
- new assignment also collecting the the hand in homeworks and give them
- back to the students once the evaluation is finished.
- The assitants however can not creating new course, but should be abel to
- add new assignment and evaluate the hand in homeworks.
+ new assignment also collecting the the hand in homework and give them back
+ to the students once the evaluation is finished.
+ The assistants however can not creating new course, but should be able
+ to add new assignment and evaluate the hand in homework.
  In summary, in order to realize the main task of the 
 \begin_inset Quotes sld
 \end_inset
@@ -1161,7 +1161,7 @@ Collecting of Assignment
 \begin_inset Quotes srd
 \end_inset
 
-Evaluation of Assginment
+Evaluation of Assignment
 \begin_inset Quotes srd
 \end_inset
 
@@ -1169,20 +1169,20 @@ Evaluation of Assginment
 \end_layout
 
 \begin_layout Standard
-Besides the above listed capabilities, the new hms should also provide a
- way that the students and teachears can communicate with each other.
+Besides the above listed capabilities, the new HMS should also provide a
+ way that the students and teachers can communicate with each other.
  firstly a private message system will be needed for the students and teachers
  to exchange the information about assignments problem or evaluations problem
  individually,also the new message system should work as a instant message
- system,in this way the questions or the problems between the studetns and
- teachers can resolve more efficently.
- secondly, a course forum is also not a bad idea, a common senario is that
+ system,in this way the questions or the problems between the students and
+ teachers can resolve more efficiently.
+ secondly, a course forum is also not a bad idea, a common scenario is that
  more students may have a same question for a new assignment, if a students
  write a new post about this question, and the teacher gives a answer to
  the question, the other students with the same question can also get the
- answers and avoding asking the same questions again.
+ answers and avoiding asking the same questions again.
  This saves the time from both side.
- So the commnucations system for the new HMS has following features:
+ So the communications system for the new HMS has following features:
 \end_layout
 
 \begin_layout Enumerate
@@ -1214,10 +1214,10 @@ reference "fig:The-Modules-of-usermanagement"
 \end_inset
 
 ), first is the registration module, with this module the user can use their
- email address to registrate a account in HMS system.
+ email address to register a account in HMS system.
  second is the self management module.
  after the user has logged into the system, they should able to change their
- emails and passwort or other personal details.third is the user role control
+ emails and password or other personal details.third is the user role control
  module, this is necessary for system to arrange the proper functions to
  the current user based on their user role, the user obtains a startup role
  at the registration, later on the user role can be changed by the system
@@ -1229,7 +1229,7 @@ reference "fig:The-Modules-of-usermanagement"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1279,7 +1279,7 @@ a.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1325,18 +1325,18 @@ reference "fig:Registration-activity"
 
 \end_inset
 
- shows the workflow when a user registrate a new account.
+ shows the workflow when a user register a new account.
  the user first use the registration form to fill in all the relevant informatio
 n for instance the password, email, and students number, after clicking
- the sign up button, the whole process begint, first the validation of the
+ the sign up button, the whole process begins, first the validation of the
  registration form will be performed to check whether the user has fill
  in all the required field and without error, if user passed the form validation
-, the hms system will then send a confirmation email with a confirmation
- url to the email address from the registration form, if the user click
+, the HMS system will then send a confirmation email with a confirmation
+ URL to the email address from the registration form, if the user click
  the confirmation link, the user will be redirect to the website and can
  directly starting using the account.
  Otherwise the user has to start over the registration process.
- The step of email adress confirmation is important because this procedure
+ The step of email address confirmation is important because this procedure
  allows the system to check that the user actually signed up for the account
  and guarantee the email of this user is valid and ready to receive the
  system information.
@@ -1351,7 +1351,7 @@ b.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1391,7 +1391,7 @@ name "fig:The-functions-of-selfmanagement"
 
 \begin_layout Standard
 It is a very common that user may forget their passwords or even worse their
- registered email becomes invalid, so it is neccessary to develop the functions
+ registered email becomes invalid, so it is necessary to develop the functions
  user can use to reset their email and passwords.
  The resetting of email address or the passwords works similar as registration.
  If user choose to reset their email address, first they will be asked to
@@ -1427,7 +1427,7 @@ c.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1442,7 +1442,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Different user role in hms system
+Different user role in HMS system
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Different-user-role"
@@ -1467,7 +1467,7 @@ name "fig:Different-user-role"
 \end_layout
 
 \begin_layout Standard
-The user of the hms system has different roles, and they need different
+The user of the HMS system has different roles, and they need different
  functions.
  for instance a teacher can create new course but students can not, so it
  is important for the system to distinguish the user based on their user
@@ -1482,31 +1482,30 @@ reference "fig:Different-user-role"
 
 \end_inset
 
- shows all the user role in hms system,from the top is the system admin,
- the system admin account will be generated at the first boot up of hms
+ shows all the user role in HMS system,from the top is the system admin,
+ the system admin account will be generated at the first boot up of HMS
  system,the user name and password of the system admin will be saved under
  the home directory of the current server admin.
  it means only the admin of the server can access the username and passwords
- of hms systemadmin account, this can ensure that only trusted personal
- can access the systemadmin account of hms.The job of system admin is to
+ of HMS system admin account, this can ensure that only trusted personal
+ can access the system admin account of HMS.The job of system admin is to
  manage other user's role and the system database(backup the database after
  semester ends).
- At the bottem are the normal user roles.
+ At the bottom are the normal user roles.
  first is the default user,every user obtains this role after registration.if
  you don't give a students number.The user with this role can not do much
  things within the system other than updating their email address or passwords.
  if the default user wants to promote their user role to another level,
  they have to contact system admin.
- second user role is students,if user registrate the account with their
- students nummber, they will automatically obtain a student account, with
- student account the user can browse all the availabel course and join the
- course, download and upload homeworks, using the communication system liken
- chat and forum.
+ second user role is students,if user register the account with their students
+ number, they will automatically obtain a student account, with student
+ account the user can browse all the available course and join the course,
+ download and upload homework, using the communication system liken chat
+ and forum.
  third user role is assistants, besides all the functions of students, assistant
-s can create new assignment and review all the handing in homeworks and
- make a evaluation,last one is the teacher, the teacher account has all
- the functions of assistant account additionally the teacher can also create
- new course.
+s can create new assignment and review all the handing in homework and make
+ a evaluation,last one is the teacher, the teacher account has all the functions
+ of assistant account additionally the teacher can also create new course.
 \end_layout
 
 \begin_layout Subsection
@@ -1515,23 +1514,23 @@ Course management
 
 \begin_layout Standard
 There are two types of course for informatics students, in the first type
- of course the students have to hand in various homeworks, and the points
- gained from those homeworks are usually used as a prerequisite for the
- final exam.
+ of course the students have to hand in various homework, and the points
+ gained from those homework are usually used as a prerequisite for the final
+ exam.
  in the second type of course the students will get a semester assignment,
  normally a whole software project, the points gained from this project
- usally is the final points for this course.
- additionally every students will get a git repository after user haved
- signed up the course,this repository will also worked in two modus according
- to the type of course,the details of git working modus will be disscussed
- in more detail.
+ usually is the final points for this course.
+ additionally every students will get a git repository after user had signed
+ up the course,this repository will also worked in two modes according to
+ the type of course,the details of git working modes will be discussed in
+ more detail.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1566,7 +1565,7 @@ Precondition to final exam
 \begin_inset Text
 
 \begin_layout Plain Layout
-Git repository Modus
+Git repository Mods
 \end_layout
 
 \end_inset
@@ -1595,7 +1594,7 @@ Type I
 \begin_inset Text
 
 \begin_layout Enumerate
-Students have to hand in at least amount of valid homeworks.
+Students have to hand in at least amount of valid homework.
 \end_layout
 
 \begin_layout Enumerate
@@ -1717,7 +1716,7 @@ reference "tab:Features-of-course"
 
 \end_inset
 
- shows the diffrent features of different types of course.The function of
+ shows the different features of different types of course.The function of
  
 \begin_inset Quotes sld
 \end_inset
@@ -1738,7 +1737,7 @@ Assignment management
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1812,14 +1811,14 @@ a.
 
 \begin_layout Standard
 The HMS system has a standard client-server structure, the client and server
- communicate with each other over internet using http protocol.
+ communicate with each other over internet using HTTP protocol.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "daa"
 
 \end_inset
 
- Http has a typical 
+ HTTP has a typical 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1837,7 +1836,7 @@ key "Hohpe2012"
 
 \end_inset
 
- The forum function within the hms system works also after this pattern,
+ The forum function within the HMS system works also after this pattern,
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1845,7 +1844,7 @@ reference "fig:Forum-message-pattern"
 
 \end_inset
 
- shows the communication between the clients and hms server based on the
+ shows the communication between the clients and HMS server based on the
  different forum action request.for instance: a client sends a 
 \begin_inset Quotes sld
 \end_inset
@@ -1854,7 +1853,7 @@ create new post
 \begin_inset Quotes srd
 \end_inset
 
- request to the server, the hms server accepts the request and save this
+ request to the server, the HMS server accepts the request and save this
  new post to the related course forum, and return the content of this post
  to the client again.
 \end_layout
@@ -1863,7 +1862,7 @@ create new post
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1911,7 +1910,7 @@ b.
 \end_layout
 
 \begin_layout Standard
-The standard http protocol however is not suited for the instant message
+The standard HTTP protocol however is not suited for the instant message
  system, because of the 
 \begin_inset Quotes sld
 \end_inset
@@ -1920,8 +1919,8 @@ Request-Response
 \begin_inset Quotes srd
 \end_inset
 
- message pattern, user has to manully ask for a content upgrade.
- But a instant message system needs automaticly update the chat contents
+ message pattern, user has to manually ask for a content upgrade.
+ But a instant message system needs automatically update the chat contents
  on both side of a conversations while a new message has been added
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1934,7 +1933,7 @@ key "day2000model"
 \begin_inset Quotes sld
 \end_inset
 
-WebSocket
+Web Socket
 \begin_inset Quotes srd
 \end_inset
 
@@ -1953,10 +1952,10 @@ reference "fig:Websocket-message-pattern"
 
 \end_inset
 
- illustrate a simple use case of websocket,aftter logging into their hms
- account user A and user B are both connecting to the hms websocket server,
+ illustrate a simple use case of web socket,after logging into their HMS
+ account user A and user B are both connecting to the HMS web socket server,
  later on user A send a new message to user B,first the request from user
- A are passing to the websocket server,the server processed the request
+ A are passing to the web socket server,the server processed the request
  accordingly and served the response not only to the user A but also automatical
 ly served the response to the user B,this ensure the both side of the conversati
 on can have their message received in real time.
@@ -1966,7 +1965,7 @@ on can have their message received in real time.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1984,7 +1983,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Websocket message pattern
+Web socket message pattern
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Websocket-message-pattern"
@@ -2021,33 +2020,33 @@ The files of assignment and student's submissions can be saved.
 \end_layout
 
 \begin_layout Enumerate
-The result of the activities can be persistant in a database.
+The result of the activities can be persistent in a database.
 \end_layout
 
 \begin_layout Standard
 There are already plenty solutions to those problems,for instance the file
- upload and the database support are the standard functions within the playframe
-work.
+ upload and the database support are the standard functions within the play
+ framework.
  The developer just need to decide where to put the files and configure
- the config file for database to work.
- However there are still some disadvantages with the standard approch,this
- will be discussed in the rest of this section and the new approches for
+ the configuration file for database to work.
+ However there are still some disadvantages with the standard approach,this
+ will be discussed in the rest of this section and the new approaches for
  both will be introduced.
 \end_layout
 
 \begin_layout Subsection
-Submisson management
+Submission management
 \end_layout
 
 \begin_layout Standard
-The normal approch for file upload as in Playframework is pretty simple,the
- developer just need to defined the extra file atttribute for a html form
- and send the form using http protocol,and defined a java controller on
+The normal approach for file upload as in Play framework is pretty simple,the
+ developer just need to defined the extra file attribute for a HTML form
+ and send the form using HTTP protocol,and defined a java controller on
  the server side to save the file to a desired location.
  Also if the user want to retrieve this file again, the developer just need
  to save the path of this file under the name of the user in a database.
- But when considering this file is a homework submisson,there is still need
- a lot work to do than just upload a file to the server.
+ But when considering this file is a homework submission,there is still
+ need a lot work to do than just upload a file to the server.
  The documentation of the moodle system has suggests several submission
  type related to file submission
 \begin_inset CommandInset citation
@@ -2079,16 +2078,16 @@ The first type can direct use the default file upload function with a database
  and teacher will always get the latest version,the downside of this solution
  is that the previous upload will be all gone,there is no way for teacher
  to track the submission history.
- another is that wenn a new version is submitted,the old version will not
+ another is that when a new version is submitted,the old version will not
  be deleted,however with this solution the teacher do can track the history
  but will taken two much hard drive capacity.For the last type it is just
  need to put a extra column in the database to save the response with the
- filepath.
+ file path.
  
 \end_layout
 
 \begin_layout Standard
-All these submission type can be solved just using the standard technics.
+All these submission type can be solved just using the standard techniques.
  But this is still too complicated, not only for development but also for
  the user of the system.
  At this point the GIT will be introduced to resolve the problem.
@@ -2098,7 +2097,7 @@ All these submission type can be solved just using the standard technics.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -2153,11 +2152,11 @@ reference "fig:Workflow-of-git"
  repository from the system,all the submissions of the student will be written
  into this repository.
  all this scenario from above can be solved just using the git commit.
- no matter what submission was chousen by the students,the only difference
+ no matter what submission was chosen by the students,the only difference
  how many commits were made.
  on the teacher side they just need to checkout the students git repository
  and read the commit history.
- only the repository addresss is also needed to be saved into the database.
+ only the repository address is also needed to be saved into the database.
  
 \end_layout
 
@@ -2166,7 +2165,7 @@ Database
 \end_layout
 
 \begin_layout Standard
-Playframeworks support several database engine:
+Play frameworks support several database engine:
 \end_layout
 
 \begin_layout Itemize
@@ -2182,15 +2181,15 @@ PostgreSQL
 \end_layout
 
 \begin_layout Itemize
-MySQL
+My SQL
 \end_layout
 
 \begin_layout Standard
 only H2 and SQLite support the embedded mode,the embedded database runs
  directly in the application that uses them,it requires no extra server
- and no maintance for the database itself.Another advantage of embedded database
- is the speed, because all the database operations happend inside the applicatio
-n process.
+ and no maintenance for the database itself.Another advantage of embedded
+ database is the speed, because all the database operations happen inside
+ the application process.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Chaudhri2003"
@@ -2200,7 +2199,7 @@ key "Chaudhri2003"
 In this project the H2 database engine will be used as the default database
  engine.
  first h2 support the embedded mode and it is purely written in java, the
- java api of h2 can be directly used in the playframework.
+ java API of h2 can be directly used in the play framework.
  second because the embedded database runs within the application, it is
  normally hidden from the end user
 \begin_inset CommandInset citation
@@ -2210,9 +2209,9 @@ key "Chaudhri2003"
 \end_inset
 
 , so there is no way the user can side load the database, but in the real
- life of maintaning the HMS system, direct accessing and manipulating the
- database using a sql query tool sometimes is more effenciency than the
- usual routin.in this case h2 support a mixed mode(Figure 
+ life of maintaining the HMS system, direct accessing and manipulating the
+ database using a SQL query tool sometimes is more efficiency than the usual
+ routine.in this case h2 support a mixed mode(Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Mixed-Mode-of-h2"
@@ -2222,7 +2221,7 @@ reference "fig:Mixed-Mode-of-h2"
 ),mixed mode is a combination of the embedded mode and server mode, the
  first application in this case the HMS system will use the database as
  embedded mode, but it also starts a server so that the other application(a
- sql query tool) can still side load the database.
+ SQL query tool) can still side load the database.
 \end_layout
 
 \begin_layout Standard
@@ -2279,8 +2278,8 @@ name "fig:Mixed-Mode-of-h2"
 \end_layout
 
 \begin_layout Standard
-Playframework uses Ebean ORM to access the database,ORM is a technique to
- convert objected oriented programming language(in this case Java) into
+Play framework uses Ebean ORM to access the database,ORM is a technique
+ to convert objected oriented programming language(in this case Java) into
  its persistence as a relational data base, so the data can freely exchange
  between a java object and database table.
 \begin_inset CommandInset citation
@@ -2290,35 +2289,35 @@ key "K2009"
 \end_inset
 
 By default the configuration of Ebean and the database is done by editing
- the configuration file of playframework.
- After coniguration of the database engine and the ebean, the system is
+ the configuration file of play framework.
+ After configuration of the database engine and the Ebean, the system is
  ready for developer to design the database for the web application.
 \end_layout
 
 \begin_layout Standard
-This is the standard approch when developing a web application using playframewo
-rk.
+This is the standard approach when developing a web application using play
+ framework.
  But it also has a problem, the database configuration has be done before
  the application started, in the run time of the application all the database
- related actions can only take place within the pre configured database.
- This approch is convenient for the developer, because the developer don't
+ related actions can only take place within the preconfigured database.
+ This approach is convenient for the developer, because the developer don't
  need to take care of the programmatically details of bring database ,ORM
  and application together.But it sometimes cause trouble for the end user.
- Usually there will be only one pre defined database, all the data from
- the web application will be saved within this database.
- In this project, HMS is desinged for managing the homeworks for the teacher,and
+ Usually there will be only one predefined database, all the data from the
+ web application will be saved within this database.
+ In this project, HMS is designed for managing the homework for the teacher,and
  the system will be used in a university,every once in a while the university
  need to archive or backup the old data from the past term.
  A possible way is query out all the related data based on the semester,
  then dump the data into file and save the file some where else.
- Moodle also use this approch to make a course backup
+ Moodle also use this approach to make a course backup
 \begin_inset CommandInset citation
 LatexCommand cite
 key "moodlebackup"
 
 \end_inset
 
-.The disadvantage of this approch is strait forward,the amout of data will
+.The disadvantage of this approach is strait forward,the amount of data will
  increasing rapidly after years of use, it is not only complicated but also
  consume a lot of time.
 \end_layout
@@ -2331,14 +2330,14 @@ reference "fig:multiple-database"
 
 \end_inset
 
- shows a better approch used in the HMS project.
- all the data can be seperate saved on different database based on the semester,
- the back up process will a lot easier.First the datastructure of every semester
- is the same, so the database design for semester can be reused in every
- new semester,therefor no need to query the data.
- second the database in this project working under the embedded modus,all
+ shows a better approach used in the HMS project.
+ all the data can be separate saved on different database based on the semester,
+ the back up process will a lot easier.First the data structure of every
+ semester is the same, so the database design for semester can be reused
+ in every new semester,therefor no need to query the data.
+ second the database in this project working under the embedded modes,all
  the relevant data of the database are saved in a single file.
- so each semester will be a single file, bacup the semester data only need
+ so each semester will be a single file, backup the semester data only need
  to copy the database file to some where else.
 \end_layout
 
@@ -2346,7 +2345,7 @@ reference "fig:multiple-database"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -2395,7 +2394,7 @@ aside from the semester data, there is a additional database to manage the
 
 \begin_layout Standard
 This approach requires the system to create a database in the run time,
- therefore the standard database configuration of playframework can not
+ therefore the standard database configuration of play framework can not
  be used.
  The details of implementing the dynamic database function will be demonstrated
  in the next chapter.

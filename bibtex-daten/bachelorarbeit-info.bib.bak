@@ -55,6 +55,11 @@
   Url                      = {https://books.google.de/books?id=NfNbbhBRcOkC}
 }
 
+@Standard{moodlebackup,
+  Title                    = {Moodle documentation:Course Backup},
+  Url                      = {https://docs.moodle.org/30/en/Course_backup}
+}
+
 @Article{mozilla,
   Title                    = {Glossary:WebSockets},
   Author                   = {Mozilla},

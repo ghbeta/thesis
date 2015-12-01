@@ -941,8 +941,8 @@ Design
 \end_layout
 
 \begin_layout Standard
-The HMS is a web platform to manage the activities related to the homeworks.
- In this chapter the detailed design of funtions to support those activities
+The HMS is a web platform to manage the activities related to the homework.
+ In this chapter the detailed design of functions to support those activities
  will be discussed.
 \end_layout
 
@@ -955,13 +955,13 @@ HMS
 \begin_inset Quotes srd
 \end_inset
 
- system is devided into two parts.
+ system is divided into two parts.
  The first part is to develop the common features which are similar to other
  similar platform,for instance 
 \begin_inset Quotes sld
 \end_inset
 
-registrate a user account
+register a user account
 \begin_inset Quotes srd
 \end_inset
 
@@ -994,6 +994,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/generall.png
 	scale 50
@@ -1050,19 +1052,19 @@ HMS
 \begin_inset Quotes srd
 \end_inset
 
-, after logging into the system the students can browsing all the availabe
+, after logging into the system the students can browsing all the available
  courses in the system and subscribing the target course.
- Then it is possible for the students to view the hompage of the course
- and download the available homeworks.
- and finally uploading the solutions to the homeworks accordingly.
+ Then it is possible for the students to view the homepage of the course
+ and download the available homework.
+ and finally uploading the solutions to the homework accordingly.
  the process of uploading a homework to the system is finished at the student
  side.
  now take a look at the side of Teacher and Assistant, besides the registration
  and logging process, the user group of teacher can create new course and
- new assignment also collecting the the hand in homeworks and give them
- back to the students once the evaluation is finished.
- The assitants however can not creating new course, but should be abel to
- add new assignment and evaluate the hand in homeworks.
+ new assignment also collecting the the hand in homework and give them back
+ to the students once the evaluation is finished.
+ The assistants however can not creating new course, but should be able
+ to add new assignment and evaluate the hand in homework.
  In summary, in order to realize the main task of the 
 \begin_inset Quotes sld
 \end_inset
@@ -1159,7 +1161,7 @@ Collecting of Assignment
 \begin_inset Quotes srd
 \end_inset
 
-Evaluation of Assginment
+Evaluation of Assignment
 \begin_inset Quotes srd
 \end_inset
 
@@ -1167,20 +1169,20 @@ Evaluation of Assginment
 \end_layout
 
 \begin_layout Standard
-Besides the above listed capabilities, the new hms should also provide a
- way that the students and teachears can communicate with each other.
+Besides the above listed capabilities, the new HMS should also provide a
+ way that the students and teachers can communicate with each other.
  firstly a private message system will be needed for the students and teachers
  to exchange the information about assignments problem or evaluations problem
  individually,also the new message system should work as a instant message
- system,in this way the questions or the problems between the studetns and
- teachers can resolve more efficently.
- secondly, a course forum is also not a bad idea, a common senario is that
+ system,in this way the questions or the problems between the students and
+ teachers can resolve more efficiently.
+ secondly, a course forum is also not a bad idea, a common scenario is that
  more students may have a same question for a new assignment, if a students
  write a new post about this question, and the teacher gives a answer to
  the question, the other students with the same question can also get the
- answers and avoding asking the same questions again.
+ answers and avoiding asking the same questions again.
  This saves the time from both side.
- So the commnucations system for the new HMS has following features:
+ So the communications system for the new HMS has following features:
 \end_layout
 
 \begin_layout Enumerate
@@ -1212,10 +1214,10 @@ reference "fig:The-Modules-of-usermanagement"
 \end_inset
 
 ), first is the registration module, with this module the user can use their
- email address to registrate a account in HMS system.
+ email address to register a account in HMS system.
  second is the self management module.
  after the user has logged into the system, they should able to change their
- emails and passwort or other personal details.third is the user role control
+ emails and password or other personal details.third is the user role control
  module, this is necessary for system to arrange the proper functions to
  the current user based on their user role, the user obtains a startup role
  at the registration, later on the user role can be changed by the system
@@ -1230,6 +1232,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/module usermanagement.png
 
@@ -1278,6 +1282,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/Registration activity_cut.png
 	scale 60
@@ -1319,18 +1325,18 @@ reference "fig:Registration-activity"
 
 \end_inset
 
- shows the workflow when a user registrate a new account.
+ shows the workflow when a user register a new account.
  the user first use the registration form to fill in all the relevant informatio
 n for instance the password, email, and students number, after clicking
- the sign up button, the whole process begint, first the validation of the
+ the sign up button, the whole process begins, first the validation of the
  registration form will be performed to check whether the user has fill
  in all the required field and without error, if user passed the form validation
-, the hms system will then send a confirmation email with a confirmation
- url to the email address from the registration form, if the user click
+, the HMS system will then send a confirmation email with a confirmation
+ URL to the email address from the registration form, if the user click
  the confirmation link, the user will be redirect to the website and can
  directly starting using the account.
  Otherwise the user has to start over the registration process.
- The step of email adress confirmation is important because this procedure
+ The step of email address confirmation is important because this procedure
  allows the system to check that the user actually signed up for the account
  and guarantee the email of this user is valid and ready to receive the
  system information.
@@ -1348,6 +1354,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/self management.png
 	scale 85
@@ -1383,7 +1391,7 @@ name "fig:The-functions-of-selfmanagement"
 
 \begin_layout Standard
 It is a very common that user may forget their passwords or even worse their
- registered email becomes invalid, so it is neccessary to develop the functions
+ registered email becomes invalid, so it is necessary to develop the functions
  user can use to reset their email and passwords.
  The resetting of email address or the passwords works similar as registration.
  If user choose to reset their email address, first they will be asked to
@@ -1422,6 +1430,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/user role.png
 	scale 85
@@ -1432,7 +1442,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Different user role in hms system
+Different user role in HMS system
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Different-user-role"
@@ -1457,7 +1467,7 @@ name "fig:Different-user-role"
 \end_layout
 
 \begin_layout Standard
-The user of the hms system has different roles, and they need different
+The user of the HMS system has different roles, and they need different
  functions.
  for instance a teacher can create new course but students can not, so it
  is important for the system to distinguish the user based on their user
@@ -1472,31 +1482,30 @@ reference "fig:Different-user-role"
 
 \end_inset
 
- shows all the user role in hms system,from the top is the system admin,
- the system admin account will be generated at the first boot up of hms
+ shows all the user role in HMS system,from the top is the system admin,
+ the system admin account will be generated at the first boot up of HMS
  system,the user name and password of the system admin will be saved under
  the home directory of the current server admin.
  it means only the admin of the server can access the username and passwords
- of hms systemadmin account, this can ensure that only trusted personal
- can access the systemadmin account of hms.The job of system admin is to
+ of HMS system admin account, this can ensure that only trusted personal
+ can access the system admin account of HMS.The job of system admin is to
  manage other user's role and the system database(backup the database after
  semester ends).
- At the bottem are the normal user roles.
+ At the bottom are the normal user roles.
  first is the default user,every user obtains this role after registration.if
  you don't give a students number.The user with this role can not do much
  things within the system other than updating their email address or passwords.
  if the default user wants to promote their user role to another level,
  they have to contact system admin.
- second user role is students,if user registrate the account with their
- students nummber, they will automatically obtain a student account, with
- student account the user can browse all the availabel course and join the
- course, download and upload homeworks, using the communication system liken
- chat and forum.
+ second user role is students,if user register the account with their students
+ number, they will automatically obtain a student account, with student
+ account the user can browse all the available course and join the course,
+ download and upload homework, using the communication system liken chat
+ and forum.
  third user role is assistants, besides all the functions of students, assistant
-s can create new assignment and review all the handing in homeworks and
- make a evaluation,last one is the teacher, the teacher account has all
- the functions of assistant account additionally the teacher can also create
- new course.
+s can create new assignment and review all the handing in homework and make
+ a evaluation,last one is the teacher, the teacher account has all the functions
+ of assistant account additionally the teacher can also create new course.
 \end_layout
 
 \begin_layout Subsection
@@ -1506,15 +1515,15 @@ Course management
 \begin_layout Standard
 There are two types of course for informatics students, in the first type
  of course the students have to hand in various homeworks, and the points
- gained from those homeworks are usually used as a prerequisite for the
- final exam.
+ gained from those homework are usually used as a prerequisite for the final
+ exam.
  in the second type of course the students will get a semester assignment,
  normally a whole software project, the points gained from this project
- usally is the final points for this course.
- additionally every students will get a git repository after user haved
- signed up the course,this repository will also worked in two modus according
- to the type of course,the details of git working modus will be disscussed
- in more detail.
+ usually is the final points for this course.
+ additionally every students will get a git repository after user had signed
+ up the course,this repository will also worked in two modes according to
+ the type of course,the details of git working modes will be discussed in
+ more detail.
 \end_layout
 
 \begin_layout Standard
@@ -1524,6 +1533,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
 <features rotate="0" tabularvalignment="middle">
@@ -1554,7 +1565,7 @@ Precondition to final exam
 \begin_inset Text
 
 \begin_layout Plain Layout
-Git repository Modus
+Git repository Mods
 \end_layout
 
 \end_inset
@@ -1705,7 +1716,7 @@ reference "tab:Features-of-course"
 
 \end_inset
 
- shows the diffrent features of different types of course.The function of
+ shows the different features of different types of course.The function of
  
 \begin_inset Quotes sld
 \end_inset
@@ -1729,6 +1740,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/assignment management.png
 	scale 80
@@ -1798,14 +1811,14 @@ a.
 
 \begin_layout Standard
 The HMS system has a standard client-server structure, the client and server
- communicate with each other over internet using http protocol.
+ communicate with each other over internet using HTTP protocol.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "daa"
 
 \end_inset
 
- Http has a typical 
+ HTTP has a typical 
 \begin_inset Quotes sld
 \end_inset
 
@@ -1823,7 +1836,7 @@ key "Hohpe2012"
 
 \end_inset
 
- The forum function within the hms system works also after this pattern,
+ The forum function within the HMS system works also after this pattern,
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1831,7 +1844,7 @@ reference "fig:Forum-message-pattern"
 
 \end_inset
 
- shows the communication between the clients and hms server based on the
+ shows the communication between the clients and HMS server based on the
  different forum action request.for instance: a client sends a 
 \begin_inset Quotes sld
 \end_inset
@@ -1840,7 +1853,7 @@ create new post
 \begin_inset Quotes srd
 \end_inset
 
- request to the server, the hms server accepts the request and save this
+ request to the server, the HMS server accepts the request and save this
  new post to the related course forum, and return the content of this post
  to the client again.
 \end_layout
@@ -1852,6 +1865,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/forum.png
 	scale 85
@@ -1895,7 +1910,7 @@ b.
 \end_layout
 
 \begin_layout Standard
-The standard http protocol however is not suited for the instant message
+The standard HTTP protocol however is not suited for the instant message
  system, because of the 
 \begin_inset Quotes sld
 \end_inset
@@ -1904,8 +1919,8 @@ Request-Response
 \begin_inset Quotes srd
 \end_inset
 
- message pattern, user has to manully ask for a content upgrade.
- But a instant message system needs automaticly update the chat contents
+ message pattern, user has to manually ask for a content upgrade.
+ But a instant message system needs automatically update the chat contents
  on both side of a conversations while a new message has been added
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1918,7 +1933,7 @@ key "day2000model"
 \begin_inset Quotes sld
 \end_inset
 
-WebSocket
+Web Socket
 \begin_inset Quotes srd
 \end_inset
 
@@ -1937,10 +1952,10 @@ reference "fig:Websocket-message-pattern"
 
 \end_inset
 
- illustrate a simple use case of websocket,aftter logging into their hms
- account user A and user B are both connecting to the hms websocket server,
+ illustrate a simple use case of web socket,after logging into their HMS
+ account user A and user B are both connecting to the HMS web socket server,
  later on user A send a new message to user B,first the request from user
- A are passing to the websocket server,the server processed the request
+ A are passing to the web socket server,the server processed the request
  accordingly and served the response not only to the user A but also automatical
 ly served the response to the user B,this ensure the both side of the conversati
 on can have their message received in real time.
@@ -1953,6 +1968,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/message.png
 	scale 85
@@ -1966,7 +1983,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Websocket message pattern
+Web socket message pattern
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Websocket-message-pattern"
@@ -2003,33 +2020,33 @@ The files of assignment and student's submissions can be saved.
 \end_layout
 
 \begin_layout Enumerate
-The result of the activities can be persistant in a database.
+The result of the activities can be persistent in a database.
 \end_layout
 
 \begin_layout Standard
 There are already plenty solutions to those problems,for instance the file
- upload and the database support are the standard functions within the playframe
-work.
+ upload and the database support are the standard functions within the play
+ framework.
  The developer just need to decide where to put the files and configure
- the config file for database to work.
- However there are still some disadvantages with the standard approch,this
- will be discussed in the rest of this section and the new approches for
+ the configuration file for database to work.
+ However there are still some disadvantages with the standard approach,this
+ will be discussed in the rest of this section and the new approaches for
  both will be introduced.
 \end_layout
 
 \begin_layout Subsection
-Submisson management
+Submission management
 \end_layout
 
 \begin_layout Standard
-The normal approch for file upload as in Playframework is pretty simple,the
- developer just need to defined the extra file atttribute for a html form
- and send the form using http protocol,and defined a java controller on
+The normal approach for file upload as in Play framework is pretty simple,the
+ developer just need to defined the extra file attribute for a HTML form
+ and send the form using HTTP protocol,and defined a java controller on
  the server side to save the file to a desired location.
  Also if the user want to retrieve this file again, the developer just need
  to save the path of this file under the name of the user in a database.
- But when considering this file is a homework submisson,there is still need
- a lot work to do than just upload a file to the server.
+ But when considering this file is a homework submission,there is still
+ need a lot work to do than just upload a file to the server.
  The documentation of the moodle system has suggests several submission
  type related to file submission
 \begin_inset CommandInset citation
@@ -2061,11 +2078,11 @@ The first type can direct use the default file upload function with a database
  and teacher will always get the latest version,the downside of this solution
  is that the previous upload will be all gone,there is no way for teacher
  to track the submission history.
- another is that wenn a new version is submitted,the old version will not
+ another is that when a new version is submitted,the old version will not
  be deleted,however with this solution the teacher do can track the history
  but will taken two much hard drive capacity.For the last type it is just
  need to put a extra column in the database to save the response with the
- filepath.
+ file path.
  
 \end_layout
 
@@ -2080,9 +2097,11 @@ All these submission type can be solved just using the standard technics.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/git.png
 	scale 80
@@ -2212,6 +2231,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/connection-mode-mixed-2.png
 	scale 80
@@ -2327,6 +2348,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename images/database.png
 	scale 80
@@ -2337,6 +2360,8 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -2355,10 +2380,6 @@ name "fig:multiple-database"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2372,7 +2393,11 @@ aside from the semester data, there is a additional database to manage the
 \end_layout
 
 \begin_layout Standard
-This approach requires the system to 
+This approach requires the system to create a database in the run time,
+ therefore the standard database configuration of playframework can not
+ be used.
+ The details of implementing the dynamic database function will be demonstrated
+ in the next chapter.
 \end_layout
 
 \begin_layout Chapter
