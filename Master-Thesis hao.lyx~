@@ -1182,7 +1182,7 @@ Besides the above listed capabilities, the new hms should also provide a
  way that the students and teachears can communicate with each other.
  Like the moodle from chapter 3, firstly a private message system will be
  needed for the students and teachers to exchange the information about
- assignments problem or evaluations problem individual.
+ assignments problem or evaluations problem individually.
  secondly unlike the message system in moodle and current hms can only read
  the new message after the web page been reloaded, the new message system
  should work as a instant message system,in this way the questions or the
