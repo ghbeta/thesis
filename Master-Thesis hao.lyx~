@@ -2141,8 +2141,242 @@ reference "fig:Workflow-of-git"
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Database
+\end_layout
 
+\begin_layout Standard
+Playframeworks support several database engine:
+\end_layout
+
+\begin_layout Itemize
+H2
+\end_layout
+
+\begin_layout Itemize
+SQLite
+\end_layout
+
+\begin_layout Itemize
+PostgreSQL
+\end_layout
+
+\begin_layout Itemize
+MySQL
+\end_layout
+
+\begin_layout Standard
+only H2 and SQLite support the embedded mode,the embedded database runs
+ directly in the application that uses them,it requires no extra server
+ and no maintance for the database itself.Another advantage of embedded database
+ is the speed, because all the database operations happend inside the applicatio
+n process.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chaudhri2003"
+
+\end_inset
+
+In this project the H2 database engine will be used as the default database
+ engine.
+ first h2 support the embedded mode and it is purely written in java, the
+ java api of h2 can be directly used in the playframework.
+ second because the embedded database runs within the application, it is
+ normally hidden from the end user
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chaudhri2003"
+
+\end_inset
+
+, so there is no way the user can side load the database, but in the real
+ life of maintaning the HMS system, direct accessing and manipulating the
+ database using a sql query tool sometimes is more effenciency than the
+ usual routin.in this case h2 support a mixed mode(Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Mixed-Mode-of-h2"
+
+\end_inset
+
+),mixed mode is a combination of the embedded mode and server mode, the
+ first application in this case the HMS system will use the database as
+ embedded mode, but it also starts a server so that the other application(a
+ sql query tool) can still side load the database.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/connection-mode-mixed-2.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mixed Mode of h2 server
+\begin_inset CommandInset citation
+LatexCommand cite
+key "h2database"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Mixed-Mode-of-h2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Playframework uses Ebean ORM to access the database,ORM is a technique to
+ convert objected oriented programming language(in this case Java) into
+ its persistence as a relational data base, so the data can freely exchange
+ between a java object and database table.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2009"
+
+\end_inset
+
+By default the configuration of Ebean and the database is done by editing
+ the configuration file of playframework.
+ After coniguration of the database engine and the ebean, the system is
+ ready for developer to design the database for the web application.
+\end_layout
+
+\begin_layout Standard
+This is the standard approch when developing a web application using playframewo
+rk.
+ But it also has a problem, the database configuration has be done before
+ the application started, in the run time of the application all the database
+ related actions can only take place within the pre configured database.
+ This approch is convenient for the developer, because the developer don't
+ need to take care of the programmatically details of bring database ,ORM
+ and application together.But it sometimes cause trouble for the end user.
+ Usually there will be only one pre defined database, all the data from
+ the web application will be saved within this database.
+ In this project, HMS is desinged for managing the homeworks for the teacher,and
+ the system will be used in a university,every once in a while the university
+ need to archive or backup the old data from the past term.
+ A possible way is query out all the related data based on the semester,
+ then dump the data into file and save the file some where else.
+ Moodle also use this approch to make a course backup
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moodlebackup"
+
+\end_inset
+
+.The disadvantage of this approch is strait forward,the amout of data will
+ increasing rapidly after years of use, it is not only complicated but also
+ consume a lot of time.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiple-database"
+
+\end_inset
+
+ shows a better approch used in the HMS project.
+ all the data can be seperate saved on different database based on the semester,
+ the back up process will a lot easier.First the datastructure of every semester
+ is the same, so the database design for semester can be reused in every
+ new semester,therefor no need to query the data.
+ second the database in this project working under the embedded modus,all
+ the relevant data of the database are saved in a single file.
+ so each semester will be a single file, bacup the semester data only need
+ to copy the database file to some where else.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/database.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+multiple database based on semester
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:multiple-database"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aside from the semester data, there is a additional database to manage the
+ authentication data, for instance the email address,password,and ssh public
+ keys.
+ 
+\end_layout
+
+\begin_layout Standard
+This approach requires the system to create a database in the run time,
+ therefore the standard database configuration of playframework can not
+ be used.
+ The details of implementing the dynamic database function will be demonstrated
+ in the next chapter.
 \end_layout
 
 \begin_layout Chapter
@@ -2232,6 +2466,14 @@ addcontentsline{toc}{chapter}{Glossary}
 LatexCommand nomenclature
 symbol "HMS"
 description "Homework Management System"
+
+\end_inset
+
+
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ORM"
+description "Object-relational mapping"
 
 \end_inset
 
