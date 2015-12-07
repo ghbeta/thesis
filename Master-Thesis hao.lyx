@@ -942,7 +942,7 @@ Design
 
 \begin_layout Standard
 The HMS is a web platform to manage the activities related to the homework.
- In this chapter the detailed design of functions to support those activities
+ In this chapter the detailed design of functions to support the activities
  will be discussed.
 \end_layout
 
@@ -955,7 +955,7 @@ HMS
 \begin_inset Quotes srd
 \end_inset
 
- system is divided into two parts.
+ system are divided into two parts.
  The first part is to develop the common features which are similar to other
  web platform,for instance 
 \begin_inset Quotes sld
@@ -991,7 +991,7 @@ HMS
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1061,10 +1061,10 @@ HMS
  side.
  now take a look at the side of Teacher and Assistant, besides the registration
  and logging process, the user group of teacher can create new course and
- new assignment also collecting the the hand in homework and give them back
+ new assignment also collecting the handed in homework and give them back
  to the students once the evaluation is finished.
  The assistants however can not creating new course, but should be able
- to add new assignment and evaluate the hand in homework.
+ to add new assignment and evaluate the handed in homework as well.
  In summary, in order to realize the main task of the 
 \begin_inset Quotes sld
 \end_inset
@@ -1169,10 +1169,10 @@ Evaluation of Assignment
 \end_layout
 
 \begin_layout Standard
-Besides the above listed capabilities, the new HMS should also provide a
- way that the students and teachers can communicate with each other.
+Besides the above listed capabilities, the HMS should also provide a way
+ that the students and teachers can communicate with each other.
  firstly a private message system will be needed for the students and teachers
- to exchange the information about assignments problem or evaluations problem
+ to exchange the information about the problem of assignment or evaluations
  individually,also the new message system should work as a instant message
  system,in this way the questions or the problems between the students and
  teachers can resolve more efficiently.
@@ -1182,7 +1182,7 @@ Besides the above listed capabilities, the new HMS should also provide a
  the question, the other students with the same question can also get the
  answers and avoiding asking the same questions again.
  This saves the time from both side.
- So the communications system for the new HMS has following features:
+ So the communications system for the HMS has two parts:
 \end_layout
 
 \begin_layout Enumerate
@@ -1216,12 +1216,12 @@ reference "fig:The-Modules-of-usermanagement"
 ), first is the registration module, with this module the user can use their
  email address to register a account in HMS system.
  second is the self management module.
- after the user has logged into the system, they should able to change their
- emails and password or other personal details.third is the user role control
- module, this is necessary for system to arrange the proper functions to
- the current user based on their user role, the user obtains a startup role
- at the registration, later on the user role can be changed by the system
- admin.
+ after the user has logged into the system, they should be able to change
+ their emails and password or other personal details.third is the user role
+ control module, this is necessary for system to arrange the proper functions
+ to the current user based on their user role, the user obtains a startup
+ role at the registration, later on the user role can be changed by the
+ system admin.
  In the rest of this section, all the modules will be detailed discussed.
 \end_layout
 
@@ -1229,7 +1229,7 @@ reference "fig:The-Modules-of-usermanagement"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1279,7 +1279,7 @@ a.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1327,7 +1327,7 @@ reference "fig:Registration-activity"
 
  shows the workflow when a user register a new account.
  the user first use the registration form to fill in all the relevant informatio
-n for instance the password, email, and students number, after clicking
+n , for instance the password, email, and students number, after clicking
  the sign up button, the whole process begins, first the validation of the
  registration form will be performed to check whether the user has fill
  in all the required field and without error, if user passed the form validation
@@ -1351,7 +1351,7 @@ b.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1390,8 +1390,8 @@ name "fig:The-functions-of-selfmanagement"
 \end_layout
 
 \begin_layout Standard
-It is a very common that user may forget their passwords or even worse their
- registered email becomes invalid, so it is necessary to develop the functions
+It is very common that user may forget their passwords or even worse their
+ registered email becomes invalid, so it is necessary to develop the functions,
  user can use to reset their email and passwords.
  The resetting of email address or the passwords works similar as registration.
  If user choose to reset their email address, first they will be asked to
@@ -1427,7 +1427,7 @@ c.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1483,8 +1483,8 @@ reference "fig:Different-user-role"
 \end_inset
 
  shows all the user role in HMS system,from the top is the system admin,
- the system admin account will be generated at the first boot up of HMS
- system,the user name and password of the system admin will be saved under
+ the system admin account will be generated at the first boot up of the
+ HMS,the user name and password of the system admin will be saved under
  the home directory of the current server admin.
  it means only the admin of the server can access the username and passwords
  of HMS system admin account, this can ensure that only trusted personal
@@ -1500,12 +1500,12 @@ reference "fig:Different-user-role"
  second user role is students,if user register the account with their students
  number, they will automatically obtain a student account, with student
  account the user can browse all the available course and join the course,
- download and upload homework, using the communication system liken chat
+ download and upload homework, using the communication system like chat
  and forum.
  third user role is assistants, besides all the functions of students, assistant
 s can create new assignment and review all the handing in homework and make
  a evaluation,last one is the teacher, the teacher account has all the functions
- of assistant account additionally the teacher can also create new course.
+ of assistant account and additionally the teacher can also create new course.
 \end_layout
 
 \begin_layout Subsection
@@ -1530,7 +1530,7 @@ There are two types of course for informatics students, in the first type
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1737,7 +1737,7 @@ Assignment management
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -2039,10 +2039,10 @@ Submission management
 \end_layout
 
 \begin_layout Standard
-The normal approach for file upload as in Play framework is pretty simple,the
- developer just need to defined the extra file attribute for a HTML form
- and send the form using HTTP protocol,and defined a java controller on
- the server side to save the file to a desired location.
+The normal approach for the file upload in Play framework is pretty simple,the
+ developer only need to defined the extra file attribute for a HTML form
+ and send the form through POST methode of HTTP protocol,and defined a java
+ controller on the server side to save the file to a desired location.
  Also if the user want to retrieve this file again, the developer just need
  to save the path of this file under the name of the user in a database.
  But when considering this file is a homework submission,there is still
@@ -2072,7 +2072,7 @@ Student submit a work with a response.
 
 \begin_layout Standard
 The first type can direct use the default file upload function with a database
- record the file path.
+ recording the file path.
  For second type there are two ways to solve it, first way is that every
  time when students submit a new version, the old version will be deleted,
  and teacher will always get the latest version,the downside of this solution
@@ -2097,7 +2097,7 @@ All these submission type can be solved just using the standard techniques.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -2147,16 +2147,16 @@ reference "fig:Workflow-of-git"
 
 \end_inset
 
- shows the workflow for this 3 type of submission.
+ shows the workflow for this 3 type of submission when using the git repository.
  Every students when they join a course, they will automatically get a git
- repository from the system,all the submissions of the student will be written
- into this repository.
+ course repository from the system,all the submissions of the student will
+ be written into this repository.
  all this scenario from above can be solved just using the git commit.
- no matter what submission was chosen by the students,the only difference
+ no matter what submission type was chosen by the students,the only difference
  how many commits were made.
  on the teacher side they just need to checkout the students git repository
  and read the commit history.
- only the repository address is also needed to be saved into the database.
+ naturally the repository address is also needed to be saved into the database.
  
 \end_layout
 
@@ -2200,8 +2200,8 @@ In this project the H2 database engine will be used as the default database
  engine.
  first h2 support the embedded mode and it is purely written in java, the
  java API of h2 can be directly used in the play framework.
- second because the embedded database runs within the application, it is
- normally hidden from the end user
+ another reason is that the embedded database runs within the application,
+ it is normally hidden from the end user
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Chaudhri2003"
@@ -2219,9 +2219,21 @@ reference "fig:Mixed-Mode-of-h2"
 \end_inset
 
 ),mixed mode is a combination of the embedded mode and server mode, the
- first application in this case the HMS system will use the database as
- embedded mode, but it also starts a server so that the other application(a
- SQL query tool) can still side load the database.
+ first application (in this case the HMS) will use the database as embedded
+ mode, but it also starts a server so that the other application(a SQL query
+ tool) can still side load the database.It is also importent to notice that
+ if the application is shut down, the server mode will also close all the
+ connections
+\begin_inset CommandInset citation
+LatexCommand cite
+key "h2database"
+
+\end_inset
+
+,therefore side loading a database using remote mode can only take place
+ when HMS is still rung.
+ However the database file generated by the h2 engine can still be loaded
+ with the h2 web based manage tools.
 \end_layout
 
 \begin_layout Standard
@@ -2297,7 +2309,7 @@ By default the configuration of Ebean and the database is done by editing
 \begin_layout Standard
 This is the standard approach when developing a web application using play
  framework.
- But it also has a problem, the database configuration has be done before
+ But it also has a problem, the database configuration has to be done before
  the application started, in the run time of the application all the database
  related actions can only take place within the preconfigured database.
  This approach is convenient for the developer, because the developer don't
@@ -2305,7 +2317,7 @@ This is the standard approach when developing a web application using play
  and application together.But it sometimes cause trouble for the end user.
  Usually there will be only one predefined database, all the data from the
  web application will be saved within this database.
- In this project, HMS is designed for managing the homework for the teacher,and
+ In this project, HMS is designed for managing the homework for teacher,and
  the system will be used in a university,every once in a while the university
  need to archive or backup the old data from the past term.
  A possible way is query out all the related data based on the semester,
@@ -2323,29 +2335,10 @@ key "moodlebackup"
 \end_layout
 
 \begin_layout Standard
-Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:multiple-database"
-
-\end_inset
-
- shows a better approach used in the HMS project.
- all the data can be separate saved on different database based on the semester,
- the back up process will a lot easier.First the data structure of every
- semester is the same, so the database design for semester can be reused
- in every new semester,therefor no need to query the data.
- second the database in this project working under the embedded modes,all
- the relevant data of the database are saved in a single file.
- so each semester will be a single file, backup the semester data only need
- to copy the database file to some where else.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -2386,9 +2379,28 @@ name "fig:multiple-database"
 \end_layout
 
 \begin_layout Standard
-aside from the semester data, there is a additional database to manage the
- authentication data, for instance the email address,password,and ssh public
- keys.
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiple-database"
+
+\end_inset
+
+ shows a better approach used in the HMS project.
+ all the data can be separate saved on different database based on the semester,
+ the back up process will a lot easier.First the data structure of every
+ semester is the same, so the database design for semester can be reused
+ in every new semester,therefor no need to query the data.
+ second the database in this project working under the embedded modes,all
+ the relevant data of the database are saved in a single file.
+ so each semester will be a single file, backup the semester data only need
+ to copy the database file to some where else.
+\end_layout
+
+\begin_layout Standard
+aside from the semester data, there is a additional database to manage all
+ the data related to the authentication process, for instance the email
+ address,password,and ssh public keys.
  
 \end_layout
 
@@ -2405,31 +2417,602 @@ Implementations
 \end_layout
 
 \begin_layout Standard
-how to implement the functions from chapter4
+In this chapter the concrete implementation of the functions from the chapter
+ 3 will be presented.
+ The related source code,used external libraries ,data persistence and gui
+ design to each functions will be introduced in the same order as in chapter
+ 3.
 \end_layout
 
 \begin_layout Section
 User management
 \end_layout
 
+\begin_layout Standard
+The implementation of user management system consists following parts:
+\end_layout
+
+\begin_layout Enumerate
+Registration system
+\end_layout
+
+\begin_layout Enumerate
+Authentication system
+\end_layout
+
+\begin_layout Enumerate
+Self manage system
+\end_layout
+
+\begin_layout Enumerate
+User role system
+\end_layout
+
+\begin_layout Enumerate
+Data persistent
+\end_layout
+
+\begin_layout Subsection
+Registration system
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/registration form.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Registration form on home page
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Registration-form"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Registration-form"
+
+\end_inset
+
+ is the registration form on the HMS home page.
+ a new user need to at least type in the email address,firstname,lastname,
+ and the password.
+ The student number is optional because the multi user roll management of
+ the system.
+ only students needs to give the studentsnumber and get a student user role
+ as default.
+ other user will get a random user id and 
+\begin_inset Quotes sld
+\end_inset
+
+default user
+\begin_inset Quotes srd
+\end_inset
+
+ user role, and need the system admin to change the user role afterwards.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Save-user-registration"
+
+\end_inset
+
+ shows what happens when user click the singup button in the registration
+ form.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\footnotesize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public static Result save() {
+\end_layout
+
+\begin_layout Plain Layout
+
+        Form<Application.Register> registerForm = form(Application.Register.class).b
+indFromRequest();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (registerForm.hasErrors()) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            return badRequest(index.render());
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        Application.Register register = registerForm.get();
+\end_layout
+
+\begin_layout Plain Layout
+
+        Result resultError = checkBeforeSave(registerForm, register.email);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (resultError != null) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            return resultError;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        try {
+\end_layout
+
+\begin_layout Plain Layout
+
+            User user = new User();
+\end_layout
+
+\begin_layout Plain Layout
+
+            if(register.id.isEmpty()||register.id==null){
+\end_layout
+
+\begin_layout Plain Layout
+
+                user.id= CreateExternalId.generateId();
+\end_layout
+
+\begin_layout Plain Layout
+
+            }
+\end_layout
+
+\begin_layout Plain Layout
+
+            else{
+\end_layout
+
+\begin_layout Plain Layout
+
+            user.id=register.id;}
+\end_layout
+
+\begin_layout Plain Layout
+
+            ...
+\end_layout
+
+\begin_layout Plain Layout
+
+            user.roles=UserRoll.Students.toString();
+\end_layout
+
+\begin_layout Plain Layout
+
+            user.save("global");
+\end_layout
+
+\begin_layout Plain Layout
+
+            sendMailAskForConfirmation(user);
+\end_layout
+
+\begin_layout Plain Layout
+
+            ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Save user registration
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Save-user-registration"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The sign up button is bonded with the function 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+Signup.save()
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+, first the data from the 
+\shape italic
+registerForm
+\shape default
+ will be checked wether all the required field has been filled, if there
+ is a error the user will be redirected to the home page and do the registration
+ process again.
+ second if the data are correct, the emails from the 
+\shape italic
+registerForm
+\shape default
+ will be checked by the function 
+\shape italic
+checkBeforeSave()
+\shape default
+ to insure that the email address has not be taken by other users.
+ if both tests are proofed, the next step is to check the user id, if the
+ user id has been given then this user should be saved with the user role
+ of students, if the user id is empty, the user will obtain a user role
+ of default user.
+ after saving the user registration data to the database, a confirmation
+ email will be sent to the user email address by the function 
+\shape italic
+sendMailAskForConfirmation()
+\shape default
+.
+ At this step the user data are successfully saved into the database and
+ waited to be confirmed by the user.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\footnotesize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+private static void sendMailAskForConfirmation(User user) throws EmailException,
+ MalformedURLException {
+\end_layout
+
+\begin_layout Plain Layout
+
+        String subject = Messages.get("mail.confirm.subject");
+\end_layout
+
+\begin_layout Plain Layout
+
+        ...
+\end_layout
+
+\begin_layout Plain Layout
+
+        URL url = new URL(urlString);
+\end_layout
+
+\begin_layout Plain Layout
+
+        String message = Messages.get("mail.confirm.message", url.toString());
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        Mail.Envelop envelop = new Mail.Envelop(subject, message, user.email);
+\end_layout
+
+\begin_layout Plain Layout
+
+        Mail.sendMail(envelop);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+public static Result confirm(String token) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        User user = User.findByConfirmationToken(token,"global");
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (user == null) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            ...
+\end_layout
+
+\begin_layout Plain Layout
+
+            return badRequest(views.html.account.signup.confirm.render(null));
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (user.validated) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            ...
+\end_layout
+
+\begin_layout Plain Layout
+
+            return badRequest(views.html.account.signup.confirm.render(null));
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        try {
+\end_layout
+
+\begin_layout Plain Layout
+
+            if (User.confirm(user,"global")) {
+\end_layout
+
+\begin_layout Plain Layout
+
+                sendMailConfirmation(user);
+\end_layout
+
+\begin_layout Plain Layout
+
+                user.dateCreation=new Date();
+\end_layout
+
+\begin_layout Plain Layout
+
+                user.save("global");
+\end_layout
+
+\begin_layout Plain Layout
+
+                return ok(views.html.account.signup.confirm.render(user));
+\end_layout
+
+\begin_layout Plain Layout
+
+            } else {
+\end_layout
+
+\begin_layout Plain Layout
+
+                return badRequest(views.html.account.signup.confirm.render(null));
+\end_layout
+
+\begin_layout Plain Layout
+
+            }
+\end_layout
+
+\begin_layout Plain Layout
+
+        } 
+\end_layout
+
+\begin_layout Plain Layout
+
+            ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Confirm registration
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Confirm-registration"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+continue tomorrow
+\end_layout
+
 \begin_layout Section
 Course management
+\end_layout
+
+\begin_layout Standard
+course management
 \end_layout
 
 \begin_layout Section
 Assignment management
 \end_layout
 
+\begin_layout Standard
+assignment management
+\end_layout
+
 \begin_layout Section
 Communication system
+\end_layout
+
+\begin_layout Standard
+communication system
 \end_layout
 
 \begin_layout Section
 Integration of Git
 \end_layout
 
+\begin_layout Standard
+integration of git
+\end_layout
+
 \begin_layout Section
-Database design
+Dynamic Database
+\end_layout
+
+\begin_layout Standard
+dynamic database
 \end_layout
 
 \begin_layout Chapter
