@@ -768,40 +768,6 @@ Hao Gao
 \end_layout
 
 \begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 17.1mm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\noindent
-\align left
-
-\series bold
-\size huge
-Summary
-\end_layout
-
-\begin_layout Standard
-zusätzliche Zusammenfassung über Deutsch nötig?
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -850,31 +816,8 @@ pagenumbering{roman}
 
 
 \backslash
-setcounter{page}{7}
+setcounter{page}{4}
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList table
 
 \end_inset
 
@@ -941,9 +884,14 @@ Design
 \end_layout
 
 \begin_layout Standard
-The HMS is a web platform to manage the activities related to the homework.
- In this chapter the detailed design of functions to support the activities
+The HMS (Homework Management System) is a web platform to manage the activities
+ related to the homework including handing out the related materieals to
+ the students,collecting the handed in homework and managing the evaluation
+ of the assignment.
+ In this chapter the detailed design of functions to support those activities
  will be discussed.
+ Furthermore the problems of the current alternative system will be analised
+ and the solutions to those problem will be introduced.
 \end_layout
 
 \begin_layout Standard
@@ -967,8 +915,8 @@ register a user account
 
  .
  The second part of the design is to develop the special core features to
- distinguish the HMS system from other platform, the dynamic database and
- the git based file management.
+ distinguish the HMS system from other platform, the dynamic datamanagement
+ and the git based homework management.
  
 \end_layout
 
@@ -991,7 +939,7 @@ HMS
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1235,7 +1183,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/module usermanagement.png
+	filename images/User management.png
+	scale 70
 
 \end_inset
 
@@ -1358,7 +1307,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/self management.png
-	scale 85
+	scale 70
 
 \end_inset
 
@@ -1432,9 +1381,520 @@ status open
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Graphics
-	filename images/user role.png
-	scale 85
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="2cm">
+<column alignment="center" valignment="middle" width="2cm">
+<column alignment="center" valignment="middle" width="2cm">
+<column alignment="center" valignment="middle" width="2cm">
+<column alignment="center" valignment="middle" width="2cm">
+<column alignment="center" valignment="middle" width="2cm">
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Admin
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Default
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Students
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Assistents
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Teachers
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+System Functions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Create Lecture
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Create Assignment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Evaluation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Join Lecture
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hand in Homework
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forum & Message
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Self Manage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+◯
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -1467,11 +1927,10 @@ name "fig:Different-user-role"
 \end_layout
 
 \begin_layout Standard
-The user of the HMS system has different roles, and they need different
- functions.
+The user of the HMS system has different roles to perform different actions,
  for instance a teacher can create new course but students can not, so it
- is important for the system to distinguish the user based on their user
- roles, so that the system can serve different functions to different user.
+ is important to have a subsystem to disinguish the user roleso that the
+ HMS can serve proper functions to the user.
 \end_layout
 
 \begin_layout Standard
@@ -1482,30 +1941,30 @@ reference "fig:Different-user-role"
 
 \end_inset
 
- shows all the user role in HMS system,from the top is the system admin,
- the system admin account will be generated at the first boot up of the
- HMS,the user name and password of the system admin will be saved under
- the home directory of the current server admin.
- it means only the admin of the server can access the username and passwords
- of HMS system admin account, this can ensure that only trusted personal
- can access the system admin account of HMS.The job of system admin is to
- manage other user's role and the system database(backup the database after
- semester ends).
- At the bottom are the normal user roles.
- first is the default user,every user obtains this role after registration.if
- you don't give a students number.The user with this role can not do much
- things within the system other than updating their email address or passwords.
- if the default user wants to promote their user role to another level,
- they have to contact system admin.
- second user role is students,if user register the account with their students
- number, they will automatically obtain a student account, with student
- account the user can browse all the available course and join the course,
- download and upload homework, using the communication system like chat
- and forum.
- third user role is assistants, besides all the functions of students, assistant
-s can create new assignment and review all the handing in homework and make
- a evaluation,last one is the teacher, the teacher account has all the functions
- of assistant account and additionally the teacher can also create new course.
+ shows all the user role in HMS system,first is the 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape slanted
+system admin
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+, the job of system admin is to manage other user's role and the system
+ data(backup the database and related files in certain times),any other
+ functions of the HMS is irelevant to the system admin.
+ second is the default user,the user with this role can not do much things
+ other than updating their personal data(passwords and email).
+ third user role is students, with student account the user can browse all
+ the available course and join the course, download and upload homework,
+ using the communication system like chat and forum.
+ fourth user role is assistants, besides all the functions of students,
+ assistants can review all the student's homework and make a evaluation,last
+ one is the teacher, the teacher account has all the functions of assistant
+ account and additionally the teacher can create new course.
 \end_layout
 
 \begin_layout Subsection
@@ -1513,21 +1972,53 @@ Course management
 \end_layout
 
 \begin_layout Standard
-There are two types of course for informatics students, in the first type
- of course the students have to hand in various homework, and the points
- gained from those homework are usually used as a prerequisite for the final
- exam.
+The typical course provided by the faculty software engineering and their
+ evaluation methods are listed as follows:
+\end_layout
+
+\begin_layout Itemize
+Bachlor Programming Methodology: Evaluation through final exam
+\end_layout
+
+\begin_layout Itemize
+Bachlor Design-Pattern: Evaluation from multiple sub project
+\end_layout
+
+\begin_layout Itemize
+Master Software Engineering 2: Evaluation from semester project
+\end_layout
+
+\begin_layout Itemize
+Master Compiler Construction: Evaluation from multiple sub project
+\end_layout
+
+\begin_layout Itemize
+Master Graph-Model : Evaluation through final exam
+\end_layout
+
+\begin_layout Standard
+Above course can be divided into two categories.
+ in the first type of course the students have to hand in various homework,
+ and the points gained from those homework are usually used as a prerequisite
+ for the final exam.
  in the second type of course the students will get a semester assignment,
  normally a whole software project, the points gained from this project
  usually is the final points for this course.
  additionally every students will get a git repository after user had signed
  up the course,this repository will also worked in two modes according to
- the type of course,the details of git working modes will be discussed in
- more detail.
+ the type of course,the details of git working modes will be discussed later
+ in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Submission-management"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float table
+\begin_inset Float figure
 wide false
 sideways false
 status open
@@ -1539,9 +2030,9 @@ status open
 <lyxtabular version="3" rows="3" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
-<column alignment="left" valignment="top" width="6cm">
-<column alignment="left" valignment="top" width="3cm">
-<column alignment="left" valignment="top" width="3cm">
+<column alignment="left" valignment="middle" width="4cm">
+<column alignment="left" valignment="middle" width="4cm">
+<column alignment="left" valignment="middle" width="3cm">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1556,6 +2047,8 @@ Features
 \begin_inset Text
 
 \begin_layout Plain Layout
+\noindent
+\align left
 Precondition to final exam
 \end_layout
 
@@ -1590,7 +2083,7 @@ Type I
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Enumerate
@@ -1598,6 +2091,8 @@ Students have to hand in at least amount of valid homework.
 \end_layout
 
 \begin_layout Enumerate
+\noindent
+\align left
 A valid homework requires normally for students to gain more than 50% points
  of a assignment.
 \end_layout
@@ -1608,7 +2103,7 @@ A student should gain at least 50% of total points for final exam
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1645,16 +2140,17 @@ Type II
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-None,Students just need to hand in the final project
+None,Students just need to hand in the final project(may consists sub.
+ project)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1667,11 +2163,15 @@ Git repository works under remote modus
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 Only final evaluation
+\end_layout
+
+\begin_layout Plain Layout
+(or multiple sub.evaluation)
 \end_layout
 
 \end_inset
@@ -1744,7 +2244,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/assignment management.png
-	scale 80
+	scale 70
 
 \end_inset
 
@@ -1836,72 +2336,8 @@ key "Hohpe2012"
 
 \end_inset
 
- The forum function within the HMS system works also after this pattern,
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Forum-message-pattern"
-
-\end_inset
-
- shows the communication between the clients and HMS server based on the
- different forum action request.for instance: a client sends a 
-\begin_inset Quotes sld
-\end_inset
-
-create new post
-\begin_inset Quotes srd
-\end_inset
-
- request to the server, the HMS server accepts the request and save this
- new post to the related course forum, and return the content of this post
- to the client again.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename images/forum.png
-	scale 85
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Forum message pattern
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Forum-message-pattern"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
+ The forum function within the HMS system works also after this pattern.
+ 
 \end_layout
 
 \begin_layout Subsubsection
@@ -1952,20 +2388,21 @@ reference "fig:Websocket-message-pattern"
 
 \end_inset
 
- illustrate a simple use case of web socket,after logging into their HMS
- account user A and user B are both connecting to the HMS web socket server,
- later on user A send a new message to user B,first the request from user
- A are passing to the web socket server,the server processed the request
- accordingly and served the response not only to the user A but also automatical
-ly served the response to the user B,this ensure the both side of the conversati
-on can have their message received in real time.
+ illustrate a simple scenario of a dialog based on web socket.
+ after logging into their HMS account user A and user B are both connecting
+ to the HMS web socket server, later on user A send a new message to user
+ B,first the request from user A are passing to the web socket server,the
+ server processed the request accordingly and served the response not only
+ to the user A but also automatically served the response to the user B,this
+ ensure the both side of the conversation can have their message received
+ in real time.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -2012,6 +2449,64 @@ Specific functions
 \end_layout
 
 \begin_layout Standard
+There are three major problems in other homework management platforms:
+\end_layout
+
+\begin_layout Enumerate
+Management of file submission
+\end_layout
+
+\begin_layout Enumerate
+Centralized data persistent(single database)
+\end_layout
+
+\begin_layout Enumerate
+Back up lecture data
+\end_layout
+
+\begin_layout Standard
+the first problem is using the file upload methode to manage the student's
+ submission, because of the different submission types
+\begin_inset CommandInset citation
+LatexCommand cite
+key "documoodle"
+
+\end_inset
+
+ in 
+\begin_inset Quotes sld
+\end_inset
+
+Type I
+\begin_inset Quotes srd
+\end_inset
+
+ course
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Features-of-course"
+
+\end_inset
+
+ it needs addtionally implementations and settings to make different submission
+ type to work, it is complicated not only for development but also for the
+ user of the system.
+ and this approch did'nt take the 
+\begin_inset Quotes sld
+\end_inset
+
+Type II
+\begin_inset Quotes srd
+\end_inset
+
+ course into consideration, uploading a whole semester project to the system
+ at the end of semester is sometimes risky for the students(Data loss of
+ the computer before dead line), and the teachers may need to trace the
+ project history to comprehend the work of students(avoiding plagiarism).
+ 
+\end_layout
+
+\begin_layout Standard
 The functions from last section needs two critical preconditions to work:
 \end_layout
 
@@ -2036,6 +2531,13 @@ There are already plenty solutions to those problems,for instance the file
 
 \begin_layout Subsection
 Submission management
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Submission-management"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2047,8 +2549,8 @@ The normal approach for the file upload in Play framework is pretty simple,the
  to save the path of this file under the name of the user in a database.
  But when considering this file is a homework submission,there is still
  need a lot work to do than just upload a file to the server.
- The documentation of the moodle system has suggests several submission
- type related to file submission
+ The documentation of moodle has suggests several submission type related
+ to file submission
 \begin_inset CommandInset citation
 LatexCommand cite
 key "documoodle"
@@ -2071,19 +2573,8 @@ Student submit a work with a response.
 \end_layout
 
 \begin_layout Standard
-The first type can direct use the default file upload function with a database
- recording the file path.
- For second type there are two ways to solve it, first way is that every
- time when students submit a new version, the old version will be deleted,
- and teacher will always get the latest version,the downside of this solution
- is that the previous upload will be all gone,there is no way for teacher
- to track the submission history.
- another is that when a new version is submitted,the old version will not
- be deleted,however with this solution the teacher do can track the history
- but will taken two much hard drive capacity.For the last type it is just
- need to put a extra column in the database to save the response with the
- file path.
- 
+In order to set the submission type, teacher has to do a series of settings.
+ Here is the first problem
 \end_layout
 
 \begin_layout Standard
@@ -2161,7 +2652,7 @@ reference "fig:Workflow-of-git"
 \end_layout
 
 \begin_layout Subsection
-Database
+Dynamic data management
 \end_layout
 
 \begin_layout Standard
@@ -2630,7 +3121,7 @@ indFromRequest();
 
 \begin_layout Plain Layout
 
-            if(register.id.isEmpty()||register.id==null){
+            if(register.id==null||register.id.isEmpty()){
 \end_layout
 
 \begin_layout Plain Layout
@@ -2759,7 +3250,7 @@ sendMailAskForConfirmation()
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset listings
@@ -3036,6 +3527,13 @@ Summary and Outlook
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -3122,6 +3620,14 @@ phantomsection
 LatexCommand bibtex
 bibfiles "bibtex-daten/bachelorarbeit-info"
 options "bibtotoc,bibtex-daten/unsrtdin"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
 
 \end_inset
 
