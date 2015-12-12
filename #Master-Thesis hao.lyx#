@@ -1191,7 +1191,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/User management.png
-	scale 50
+	scale 70
 
 \end_inset
 
@@ -1314,7 +1314,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/self management.png
-	scale 50
+	scale 70
 
 \end_inset
 
@@ -2251,7 +2251,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/assignment management.png
-	scale 60
+	scale 70
 
 \end_inset
 
@@ -2417,7 +2417,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/message.png
-	scale 80
+	scale 85
 
 \end_inset
 
@@ -2769,14 +2769,14 @@ reference "fig:Repository-file-structure-local"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename images/Repository local.png
-	scale 30
+	scale 70
 
 \end_inset
 
@@ -2834,7 +2834,7 @@ Type II
  Only at the end of the semester or the deadline is due students need to
  use the course homepage to tag the repository, this can generate a evaluation
  request at teacher side so that the teacher can register then evaluation
- result into the sys
+ result into the system.
 \end_layout
 
 \begin_layout Subsection
@@ -2931,7 +2931,6 @@ besides backing up the database, the files from student submission, course
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -2941,7 +2940,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/Semester 1.png
-	scale 30
+	scale 70
 
 \end_inset
 
@@ -2986,16 +2985,15 @@ reference "fig:Semester-file-structure"
  using a clear file structure to host the uploaded files along with the
  commit history of the student's repository can let the maintainer of the
  system more easily to distinguish the files without looking into the database.
- combine these two methods, the backup procedure of the HMS system only
- need the maintainer to relocate the semester folder and without doing any
- database operation.
+ combine this two methods, the backup procedure of the HMS system only need
+ the maintainer to relocate tsemester folder, without any database operation.
 \end_layout
 
 \begin_layout Standard
 This approach requires the system to create a database in the run time,
  therefore the standard database configuration of play framework can not
  be used.
- The details of implementing the dynamic data management will be demonstrated
+ The details of implementing the dynamic database function will be demonstrated
  in the next chapter.
 \end_layout
 

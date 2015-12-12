@@ -1143,6 +1143,13 @@ a public course forum for each course.
 
 \begin_layout Subsection
 User management
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:User-management"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2244,7 +2251,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/assignment management.png
-	scale 70
+	scale 60
 
 \end_inset
 
@@ -2298,6 +2305,7 @@ reference "fig:Sequenz-diagram-for-assignment"
  part of the course's homepage and add a evaluation to the solution.
  When the evaluation is successfully saved to the assignment, the student
  will get the results directly at course homepage.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -2409,7 +2417,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/message.png
-	scale 85
+	scale 80
 
 \end_inset
 
@@ -2465,92 +2473,12 @@ Back up lecture data
 \end_layout
 
 \begin_layout Standard
-the first problem is using the file upload methode to manage the student's
- submission, because of the different submission types
-\begin_inset CommandInset citation
-LatexCommand cite
-key "documoodle"
-
-\end_inset
-
- in 
-\begin_inset Quotes sld
-\end_inset
-
-Type I
-\begin_inset Quotes srd
-\end_inset
-
- course
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Features-of-course"
-
-\end_inset
-
- it needs addtionally implementations and settings to make different submission
- type to work, it is complicated not only for development but also for the
- user of the system.
- and this approch did'nt take the 
-\begin_inset Quotes sld
-\end_inset
-
-Type II
-\begin_inset Quotes srd
-\end_inset
-
- course into consideration, uploading a whole semester project to the system
- at the end of semester is sometimes risky for the students(Data loss of
- the computer before dead line), and the teachers may need to trace the
- project history to comprehend the work of students(avoiding plagiarism).
- 
-\end_layout
-
-\begin_layout Standard
-The functions from last section needs two critical preconditions to work:
-\end_layout
-
-\begin_layout Enumerate
-The files of assignment and student's submissions can be saved.
-\end_layout
-
-\begin_layout Enumerate
-The result of the activities can be persistent in a database.
-\end_layout
-
-\begin_layout Standard
-There are already plenty solutions to those problems,for instance the file
- upload and the database support are the standard functions within the play
- framework.
- The developer just need to decide where to put the files and configure
- the configuration file for database to work.
- However there are still some disadvantages with the standard approach,this
- will be discussed in the rest of this section and the new approaches for
- both will be introduced.
-\end_layout
-
-\begin_layout Subsection
-Submission management
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Submission-management"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The normal approach for the file upload in Play framework is pretty simple,the
- developer only need to defined the extra file attribute for a HTML form
- and send the form through POST methode of HTTP protocol,and defined a java
- controller on the server side to save the file to a desired location.
- Also if the user want to retrieve this file again, the developer just need
- to save the path of this file under the name of the user in a database.
- But when considering this file is a homework submission,there is still
- need a lot work to do than just upload a file to the server.
- The documentation of moodle has suggests several submission type related
- to file submission
+the first problem is the management of the student's submission, besides
+ of upload the file to the server ,there will be usually more additional
+ function needs to be added to support different needs related to hand in
+ homework.
+ for instance the documentation of moodle has suggestes several submission
+ type related to file submission
 \begin_inset CommandInset citation
 LatexCommand cite
 key "documoodle"
@@ -2573,22 +2501,94 @@ Student submit a work with a response.
 \end_layout
 
 \begin_layout Standard
-In order to set the submission type, teacher has to do a series of settings.
- Here is the first problem
+and teacher needs to do several settings to make those type work properly,
+ this introduced unnecessary extra cost not only for development but also
+ for the user of the system.
+ on the other hand the this approch did'nt take the 
+\begin_inset Quotes sld
+\end_inset
+
+Type II
+\begin_inset Quotes srd
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Features-of-course"
+
+\end_inset
+
+course into consideration, it is possible to hand in the semester project
+ to the server just using this method, but uploading a whole semester project
+ to the system at the end of semester is sometimes risky for the students(Data
+ loss of the computer before dead line), and the teachers may need to trace
+ the project history to comprehend the work of students(avoiding plagiarism).
+ 
 \end_layout
 
 \begin_layout Standard
-All these submission type can be solved just using the standard techniques.
- But this is still too complicated, not only for development but also for
- the user of the system.
- At this point the GIT will be introduced to resolve the problem.
+the second and third problem are related to each other, because all the
+ data are presistent in a single data base , the backup procedure is complicated
+ and time consuming.
+ all these platform including HMS are desinged for a faculty in university,
+ it's very common once in a while the faculty need to archive or backup
+ the old data from the past term.
+ A possible way is query out all the related data based on the semester,
+ then dump these data into file and save the course related files some where
+ else.
+ Moodle also use this approach to make a course backup
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moodlebackup"
+
+\end_inset
+
+.
+ since the amount of data will increasing rapidly after years of use, this
+ approch can only comsume more times.
+\end_layout
+
+\begin_layout Standard
+The HMS has introduced two new approch two avoid the problem from above:
+\end_layout
+
+\begin_layout Enumerate
+Git based file submission
+\end_layout
+
+\begin_layout Enumerate
+Dynamic data management
+\end_layout
+
+\begin_layout Standard
+this two methods will be detailed introduced in the rest of this section.
+\end_layout
+
+\begin_layout Subsection
+Submission management using GIT
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Submission-management"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Instead uploading a file to a simple folder on the server, the students
+ will obtain a git repository when they first entering the course.
+ using a git repository other than a normal file folder has several advantages.
+ firstly the implementation of different submission type is not needed anymore
+ and don't need user to do extra settings.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -2621,10 +2621,6 @@ name "fig:Workflow-of-git"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2638,17 +2634,207 @@ reference "fig:Workflow-of-git"
 
 \end_inset
 
- shows the workflow for this 3 type of submission when using the git repository.
- Every students when they join a course, they will automatically get a git
- course repository from the system,all the submissions of the student will
- be written into this repository.
- all this scenario from above can be solved just using the git commit.
- no matter what submission type was chosen by the students,the only difference
- how many commits were made.
+ shows the use case for all submission type
+\begin_inset CommandInset citation
+LatexCommand cite
+key "documoodle"
+
+\end_inset
+
+ when using the git repository.
+ no matter what submission type was chosen by the user, the only difference
+ is how many commits were made.
+ especially by the submission type 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+upload solution multiple times
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ since the nature of the git repository is to track the history of file
+ change, teacher can easiely review all the changes were made between the
+ uploads without extra efforts.
  on the teacher side they just need to checkout the students git repository
- and read the commit history.
- naturally the repository address is also needed to be saved into the database.
+ and review the change history and give the evaluation.
+ secondly using a git repository in 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+Type II
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ course is more convinient for students and teachers to manage the project,
+ since the assignment of 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+Type II
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ course is usally a semester project, the students can use this repository
+ to host their project to avoid the risk of dataloss, or not able to submit
+ whole project before deadline.
+ the teacher can also more easiely track the work history of the student's
+ project.
  
+\end_layout
+
+\begin_layout Standard
+since there are two types of course(Figure: 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Features-of-course"
+
+\end_inset
+
+), the git repository will also work under two modes to fit the property
+ of course:
+\end_layout
+
+\begin_layout Enumerate
+Local modes(for 
+\begin_inset Quotes sld
+\end_inset
+
+Type I
+\begin_inset Quotes srd
+\end_inset
+
+ course)
+\end_layout
+
+\begin_layout Enumerate
+Remote modes(for 
+\begin_inset Quotes sld
+\end_inset
+
+Type II
+\begin_inset Quotes srd
+\end_inset
+
+ course)
+\end_layout
+
+\begin_layout Subsubsection
+a.
+ Local modes
+\end_layout
+
+\begin_layout Standard
+for the 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+Type I
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ course students needs to upload different solutions to different assignments,
+ and every assignment needs to be evaluated individually, so the repository
+ should have a proper file structure to distinguish the student submission
+ based on the assignment.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Repository-file-structure-local"
+
+\end_inset
+
+ shows the file structure inside the local git repository.
+ With this file structure the teacher can manage the student submission
+ more effeiently
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Repository local.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Repository file structure in local modes
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Repository-file-structure-local"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to maintain this file structure and avoid introducing unnecessary
+ errors, the address of the git repository is hiden from the student, they
+ can only using the course homepage to upload their solutions.
+\end_layout
+
+\begin_layout Subsubsection
+b.
+ Remote modes
+\end_layout
+
+\begin_layout Standard
+for the 
+\begin_inset Quotes sld
+\end_inset
+
+Type II
+\begin_inset Quotes srd
+\end_inset
+
+ course students will obtain the repository address at once when they join
+ the course, and use this repository to host their semester project.
+ This part works similar as using a github repository.
+ Only at the end of the semester or the deadline is due students need to
+ use the course homepage to tag the repository, this can generate a evaluation
+ request at teacher side so that the teacher can register then evaluation
+ result into the sys
 \end_layout
 
 \begin_layout Subsection
@@ -2656,173 +2842,10 @@ Dynamic data management
 \end_layout
 
 \begin_layout Standard
-Play frameworks support several database engine:
-\end_layout
-
-\begin_layout Itemize
-H2
-\end_layout
-
-\begin_layout Itemize
-SQLite
-\end_layout
-
-\begin_layout Itemize
-PostgreSQL
-\end_layout
-
-\begin_layout Itemize
-My SQL
-\end_layout
-
-\begin_layout Standard
-only H2 and SQLite support the embedded mode,the embedded database runs
- directly in the application that uses them,it requires no extra server
- and no maintenance for the database itself.Another advantage of embedded
- database is the speed, because all the database operations happen inside
- the application process.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Chaudhri2003"
-
-\end_inset
-
-In this project the H2 database engine will be used as the default database
- engine.
- first h2 support the embedded mode and it is purely written in java, the
- java API of h2 can be directly used in the play framework.
- another reason is that the embedded database runs within the application,
- it is normally hidden from the end user
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Chaudhri2003"
-
-\end_inset
-
-, so there is no way the user can side load the database, but in the real
- life of maintaining the HMS system, direct accessing and manipulating the
- database using a SQL query tool sometimes is more efficiency than the usual
- routine.in this case h2 support a mixed mode(Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Mixed-Mode-of-h2"
-
-\end_inset
-
-),mixed mode is a combination of the embedded mode and server mode, the
- first application (in this case the HMS) will use the database as embedded
- mode, but it also starts a server so that the other application(a SQL query
- tool) can still side load the database.It is also importent to notice that
- if the application is shut down, the server mode will also close all the
- connections
-\begin_inset CommandInset citation
-LatexCommand cite
-key "h2database"
-
-\end_inset
-
-,therefore side loading a database using remote mode can only take place
- when HMS is still rung.
- However the database file generated by the h2 engine can still be loaded
- with the h2 web based manage tools.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename images/connection-mode-mixed-2.png
-	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Mixed Mode of h2 server
-\begin_inset CommandInset citation
-LatexCommand cite
-key "h2database"
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Mixed-Mode-of-h2"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Play framework uses Ebean ORM to access the database,ORM is a technique
- to convert objected oriented programming language(in this case Java) into
- its persistence as a relational data base, so the data can freely exchange
- between a java object and database table.
-\begin_inset CommandInset citation
-LatexCommand cite
-key "K2009"
-
-\end_inset
-
-By default the configuration of Ebean and the database is done by editing
- the configuration file of play framework.
- After configuration of the database engine and the Ebean, the system is
- ready for developer to design the database for the web application.
-\end_layout
-
-\begin_layout Standard
-This is the standard approach when developing a web application using play
- framework.
- But it also has a problem, the database configuration has to be done before
- the application started, in the run time of the application all the database
- related actions can only take place within the preconfigured database.
- This approach is convenient for the developer, because the developer don't
- need to take care of the programmatically details of bring database ,ORM
- and application together.But it sometimes cause trouble for the end user.
- Usually there will be only one predefined database, all the data from the
- web application will be saved within this database.
- In this project, HMS is designed for managing the homework for teacher,and
- the system will be used in a university,every once in a while the university
- need to archive or backup the old data from the past term.
- A possible way is query out all the related data based on the semester,
- then dump the data into file and save the file some where else.
- Moodle also use this approach to make a course backup
-\begin_inset CommandInset citation
-LatexCommand cite
-key "moodlebackup"
-
-\end_inset
-
-.The disadvantage of this approach is strait forward,the amount of data will
- increasing rapidly after years of use, it is not only complicated but also
- consume a lot of time.
+In order to make the backup or achive process as easy as possible.
+ The HMS system introduced a new approch to manage the data.
+ first of all the HMS system use multiple databases instead of one central
+ database.
 \end_layout
 
 \begin_layout Standard
@@ -2877,29 +2900,102 @@ reference "fig:multiple-database"
 
 \end_inset
 
- shows a better approach used in the HMS project.
- all the data can be separate saved on different database based on the semester,
- the back up process will a lot easier.First the data structure of every
- semester is the same, so the database design for semester can be reused
- in every new semester,therefor no need to query the data.
- second the database in this project working under the embedded modes,all
- the relevant data of the database are saved in a single file.
- so each semester will be a single file, backup the semester data only need
- to copy the database file to some where else.
+ shows the database structure in the HMS system.
+ The Global database contains all the authentication data including ssh
+ public keys,user name, user email, user role and passwords.
+ this database is only used for the user management(section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:User-management"
+
+\end_inset
+
+).
+ another database is semester database.
+ since the data structure of every semester is same, so the data model for
+ semester can be reused in every new semester.
+ every time when a new semester beginns, a new database for this semester
+ will be generated using the same data structure in real time.
+ therefore in this case there is no need to query the semester data for
+ backing up database.
+ also the database in this project working under the embedded modes,all
+ the relevent data of the database are saved in a single file, backup the
+ semester database only need to copy the database file to some where else.
 \end_layout
 
 \begin_layout Standard
-aside from the semester data, there is a additional database to manage all
- the data related to the authentication process, for instance the email
- address,password,and ssh public keys.
+besides backing up the database, the files from student submission, course
+ materials should also be backed up at the same time.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Semester 1.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Semester file structure
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Semester-file-structure"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Semester-file-structure"
+
+\end_inset
+
+ shows the file structure of one semester.
+ the uploaded course materials, student's repository are saved with the
+ database file under the same folder.
+ using a clear file structure to host the uploaded files along with the
+ commit history of the student's repository can let the maintainer of the
+ system more easily to distinguish the files without looking into the database.
+ combine these two methods, the backup procedure of the HMS system only
+ need the maintainer to relocate the semester folder and without doing any
+ database operation.
 \end_layout
 
 \begin_layout Standard
 This approach requires the system to create a database in the run time,
  therefore the standard database configuration of play framework can not
  be used.
- The details of implementing the dynamic database function will be demonstrated
+ The details of implementing the dynamic data management will be demonstrated
  in the next chapter.
 \end_layout
 
@@ -3503,7 +3599,169 @@ Dynamic Database
 \end_layout
 
 \begin_layout Standard
-dynamic database
+Play frameworks support several database engine:
+\end_layout
+
+\begin_layout Itemize
+H2
+\end_layout
+
+\begin_layout Itemize
+SQLite
+\end_layout
+
+\begin_layout Itemize
+PostgreSQL
+\end_layout
+
+\begin_layout Itemize
+My SQL
+\end_layout
+
+\begin_layout Standard
+only H2 and SQLite support the embedded mode,the embedded database runs
+ directly in the application that uses them,it requires no extra server
+ and no maintenance for the database itself.Another advantage of embedded
+ database is the speed, because all the database operations happen inside
+ the application process.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chaudhri2003"
+
+\end_inset
+
+In this project the H2 database engine will be used as the default database
+ engine.
+ first h2 support the embedded mode and it is purely written in java, the
+ java API of h2 can be directly used in the play framework.
+ another reason is that the embedded database runs within the application,
+ it is normally hidden from the end user
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chaudhri2003"
+
+\end_inset
+
+, so there is no way the user can side load the database, but in the real
+ life of maintaining the HMS system, direct accessing and manipulating the
+ database using a SQL query tool sometimes is more efficiency than the usual
+ routine.in this case h2 support a mixed mode(Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Mixed-Mode-of-h2"
+
+\end_inset
+
+),mixed mode is a combination of the embedded mode and server mode, the
+ first application (in this case the HMS) will use the database as embedded
+ mode, but it also starts a server so that the other application(a SQL query
+ tool) can still side load the database.It is also importent to notice that
+ if the application is shut down, the server mode will also close all the
+ connections
+\begin_inset CommandInset citation
+LatexCommand cite
+key "h2database"
+
+\end_inset
+
+,therefore side loading a database using remote mode can only take place
+ when HMS is still rung.
+ However the database file generated by the h2 engine can still be loaded
+ with the h2 web based manage tools.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/connection-mode-mixed-2.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mixed Mode of h2 server
+\begin_inset CommandInset citation
+LatexCommand cite
+key "h2database"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Mixed-Mode-of-h2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Play framework uses Ebean ORM to access the database,ORM is a technique
+ to convert objected oriented programming language(in this case Java) into
+ its persistence as a relational data base, so the data can freely exchange
+ between a java object and database table.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "K2009"
+
+\end_inset
+
+By default the configuration of Ebean and the database is done by editing
+ the configuration file of play framework.
+ After configuration of the database engine and the Ebean, the system is
+ ready for developer to design the database for the web application.
+\end_layout
+
+\begin_layout Standard
+This is the standard approach when developing a web application using play
+ framework.
+ But it also has a problem, the database configuration has to be done before
+ the application started, in the run time of the application all the database
+ related actions can only take place within the preconfigured database.
+ This approach is convenient for the developer, because the developer don't
+ need to take care of the programmatically details of bring database ,ORM
+ and application together.But it sometimes cause trouble for the end user.
+ Usually there will be only one predefined database, all the data from the
+ web application will be saved within this database.
+ In this project, HMS is designed for managing the homework for teacher,and
+ the system will be used in a university,every once in a while the university
+ need to archive or backup the old data from the past term.
+ A possible way is query out all the related data based on the semester,
+ then dump the data into file and save the file some where else.
+ Moodle also use this approach to make a course backup
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moodlebackup"
+
+\end_inset
+
+.The disadvantage of this approach is strait forward,the amount of data will
+ increasing rapidly after years of use, it is not only complicated but also
+ consume a lot of time.
 \end_layout
 
 \begin_layout Chapter
