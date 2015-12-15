@@ -2588,14 +2588,14 @@ Instead uploading a file to a simple folder on the server, the students
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename images/git.png
-	scale 80
+	scale 60
 
 \end_inset
 
@@ -2776,7 +2776,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/Repository local.png
-	scale 30
+	scale 40
 
 \end_inset
 
@@ -2914,7 +2914,7 @@ reference "sub:User-management"
  another database is semester database.
  since the data structure of every semester is same, so the data model for
  semester can be reused in every new semester.
- every time when a new semester beginns, a new database for this semester
+ every time when a new semester beginns, a new clean database for this semester
  will be generated using the same data structure in real time.
  therefore in this case there is no need to query the semester data for
  backing up database.
@@ -3049,7 +3049,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/Semester 1.png
-	scale 30
+	scale 40
 
 \end_inset
 
@@ -3117,7 +3117,7 @@ In this chapter the concrete implementation of the functions from the chapter
  because the data persistent is the precondition for other function to work,
  also it is the key features of the HMS sytem.
  the implementation of dynamic data management and git based file submission
- will be first introduced.
+ will be first discussed.
 \end_layout
 
 \begin_layout Section
@@ -3176,7 +3176,7 @@ reference "fig:Database-configuration"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset listings
@@ -3236,7 +3236,7 @@ status open
 
 \begin_layout Plain Layout
 
-# ebean.global="models.*"
+# ebean.default="models.*"
 \end_layout
 
 \end_inset
@@ -3395,25 +3395,7 @@ b");
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-    config.setUpdateChangesOnly(true);
-\end_layout
-
-\begin_layout Plain Layout
-
-    config.setDefaultServer(false);
-\end_layout
-
-\begin_layout Plain Layout
-
-    config.setRegister(true);
-\end_layout
-
-\begin_layout Plain Layout
-
+    ...
 \end_layout
 
 \begin_layout Plain Layout
@@ -3424,10 +3406,6 @@ b");
 \begin_layout Plain Layout
 
     config.addClass(entity.get(i));
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -3492,10 +3470,28 @@ WS2016
 \end_inset
 
 , second is a list of java class, this list contains all the java data model
- related to this database, ebean needs this to create the table for the
- database from these java data model.
- the configuration of the ebean server and database is strait forward, there
- is only one thing needed to be added to make it work with playframework.
+ related to this database, ebean needs to use this to create the table for
+ the database.
+ the configuration of the ebean server and database is strait forward, after
+ setting all the parameters to the ebean server and data source, the ebean
+ server will be created by the class 
+\shape italic
+EbeanServerFactory
+\shape default
+.
+ this static methode can be used when there is a need to create a new database.
+ In the HMS, the decision of creating new database is made when teacher
+ creats new course.
+ creating a new course needs teacher to give the name of semester which
+ this course belongs to, after the creating new course request is sended
+ to the server, the server will first check wether this semester was registered
+ already in the semester tabel of global database, if it is already registered,
+ the course will be simply written to that semester database, if the inputed
+ semester can not be found in the global database, a new database with the
+ inputed semester name will be first created then the new course will be
+ written in this database.
+ after finishing the part of creating database in run time.
+ there is only one thing needed to be added to make it work with playframework.
  since the databases are configured during the run time, when the application
  restarted, it will not restore those database automatically, because the
  playframework was originally designed to use the configuration file to
@@ -3721,9 +3717,9 @@ reference "fig:multiple-database"
 \end_inset
 
 ), first the global database will be first reconstructed, because the name
- of the semester database was saved within the global database, then using
+ of other semester database are saved within the global database, then using
  a loop to reconstruct other semester database.
- it is also should be noticed that between the line of 10 and 16 in Figure
+ it is also should be noticed that between the line of 12 and 21 in Figure
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3731,10 +3727,661 @@ reference "fig:Create-Ebean-Server-runtime"
 
 \end_inset
 
- an addtionally implementations of database file detection was added, if
- the database file is present, the ebean server should not regenerate table
- relations because this action will erase all the data previously saved
- within this database.
+ has an addtionally implementations of database file detection, if the database
+ file is present, the ebean server should not regenerate table relations
+ because this action will erase all the data previously saved within this
+ database.
+ 
+\end_layout
+
+\begin_layout Standard
+It also should notice that because there are multiple databases, the name
+ of the database should always be given everytime when there is a CRUD(Create,
+ Read, Update, Delete) operation taken place.
+ for instance, saving a new course to the semester 
+\begin_inset Quotes sld
+\end_inset
+
+WS2016
+\begin_inset Quotes srd
+\end_inset
+
+, it should look like 
+\begin_inset listings
+lstparams "language=Java,basicstyle={\footnotesize}"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+newcourse.save("WS2016");
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Data models
+\end_layout
+
+\begin_layout Standard
+There are two types database in HMS.
+ one is a global database, it is used for authentication and additionally
+ tracking the creation of semester database.
+ another is semester database, this database saves all the data that related
+ to the Course, Assignment, Evaluation, and Communication.
+ so the design of data models for these two type database are also different.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/diagram-global.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Data models for global database 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Data-models-for-global"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Data-models-for-global"
+
+\end_inset
+
+shows the data model for the global database, there are 4 class defined,
+ first is the 
+\shape italic
+Users
+\shape default
+, this class saves all the data from the user registration, for instance
+ the user id, email address, password, etc.
+ second is the 
+\shape italic
+SSH
+\shape default
+, this class saves all the ssh keys for the user, and because one user may
+ have multiple ssh keys, there is a 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+One-To-Many
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ relations between the 
+\shape italic
+Users
+\shape default
+ ahnd SSH.
+ the third is Semesters, this class contains all the name of the created
+ semester database, the last one is Tokens, this class is used to temporarily
+ save the comfirmation token for registration, change email and change password
+ actions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/db-diagram-semester.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Data models for semester database 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Data-models-for-semester"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Data-models-for-semester"
+
+\end_inset
+
+ represent the data models of the semester database, because there are more
+ activities using semester database, the model is more complicated than
+ the global database.
+ first is the 
+\shape italic
+Lecture
+\shape default
+ class, all the activites around the homework management is about the lecture,
+ a lecture includes assignment (Assignment), git repositories(Repos), a
+ forum(Thread) and the lecture evaluation(Evaluation) for students.
+ and each assignments should generate a lot of handins(Handins) from the
+ students.
+ besides the lecture related datas, the data of chat system is semester
+ related and independently of the lecture.
+ at last all these datas are related to the Semesteruser.
+ Semesteruser and User are both subclass extends from superclass 
+\shape italic
+Abstractuser
+\shape default
+(Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Class-Diagram-Semesteruser"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/semesteruser.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Class Diagram Semesteruser 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Class-Diagram-Semesteruser"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ebean supports the JPA (Java Persistence API) annotation 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+@MappedSuperclass
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+, this annotation designates a class whose mapping information is applied
+ to the classes that inherit from it, but will be no table generated for
+ the mapped superclass itself.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "objectdbjpa"
+
+\end_inset
+
+.
+ The common data which will be used both for User and Semesteruser are defined
+ in the class 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+Abstractuser
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+, the database specific data will be defind in the subclass.
+ using this methode can first avoid the redudant code, second the semester
+ data can be completely seperate from the other data.
+ when a register user want to sing up a new course in a semester, his user
+ information should be first transformed from the 
+\begin_inset Quotes sld
+\end_inset
+
+User
+\begin_inset Quotes srd
+\end_inset
+
+ to 
+\begin_inset Quotes sld
+\end_inset
+
+Semesteruser
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public static Semesteruser getSemesteruserfromUser(String database,User
+ user){
+\end_layout
+
+\begin_layout Plain Layout
+
+        Semesteruser semesteruser = null;
+\end_layout
+
+\begin_layout Plain Layout
+
+        try {
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser = Semesteruser.findByEmail(user.email, database);
+\end_layout
+
+\begin_layout Plain Layout
+
+        } catch (Exception e) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser = null;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (semesteruser == null) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser = new Semesteruser();
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.email = user.email;
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.firstname = user.firstname;
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.id = user.id;
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.lastname = user.lastname;
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.roles = user.roles;
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.userHash=user.userHash;
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.semester = database;
+\end_layout
+
+\begin_layout Plain Layout
+
+            semesteruser.save(database);
+\end_layout
+
+\begin_layout Plain Layout
+
+            return semesteruser;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+        else{
+\end_layout
+
+\begin_layout Plain Layout
+
+            return semesteruser;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+User To Semesteruser
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:User-To-Semesteruser"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:User-To-Semesteruser"
+
+\end_inset
+
+shows, when a user want to sign up a course, the system first find his 
+\shape italic
+Semesteruser
+\shape default
+ information, if the 
+\shape italic
+Semesteruser 
+\shape default
+object for the current user was not found, a new 
+\shape italic
+Semesteruser
+\shape default
+ object will be generated in the semester database based on the user information
+ from the global database.
+\end_layout
+
+\begin_layout Subsection
+File structure
+\end_layout
+
+\begin_layout Standard
+Besides the database design, the semester related files should also be saved
+ under a unified sturcture(Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Semester-file-structure"
+
+\end_inset
+
+).
+ define the upload path within the playframework is strait forward, after
+ the file was uploaded to the server, then the file can be moved to the
+ desired location by the methode 
+\begin_inset listings
+lstparams "language=Java,basicstyle={\footnotesize}"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+FileUtils.moveFile();
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+saving the course repository of students is a little complicated, HMS system
+ using the gitolite to manage the git repository, and repository created
+ by the gitolite is bare repository which doesn't contain a working directory
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gitscm"
+
+\end_inset
+
+, so it is pointless to just copy a bare repository to other place.
+ also the gitolite has its own file structure and can not be changed.
+ so a possible way is using git Java Api Jgit
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jgitguide"
+
+\end_inset
+
+ to make a clone of this bare repository to the desired destination.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Repo repo=Repo.findRepoByLectureAndOwner(assignment.semester,semesteruser,assignme
+nt.lecture);
+\end_layout
+
+\begin_layout Plain Layout
+
+Git git = Git.cloneRepository()
+\end_layout
+
+\begin_layout Plain Layout
+
+    .setURI(repo.repofilepath)
+\end_layout
+
+\begin_layout Plain Layout
+
+    .setDirectory(localPath)
+\end_layout
+
+\begin_layout Plain Layout
+
+    .call();
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Clone repository using JGit 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Clone-repository"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Clone-repository"
+
+\end_inset
+
+shows using Jgit to clone a bare repository from gitolite to a 
+\begin_inset Quotes sld
+\end_inset
+
+localpath
+\begin_inset Quotes srd
+\end_inset
+
+, which fits the file structure of HMS.
+ 
+\end_layout
+
+\begin_layout Section
+Integration of Git
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Integration-of-Git"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+integration of git
 \end_layout
 
 \begin_layout Section
@@ -5009,21 +5656,6 @@ Communication system
 
 \begin_layout Standard
 communication system
-\end_layout
-
-\begin_layout Section
-Integration of Git
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Integration-of-Git"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-integration of git
 \end_layout
 
 \begin_layout Chapter
