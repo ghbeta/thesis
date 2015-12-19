@@ -4357,7 +4357,8 @@ reference "fig:Clone-repository"
 
 \end_inset
 
-shows using Jgit to clone a bare repository from gitolite to a 
+shows using Jgit(reference here) to clone a bare repository from gitolite
+ to a 
 \begin_inset Quotes sld
 \end_inset
 
@@ -4382,7 +4383,7 @@ name "sec:Integration-of-Git"
 \end_layout
 
 \begin_layout Standard
-integration of git
+The HMS system using git repository to manage the student's submission.
 \end_layout
 
 \begin_layout Section

@@ -4366,7 +4366,8 @@ localpath
 \end_inset
 
 , which fits the file structure of HMS.
- 
+ This procedure also makes submission a file to gitolite repository possible.
+ this will be closely discussed in the next section.
 \end_layout
 
 \begin_layout Section
