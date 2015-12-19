@@ -2469,14 +2469,14 @@ Centralized data persistent(single database)
 \end_layout
 
 \begin_layout Enumerate
-Back up lecture data
+Complicated back up process
 \end_layout
 
 \begin_layout Standard
 the first problem is the management of the student's submission, besides
- of upload the file to the server ,there will be usually more additional
- function needs to be added to support different needs related to hand in
- homework.
+ of simply uploading the file to the server ,there will be usually more
+ additional function needs to be added to support different needs related
+ to hand in homework.
  for instance the documentation of moodle has suggestes several submission
  type related to file submission
 \begin_inset CommandInset citation
@@ -2529,7 +2529,7 @@ course into consideration, it is possible to hand in the semester project
 
 \begin_layout Standard
 the second and third problem are related to each other, because all the
- data are presistent in a single data base , the backup procedure is complicated
+ data are presistent in a single data base, the backup procedure is complicated
  and time consuming.
  all these platform including HMS are desinged for a faculty in university,
  it's very common once in a while the faculty need to archive or backup
@@ -2690,7 +2690,7 @@ Type II
  course is usally a semester project, the students can use this repository
  to host their project to avoid the risk of dataloss, or not able to submit
  whole project before deadline.
- the teacher can also more easiely track the work history of the student's
+ the teacher can also more easiely track the working history of the student's
  project.
  
 \end_layout
@@ -2704,7 +2704,14 @@ reference "tab:Features-of-course"
 \end_inset
 
 ), the git repository will also work under two modes to fit the property
- of course:
+ of course
+\begin_inset CommandInset label
+LatexCommand label
+name "git-working-modes"
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Enumerate
@@ -2830,11 +2837,21 @@ Type II
 
  course students will obtain the repository address at once when they join
  the course, and use this repository to host their semester project.
- This part works similar as using a github repository.
+ This part works similar as using a remote repository.
+ students needs to know their the repository address and using the 
+\begin_inset Quotes sld
+\end_inset
+
+Push
+\begin_inset Quotes srd
+\end_inset
+
+ command of the Git to push the changes from their local machine to the
+ HMS server.
  Only at the end of the semester or the deadline is due students need to
  use the course homepage to tag the repository, this can generate a evaluation
- request at teacher side so that the teacher can register then evaluation
- result into the sys
+ request at the teacher side so that the teacher can register the evaluation
+ result into the system.
 \end_layout
 
 \begin_layout Subsection
@@ -4384,6 +4401,582 @@ name "sec:Integration-of-Git"
 
 \begin_layout Standard
 The HMS system using git repository to manage the student's submission.
+ The implementation of this function should consider following requirements:
+\end_layout
+
+\begin_layout Enumerate
+Access control: students can only have access to their own repository, but
+ the teacher or assistent of the course can have the access but limited
+ to read to all student's repository.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Local and Remote modes: to support two types of course
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Features-of-course"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The most importent requirement is the access control over the git repository.
+ because Git by itself does not do any access control, it relies on the
+ transport medium(authtication of HMS system) to do anthentication, and
+ file permissions of the operation system to do authorisation(read or write
+ permission)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gitolitedocu"
+
+\end_inset
+
+.
+ without a proper access control over the git repository, it is then impossible
+ to integrate the git into the HMS.
+ since the basic needs of managing homework is to keep the student's submission
+ only between the marker and students themselfs.
+ 
+\end_layout
+
+\begin_layout Standard
+The first part of this secion will present a method using 
+\begin_inset Quotes sld
+\end_inset
+
+Gitolite
+\begin_inset Quotes srd
+\end_inset
+
+ and 
+\begin_inset Quotes sld
+\end_inset
+
+Java-Gitolite-manager
+\begin_inset Quotes srd
+\end_inset
+
+ to solve the access control problem of git repository.
+ and the useage of git repository for both course type will be introduced
+ in the rest part of this section.
+\end_layout
+
+\begin_layout Subsection
+Access control using Gitolite
+\end_layout
+
+\begin_layout Standard
+The access control over the student's repository is pretty simple.As Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Access-rights-for-differentuser"
+
+\end_inset
+
+ shows, only the students themself have fully access rights for their course
+ repository and can not get inside other repository.
+ teacher and assistants have to grant a read right only for evaluation.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="middle" width="4cm">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="middle">
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Repository 
+\begin_inset Newline newline
+\end_inset
+
+Access level
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Read
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Write
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Student
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Other Student
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+○
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+○
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Teacher
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+○
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Assistant
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+●
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+○
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Access level for different user 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Access-rights-for-differentuser"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This access rules can be easiy managed by Gitolite.
+ After properly installing the gitolite in the server, it will generate
+ a 
+\begin_inset Quotes sld
+\end_inset
+
+gitlite-admin
+\begin_inset Quotes srd
+\end_inset
+
+ repository under current user's home folder.
+ within this folder there is a plain text file which will be used by Gitolite
+ to specify the access rules.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "basicstyle={\footnotesize}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+repo foo
+\end_layout
+
+\begin_layout Plain Layout
+
+ RW = alice bob
+\end_layout
+
+\begin_layout Plain Layout
+
+ R  = carol david
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuration of access rules with gitolite 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:configuration-gitolite"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:configuration-gitolite"
+
+\end_inset
+
+ is a simple configuration of the access rules for the repository 
+\begin_inset Quotes sld
+\end_inset
+
+foo
+\begin_inset Quotes srd
+\end_inset
+
+.for this repository, alice and bob both have read and write access, but
+ carol and david can only read the content of the repository.
+ The server maintainer only need to modify this configuration file and push
+ the changes using a git command back to the Gitolite all the changes will
+ be adopted automatically by gitolite.
+ addtionally the ssh public keys of the user of this repository are also
+ needed to be copied into 
+\begin_inset Quotes sld
+\end_inset
+
+gitolite-admin
+\begin_inset Quotes srd
+\end_inset
+
+ repository.
+ since gitolite use ssh mechanism to authenticate the user.
+\end_layout
+
+\begin_layout Subsubsection
+Java-Gitolite-Manager
+\end_layout
+
+\begin_layout Standard
+Gitolite gives the possibility to add access control to git repository,
+ but it is still need system maintainer to edit the configuration file manuelly,
+ therefore is still can not be directly used in the HMS system.
+ Delft University of Technology has developed a java libary which enables
+ developer to manage the gitolite configuration direct from Java.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ConfigManager manager = ConfigManager.create("/home/gitolite-admin");
+\end_layout
+
+\begin_layout Plain Layout
+
+Config config = manager.get();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+User user = config.createUser("alice");
+\end_layout
+
+\begin_layout Plain Layout
+
+user.setKey("desktop", "ssh-rsa AAAB3Nz...");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+config.createRepository("foo")
+\end_layout
+
+\begin_layout Plain Layout
+
+    .setPermission(user, Permission.ALL);
+\end_layout
+
+\begin_layout Plain Layout
+
+manager.apply();
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Gitolite configuration from java 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:onfiguration-from-java"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:onfiguration-from-java"
+
+\end_inset
+
+ is a example to use 
+\begin_inset Quotes sld
+\end_inset
+
+Java-Gitolite-Manage
+\begin_inset Quotes srd
+\end_inset
+
+ to configure the gitolite from java.
+ first an instance of 
+\begin_inset Quotes sld
+\end_inset
+
+ConfigManage
+\begin_inset Quotes srd
+\end_inset
+
+ is created with the path of repository 
+\begin_inset Quotes sld
+\end_inset
+
+gitolite-admin
+\begin_inset Quotes srd
+\end_inset
+
+, then a user with user name 
+\begin_inset Quotes sld
+\end_inset
+
+alice
+\begin_inset Quotes srd
+\end_inset
+
+ is created alone with the ssh pulic key of user alice.
+ after user has been created, a new repository 
+\begin_inset Quotes sld
+\end_inset
+
+foo
+\begin_inset Quotes srd
+\end_inset
+
+ will also be created and user alice will be added to this repository with
+ all permission.
+ 
+\end_layout
+
+\begin_layout Standard
+HMS system use the same procedure as the example in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:onfiguration-from-java"
+
+\end_inset
+
+, every time when a student joins a course, a repository will be generated
+ for this student if the ssh public of this students is present.
+ and when teacher want to review a repository of a student, HMS system will
+ first get out the repository and automatically set a correct permission
+ for teacher using 
+\begin_inset listings
+lstparams "language=Java,basicstyle={\footnotesize}"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+setPermission(teacher, Permission.READ_ONLY);
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Local mode
+\end_layout
+
+\begin_layout Standard
+Figure
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section

@@ -30,6 +30,11 @@
   Title                    = {Documentation of moodle}
 }
 
+@Electronic{gitolitedocu,
+  Title                    = {Gitolite all-in-one documentation},
+  Url                      = {http://gitolite.com/gitolite/gitolite.html}
+}
+
 @Electronic{gitscm,
   Title                    = {Git on the Server},
   Url                      = {https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server}
