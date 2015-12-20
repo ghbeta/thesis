@@ -4245,6 +4245,13 @@ Semesteruser
 
 \begin_layout Subsection
 File structure
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:File-structure"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4947,10 +4954,11 @@ reference "fig:onfiguration-from-java"
 
 \end_inset
 
-, every time when a student joins a course, a repository will be generated
- for this student if the ssh public of this students is present.
- and when teacher want to review a repository of a student, HMS system will
- first get out the repository and automatically set a correct permission
+, every time when a student joins a course, no matter what this course type
+ is,a repository will be generated for this student if the ssh public of
+ this students is present.
+ and when a teacher want to review a repository of a student, HMS system
+ will first get out the repository and automatically set a correct permission
  for teacher using 
 \begin_inset listings
 lstparams "language=Java,basicstyle={\footnotesize}"
@@ -4972,10 +4980,795 @@ Local mode
 \end_layout
 
 \begin_layout Standard
-Figure
+Under local mode, students need use course homepage to upload their solutions
+ and actualle repository address is hidden from the student.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Homework-submission-for-local"
+
+\end_inset
+
+ shows the homework submission part for the course under local mode.
+ The grey dot above shows the current status of the repository, under the
+ indicator of repository status, is the homework area, student can download
+ the assignment's material and use the predefined actions: commit and revert.
 \end_layout
 
 \begin_layout Standard
+The left icon under action column is used for commiting changes, student
+ need to use this action to upload the solutions.
+ the icon on the right is the predifined action for deleting last submission,
+ students can use this action to delete their last submission
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/local mode git.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Homework submission for course under local mode 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Homework-submission-for-local"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The repository created by the gitolite is a bare repository, a bare repository
+ is an named file directory with a .git suffix which contains only the administra
+tiv and controlf files of the repository, and it does'nt have any copy of
+ the files that present in a normal git repository
+\begin_inset CommandInset citation
+LatexCommand cite
+key "loeliger2006collaborating"
+
+\end_inset
+
+.
+ The student's submission then can not be directy uploaded to this repository.
+ also HMS system requires a unified file structure to save the physical
+ files.
+ The solutions to this problem has already been presented in the section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:File-structure"
+
+\end_inset
+
+, that is using JGit to clone the bare repository to a normal repository
+ at a desired location.
+\end_layout
+
+\begin_layout Subsubsection
+JGit
+\end_layout
+
+\begin_layout Standard
+JGit is a Java library for working with git repository, with JGit all the
+ operations for a git repository can be realised from Java.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jgitguide"
+
+\end_inset
+
+Besides only clone the bare repository presented in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Clone-repository"
+
+\end_inset
+
+, HMS system needs also upload the students submission to the cloned repository
+ and using JGit to commit the changes and push the changes back to the gitolite
+ repository, so that the teacher can clone the student's repository remotely.
+\end_layout
+
+\begin_layout Subsubsection
+Commit
+\end_layout
+
+\begin_layout Standard
+After student choosing the commit action, a dialog(Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Commit-dialog"
+
+\end_inset
+
+) will pop up.
+ Using this form student can upload their files with a commit message, if
+ the commit message is empty, a default commit will be made by the HMS system.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/commit.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Commit dialog 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Commit-dialog"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Commit-submission"
+
+\end_inset
+
+ shows what happend after submission file and commit message were passed
+ to the HMS system.
+ first the gitolite repository will be cloned to the 
+\shape italic
+localPath
+\shape default
+, after the clone operation finished, the uploaded file from the student
+ will be copied into the newly created local repository, then using jgit
+ to commit the changes, after that all the changes will be pushed to the
+ master branch of the gitolite repository.
+ in the end a new 
+\begin_inset Quotes sld
+\end_inset
+
+handin
+\begin_inset Quotes srd
+\end_inset
+
+ object will be generated and saved into the database under the name of
+ student.
+ this will be used by teacher to evaluate the submission.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public static Result handinhomework(...){
+\end_layout
+
+\begin_layout Plain Layout
+
+        ...
+\end_layout
+
+\begin_layout Plain Layout
+
+try{
+\end_layout
+
+\begin_layout Plain Layout
+
+MultipartFormData body = request().body().asMultipartFormData();
+\end_layout
+
+\begin_layout Plain Layout
+
+FilePart homeworkfile = body.getFile("homeworkfile");
+\end_layout
+
+\begin_layout Plain Layout
+
+if (homeworkfile != null) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    String fileName = homeworkfile.getFilename();
+\end_layout
+
+\begin_layout Plain Layout
+
+    Git git = Git.cloneRepository()
+\end_layout
+
+\begin_layout Plain Layout
+
+    .setDirectory(localPath);
+\end_layout
+
+\begin_layout Plain Layout
+
+    ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    FileUtils.moveFile(file, new File(localPath, des+fileName));
+\end_layout
+
+\begin_layout Plain Layout
+
+    git.add().addFilepattern(des+fileName).call();
+\end_layout
+
+\begin_layout Plain Layout
+
+    git.commit().setMessage(commit).setAuthor(...).call();
+\end_layout
+
+\begin_layout Plain Layout
+
+    RefSpec refSpec = new RefSpec("master");
+\end_layout
+
+\begin_layout Plain Layout
+
+    git.push().setRemote("origin").setRefSpecs(refSpec).call();
+\end_layout
+
+\begin_layout Plain Layout
+
+    git.getRepository().close();
+\end_layout
+
+\begin_layout Plain Layout
+
+    ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    Handin handin= new Handin();
+\end_layout
+
+\begin_layout Plain Layout
+
+    ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    handin.save(semester);}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Commit submission 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Commit-submission"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Delete submission
+\end_layout
+
+\begin_layout Standard
+If a student did'nt statisfy the first submission for an assignment, the
+ last submission can also be deleted.
+ the procedure is almoste the same as submission, first the local repository
+ created by the submission action will be updated to the latest state, second
+ since the submission under the local modes are saved under a unified stucture(F
+igure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Repository-file-structure-local"
+
+\end_inset
+
+), the folder of relevant assignments will be deleted.
+ in the end the delete action will also be commited by the HMS system and
+ the changes will be pushed back to the gitolite repository.
+ at last the related handin object from the submission will also be deleted
+ and regenerate by the next submission action.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+ Git git = Git.cloneRepository();
+\end_layout
+
+\begin_layout Plain Layout
+
+	String subfolder=assignment.title;
+\end_layout
+
+\begin_layout Plain Layout
+
+	git.rm().addFilepattern(subfolder).call();
+\end_layout
+
+\begin_layout Plain Layout
+
+	git.commit()
+\end_layout
+
+\begin_layout Plain Layout
+
+    .setMessage(commit)
+\end_layout
+
+\begin_layout Plain Layout
+
+    .setAuthor(semesteruser.lastname,semesteruser.email)
+\end_layout
+
+\begin_layout Plain Layout
+
+    .call();
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ Handin handin=Handin
+\end_layout
+
+\begin_layout Plain Layout
+
+	.getHandinofassignmentofstudentinlecture();
+\end_layout
+
+\begin_layout Plain Layout
+
+    if(handin!=null){
+\end_layout
+
+\begin_layout Plain Layout
+
+    handin.delete(semester);}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Delete last submission 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Delete-last-submission"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Check out by teacher
+\end_layout
+
+\begin_layout Standard
+After student have submit their solutions to the repository, teachers can
+ check out the students repository for evaluation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/evaluation.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Checkout student repository 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Checkout-student-repository"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Checkout-student-repository"
+
+\end_inset
+
+is the user interface of evaluating students submission.
+ it shows the address of the student repository and its status, and whether
+ the teacher has already the access to this repository.
+ if user has already submit a solution the row of this user will be in color
+ green otherwise it is red.
+ teacher can use the action button to choose an action towards the students
+ repository.
+ the student repository can be directy checked out into the git client 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+Source tree
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+, or teacher can just copy the address of the repository and check out in
+ a favorite git client.
+\end_layout
+
+\begin_layout Standard
+The precondition of checkout the students repository is to grand an access.
+ when teacher first time opens an evaluation tab(Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Checkout-student-repository"
+
+\end_inset
+
+), the methode 
+\shape italic
+grandaccess()
+\shape default
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Grand-access-to-studentsrepo"
+
+\end_inset
+
+ will be automatically excuted.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public static boolean grandaccess(...) {
+\end_layout
+
+\begin_layout Plain Layout
+
+if(!admincredential.sshs.isEmpty()
+\end_layout
+
+\begin_layout Plain Layout
+
+    &&!studentrepo.owner.contains(currentadmin)) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    User teacher = config.ensureUserExists(teacher.userHash);
+\end_layout
+
+\begin_layout Plain Layout
+
+    String reponame = lecture.courseName + "_" + student.userHash;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    Repository repository = config.ensureRepositoryExists(reponame);
+\end_layout
+
+\begin_layout Plain Layout
+
+    repository.setPermission(teacher, Permission.READ_ONLY);
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    manager.applyAsync(config);
+\end_layout
+
+\begin_layout Plain Layout
+
+    studentrepo.owner.add(currentadmin);
+\end_layout
+
+\begin_layout Plain Layout
+
+    ...
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Grand access to students repository 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Grand-access-to-studentsrepo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+first the ssh key of teacher must be present, since Gitolite needs ssh key
+ to authenticate the user.
+ second if the teacher already has the access to this repository, system
+ should avoid to run this method again.
+ if the preconditions are fulfilled the teacher will be added to the repository
+ with a read only permission.
+ also the information about teacher already has the access to this repository
+ will be saved into the database.
+\end_layout
+
+\begin_layout Subsection
+Remote mode
+\end_layout
+
+\begin_layout Standard
+Remote mode is much simpler than local mode.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Remote-mode"
+
+\end_inset
+
+ is the user interface of homework area in a 
+\begin_inset Quotes sld
+\end_inset
+
+Type II
+\begin_inset Quotes srd
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Features-of-course"
+
+\end_inset
+
+course under remote mode.
+ the address of git repository will be directly given to the students.
+ students will use this repository to host their semester project, like
+ using a normal remote git repository.
+ so there will be no more submission over HMS system.
+ only before the dead line the students have to login into their account
+ to use the predefined hand in action to hand in their project.
+ so that the teacher can use the HMS system to give a final evaluation to
+ the project and saved this into the database.
+ and at the same time a copy of the student's repository will be saved under
+ the unified file strusture, this is same as the submission action(Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Commit-submission"
+
+\end_inset
+
+) from the local modes.
+ the only difference is that remote mode will not upload anyfiles.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/remote modes.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Remote mode 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Remote-mode"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
