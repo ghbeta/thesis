@@ -70,6 +70,13 @@
   Url                      = {https://books.google.de/books?id=NfNbbhBRcOkC}
 }
 
+@Article{loeliger2006collaborating,
+  Title                    = {Collaborating with GIT},
+  Author                   = {Loeliger, Jon},
+  Journal                  = {Linux Magazine, June},
+  Year                     = {2006}
+}
+
 @Standard{moodlebackup,
   Title                    = {Moodle documentation:Course Backup},
   Url                      = {https://docs.moodle.org/30/en/Course_backup}
