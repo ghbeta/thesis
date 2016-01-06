@@ -8460,8 +8460,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/instant message.png
-	scale 50
+	filename images/instant message.jpg
+	scale 200
 
 \end_inset
 
@@ -8514,6 +8514,475 @@ System tests
 \end_layout
 
 \begin_layout Standard
+Testing a web application is challenging due to the nature of web applications.
+ First, web application have a client/server structure, with asynchronous
+ HTTP calls and response to synchronize the state of each side.
+ Second, web application is a mix of different technology and programming
+ languages, for instance, in the HMS system, JAVA was used on the server
+ side and HTML5, CSS,JavaScript, Scala Template on the client side.
+ Third, the dynamic content on the client side of a web application.
+ web applications have to manipulate the Document Object Model on the client
+ side to serve different content
+\begin_inset CommandInset citation
+LatexCommand cite
+key "garousi2013systematic"
+
+\end_inset
+
+.
+ Therefore, only using the unit test can not test a web application meaningful.
+ In this project Fluentlenium and Junit Test will be used to test the HMS
+ system.
+\end_layout
+
+\begin_layout Section
+Fluentlenium
+\end_layout
+
+\begin_layout Standard
+Fluentlenium is a framework that helps developer to write Selenium tests
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fluentlenium"
+
+\end_inset
+
+.
+ Selenium is an in-browser programming system, which allows developer to
+ directly drive the real web browser programmatically.
+ It also has the direct access to the DOM elements of web page on the client
+ side, and can assert expected client behavior defined by the developer.
+ since selenium works within the browser, it can be used to test the dynamic
+ behavior of JavaScript and server respond through the interaction between
+ browser and user
+\begin_inset CommandInset citation
+LatexCommand cite
+key "van2010research,brown2007introduction"
+
+\end_inset
+
+.
+ Fluentlenium provides a fluent interface to the selenium web driver, so
+ that the programming of selenium tests will be much easier and the code
+ will be more readable.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:A-Test-Senario-Fluentlenium"
+
+\end_inset
+
+ demonstrates one of many test scenarios writing with the Fluentlenium:
+ registering a user account in HMS system and getting a confirmation email.
+ First ,the web browser open a page at 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+http://localhost:9000
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ Second, a HTML form will be filled out and submitted to the server.
+ At last, after receiving the respond from the server, the excepted behavior
+ , in this case , a success label with text "
+\shape italic
+You will receive a confirmation email soon.
+ Check your email to activate your account.
+\shape default
+" should be displayed correctly.
+ otherwise the test will fail.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+@Test
+\end_layout
+
+\begin_layout Plain Layout
+
+public void a_testRegistration(){
+\end_layout
+
+\begin_layout Plain Layout
+
+goTo("http://localhost:9000");
+\end_layout
+
+\begin_layout Plain Layout
+
+fill("#SignUpEmail").with("123@123.com");
+\end_layout
+
+\begin_layout Plain Layout
+
+fill("#SignUpLastname").with("123");
+\end_layout
+
+\begin_layout Plain Layout
+
+fill("#SignUpFirstname").with("123");
+\end_layout
+
+\begin_layout Plain Layout
+
+fill("#SignUpPassword").with("123");
+\end_layout
+
+\begin_layout Plain Layout
+
+click("#SignUpSubmit");
+\end_layout
+
+\begin_layout Plain Layout
+
+await().atMost(5, TimeUnit.SECONDS).until(".label-success").areDisplayed();
+\end_layout
+
+\begin_layout Plain Layout
+
+assertThat(find(".label-success").getText()).isEqualTo("You will receive a
+ confirmation email soon.
+ Check your email to activate your account.");
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A Test Scenario of Fluentlenium
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:A-Test-Senario-Fluentlenium"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+other scenarios, for instance, 
+\begin_inset Quotes sld
+\end_inset
+
+creating a new course by teacher
+\begin_inset Quotes srd
+\end_inset
+
+, 
+\begin_inset Quotes sld
+\end_inset
+
+uploading a new solution to the assignment by student
+\begin_inset Quotes srd
+\end_inset
+
+ are similarly programmed as Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:A-Test-Senario-Fluentlenium"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+JUnit
+\end_layout
+
+\begin_layout Standard
+Since the server side of HMS system are written in Java, the server logic
+ will be tested by the JUnit.
+ JUnit is a unit testing framework under Java.
+ In order to save the testing time, it is important to test the server logic
+ without starting the whole HMS system.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+@Test
+\end_layout
+
+\begin_layout Plain Layout
+
+public void testDeleteSSH() {
+\end_layout
+
+\begin_layout Plain Layout
+
+User owner= new User();
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+owner.save("global");
+\end_layout
+
+\begin_layout Plain Layout
+
+SSH ssh= new SSH();
+\end_layout
+
+\begin_layout Plain Layout
+
+...
+\end_layout
+
+\begin_layout Plain Layout
+
+ssh.save("global");
+\end_layout
+
+\begin_layout Plain Layout
+
+FakeRequest request=new FakeRequest("POST","/settings/ssh_delete?sshid=1");
+\end_layout
+
+\begin_layout Plain Layout
+
+Result result = route(request);
+\end_layout
+
+\begin_layout Plain Layout
+
+assertThat(status(result)).isEqualTo(OK);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Controller Test 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Controller-Test"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Controller-Test"
+
+\end_inset
+
+ is a unit test for controller 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+deleteSSH
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+, using the class 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+FakeRequest
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ from the Play framework, developer can easily test the behavior of the
+ server logic without actually starting the application.
+ In the Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Controller-Test"
+
+\end_inset
+
+ a fake HTTP post request will be sent to the controller with a URL query
+ 
+\begin_inset Quotes sld
+\end_inset
+
+sshid=1
+\begin_inset Quotes srd
+\end_inset
+
+, since before this request a new ssh is already saved into the database,
+ the request for 
+\shape italic
+
+\begin_inset Quotes sld
+\end_inset
+
+deleting a ssh with id=1
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ should be successful, in this case request status should equal to 
+\begin_inset Quotes sld
+\end_inset
+
+200
+\begin_inset Quotes srd
+\end_inset
+
+ or 
+\begin_inset Quotes sld
+\end_inset
+
+OK
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Result
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Test-Coverage"
+
+\end_inset
+
+shows the test coverage from the test procedure from above, which calculated
+ by the Jacoco for SBT 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jacoco"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/coverage with view.jpg
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test Coverage 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Test-Coverage"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -8522,7 +8991,7 @@ System usage
 \end_layout
 
 \begin_layout Chapter
-Summary and Outlook
+Summary and Future work
 \end_layout
 
 \begin_layout Standard
