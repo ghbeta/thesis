@@ -885,12 +885,12 @@ Design
 
 \begin_layout Standard
 The HMS (Homework Management System) is a web platform to manage the activities
- related to the homework including handing out the related materieals to
+ related to the homework including handing out the related materials to
  the students,collecting the handed in homework and managing the evaluation
  of the assignment.
  In this chapter the detailed design of functions to support those activities
  will be discussed.
- Furthermore the problems of the current alternative system will be analised
+ Furthermore the problems of the current alternative system will be analyzed
  and the solutions to those problem will be introduced.
 \end_layout
 
@@ -915,8 +915,8 @@ register a user account
 
  .
  The second part of the design is to develop the special core features to
- make the HMS system better platform compare to others, the dynamic datamanageme
-nt and the git based homework management.
+ make the HMS system better platform compare to others, the dynamic data
+ management and the git based homework management.
  
 \end_layout
 
@@ -1438,7 +1438,7 @@ Students
 \begin_inset Text
 
 \begin_layout Plain Layout
-Assistents
+Assistants
 \end_layout
 
 \end_inset
@@ -1936,8 +1936,8 @@ name "fig:Different-user-role"
 \begin_layout Standard
 The user of the HMS system has different roles to perform different actions,
  for instance a teacher can create new course but students can not, so it
- is important to have a subsystem to disinguish the user roleso that the
- HMS can serve proper functions to the user.
+ is important to have a subsystem to distinguish the user roles, so that
+ the HMS can serve proper functions to the user.
 \end_layout
 
 \begin_layout Standard
@@ -1962,7 +1962,7 @@ system admin
 
 , the job of system admin is to manage other user's role and the system
  data(backup the database and related files in certain times),any other
- functions of the HMS is irelevant to the system admin.
+ functions of the HMS is irrelevant to the system admin.
  second is the default user,the user with this role can not do much things
  other than updating their personal data(passwords and email).
  third user role is students, with student account the user can browse all
@@ -1984,11 +1984,11 @@ The typical course provided by the faculty software engineering and their
 \end_layout
 
 \begin_layout Itemize
-Bachlor Programming Methodology: Evaluation through final exam
+Bachelor Programming Methodology: Evaluation through final exam
 \end_layout
 
 \begin_layout Itemize
-Bachlor Design-Pattern: Evaluation from multiple sub project
+Bachelor Design-Pattern: Evaluation from multiple sub project
 \end_layout
 
 \begin_layout Itemize
@@ -2114,7 +2114,7 @@ A student should gain at least 50% of total points for final exam
 \begin_inset Text
 
 \begin_layout Plain Layout
-Git repository works under local modus
+Git repository works under local mods
 \begin_inset Newline newline
 \end_inset
 
@@ -2484,7 +2484,7 @@ the first problem is the management of the student's submission, besides
  of simply uploading the file to the server ,there will be usually more
  additional function needs to be added to support different needs related
  to hand in homework.
- for instance the documentation of moodle has suggestes several submission
+ for instance the documentation of moodle has suggested several submission
  type related to file submission
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2511,7 +2511,7 @@ Student submit a work with a response.
 and teacher needs to do several settings to make those type work properly,
  this introduced unnecessary extra cost not only for development but also
  for the user of the system.
- on the other hand the this approch did'nt take the 
+ on the other hand the this approach didn't take the 
 \begin_inset Quotes sld
 \end_inset
 
@@ -2536,9 +2536,9 @@ course into consideration, it is possible to hand in the semester project
 
 \begin_layout Standard
 the second and third problem are related to each other, because all the
- data are presistent in a single data base, the backup procedure is complicated
+ data are persistent in a single data base, the backup procedure is complicated
  and time consuming.
- all these platform including HMS are desinged for a faculty in university,
+ all these platform including HMS are designed for a faculty in university,
  it's very common once in a while the faculty need to archive or backup
  the old data from the past term.
  A possible way is query out all the related data based on the semester,
@@ -2553,11 +2553,11 @@ key "moodlebackup"
 
 .
  since the amount of data will increasing rapidly after years of use, this
- approch can only comsume more times.
+ approach can only consume more times.
 \end_layout
 
 \begin_layout Standard
-The HMS has introduced two new approch two avoid the problem from above:
+The HMS has introduced two new approach two avoid the problem from above:
 \end_layout
 
 \begin_layout Enumerate
@@ -2665,7 +2665,7 @@ upload solution multiple times
 
 .
  since the nature of the git repository is to track the history of file
- change, teacher can easiely review all the changes were made between the
+ change, teacher can easily review all the changes were made between the
  uploads without extra efforts.
  on the teacher side they just need to checkout the students git repository
  and review the change history and give the evaluation.
@@ -2681,7 +2681,7 @@ Type II
 \begin_inset Quotes srd
 \end_inset
 
- course is more convinient for students and teachers to manage the project,
+ course is more convenient for students and teachers to manage the project,
  since the assignment of 
 \begin_inset Quotes sld
 \end_inset
@@ -2694,10 +2694,10 @@ Type II
 \begin_inset Quotes srd
 \end_inset
 
- course is usally a semester project, the students can use this repository
- to host their project to avoid the risk of dataloss, or not able to submit
+ course is usually a semester project, the students can use this repository
+ to host their project to avoid the risk of data loss, or not able to submit
  whole project before deadline.
- the teacher can also more easiely track the working history of the student's
+ the teacher can also more easily track the working history of the student's
  project.
  
 \end_layout
@@ -2776,7 +2776,7 @@ reference "fig:Repository-file-structure-local"
 
  shows the file structure inside the local git repository.
  With this file structure the teacher can manage the student submission
- more effeiently
+ more efficiently
 \end_layout
 
 \begin_layout Standard
@@ -2824,7 +2824,7 @@ name "fig:Repository-file-structure-local"
 
 \begin_layout Standard
 In order to maintain this file structure and avoid introducing unnecessary
- errors, the address of the git repository is hiden from the student, they
+ errors, the address of the git repository is hidden from the student, they
  can only using the course homepage to upload their solutions.
 \end_layout
 
@@ -2866,8 +2866,8 @@ Dynamic data management
 \end_layout
 
 \begin_layout Standard
-In order to make the backup or achive process as easy as possible.
- The HMS system introduced a new approch to manage the data.
+In order to make the backup or achieve process as easy as possible.
+ The HMS system introduced a new approach to manage the data.
  first of all the HMS system use multiple databases instead of one central
  database.
 \end_layout
@@ -2938,7 +2938,7 @@ reference "sub:User-management"
  another database is semester database.
  since the data structure of every semester is same, so the data model for
  semester can be reused in every new semester.
- every time when a new semester beginns, a new clean database for this semester
+ every time when a new semester begins, a new clean database for this semester
  will be generated using the same data structure in real time.
  therefore in this case there is no need to query the semester data for
  backing up database.
@@ -2958,7 +2958,7 @@ key "Chaudhri2003"
 
 \end_inset
 
-since all the relevent data of the database are saved in a single file,
+since all the relevant data of the database are saved in a single file,
  backup the semester database only need to copy the database file to some
  where else.
  
@@ -2992,7 +2992,7 @@ key "Chaudhri2003"
  life of maintaining the HMS system, direct accessing and manipulating the
  database using a SQL query tool sometimes is more efficiency than the usual
  routine.
- It is also importent to notice that if the application is shut down, the
+ It is also important to notice that if the application is shut down, the
  server mode will also close all the connections
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3005,7 +3005,7 @@ key "h2database"
  However the database file generated by the h2 engine can still be loaded
  from the h2 web based manage tools without needing HMS system to be on
  line.
- this feature is importent specially for a archived h2 database, it means
+ this feature is important specially for a archived h2 database, it means
  that all the contents of the database can still be freely accessed without
  extra works.
 \end_layout
@@ -3143,7 +3143,7 @@ Implementations
 In this chapter the concrete implementation of the functions from the chapter
  3 will be presented.
  because the data persistent is the precondition for other function to work,
- also it is the key features of the HMS sytem.
+ also it is the key features of the HMS system.
  the implementation of dynamic data management and git based file submission
  will be first discussed.
 \end_layout
@@ -3157,7 +3157,7 @@ Dynamic data management consists two parts.
  firstly HMS system can dynamically generate a new database every time when
  a new semester starts, so that created database will only contain the data
  related to that semester.
- secondly the phsical files including the students submission, course materials
+ secondly the physical files including the students submission, course materials
  are saved under a unified structure
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3169,7 +3169,7 @@ reference "fig:Semester-file-structure"
 \end_layout
 
 \begin_layout Subsection
-Realtime database generation
+Real-time database generation
 \end_layout
 
 \begin_layout Standard
@@ -3192,12 +3192,12 @@ reference "fig:Database-configuration"
 \end_inset
 
 ).
- Develepor need to define the details of a database and define the java
- data model for the Ebean server, and ebean server will handel all the database
+ Developer need to define the details of a database and define the java
+ data model for the Ebean server, and Ebean server will handle all the database
  operation.
  After the application started, there is noway to modified this configuration
  again in the run time.
- therefore this methode can not be used
+ therefore this method can not be used
 \end_layout
 
 \begin_layout Standard
@@ -3298,10 +3298,10 @@ name "fig:Database-configuration"
 
 \begin_layout Standard
 In order to dynamically manage the database, all the configuration has to
- be done programmatically.
- Ebean supports database configuration programmatically.
- but it still need a little modification to make it compatible with playframewor
-k.
+ be done pro-grammatically.
+ Ebean supports database configuration pro-grammatically.
+ but it still need a little modification to make it compatible with play
+ framework.
 \end_layout
 
 \begin_layout Standard
@@ -3455,7 +3455,7 @@ b");
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Create Ebean Server in runtime 
+Create Ebean Server in run-time 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Create-Ebean-Server-runtime"
@@ -3483,8 +3483,8 @@ reference "fig:Create-Ebean-Server-runtime"
 
 \end_inset
 
- is a static methode which create a ebean server in runtime, this methode
- need two parameters as input, first is the name of database, usally the
+ is a static method which create a ebean server in run-time, this method
+ need two parameters as input, first is the name of database, usually the
  name of a semester for instance 
 \begin_inset Quotes sld
 \end_inset
@@ -3507,27 +3507,27 @@ WS2016
 EbeanServerFactory
 \shape default
 .
- this static methode can be used when there is a need to create a new database.
+ this static method can be used when there is a need to create a new database.
  In the HMS, the decision of creating new database is made when teacher
- creats new course.
+ creates new course.
  creating a new course needs teacher to give the name of semester which
- this course belongs to, after the creating new course request is sended
- to the server, the server will first check wether this semester was registered
- already in the semester tabel of global database, if it is already registered,
- the course will be simply written to that semester database, if the inputed
+ this course belongs to, after the creating new course request is sent to
+ the server, the server will first check whether this semester was registered
+ already in the semester table of global database, if it is already registered,
+ the course will be simply written to that semester database, if the inputted
  semester can not be found in the global database, a new database with the
- inputed semester name will be first created then the new course will be
+ inputted semester name will be first created then the new course will be
  written in this database.
  after finishing the part of creating database in run time.
- there is only one thing needed to be added to make it work with playframework.
+ there is only one thing needed to be added to make it work with play framework.
  since the databases are configured during the run time, when the application
  restarted, it will not restore those database automatically, because the
- playframework was originally designed to use the configuration file to
+ play framework was originally designed to use the configuration file to
  track the database configuration, and in this case the configuration file
  is empty.
  The workaround for this issue is to track the database file, and reload
  all these database before the application restarted.
- Playframework has already provided a methode to do some actions before
+ Play framework has already provided a method to do some actions before
  actually starting the application, this can be used to reload the database.
 \end_layout
 
@@ -3720,7 +3720,7 @@ reference "fig:Reload-the-database"
 
 \end_inset
 
- demostrate the process of reloading the database.
+ demonstrate the process of reloading the database.
  list entity contains the data model for the 
 \begin_inset Quotes sld
 \end_inset
@@ -3755,16 +3755,16 @@ reference "fig:Create-Ebean-Server-runtime"
 
 \end_inset
 
- has an addtionally implementations of database file detection, if the database
- file is present, the ebean server should not regenerate table relations
- because this action will erase all the data previously saved within this
- database.
+ has an additionally implementations of database file detection, if the
+ database file is present, the ebean server should not regenerate table
+ relations because this action will erase all the data previously saved
+ within this database.
  
 \end_layout
 
 \begin_layout Standard
 It also should notice that because there are multiple databases, the name
- of the database should always be given everytime when there is a CRUD(Create,
+ of the database should always be given every time when there is a CRUD(Create,
  Read, Update, Delete) operation taken place.
  for instance, saving a new course to the semester 
 \begin_inset Quotes sld
@@ -3881,10 +3881,10 @@ One-To-Many
 \shape italic
 Users
 \shape default
- ahnd SSH.
+ and SSH.
  the third is Semesters, this class contains all the name of the created
  semester database, the last one is Tokens, this class is used to temporarily
- save the comfirmation token for registration, change email and change password
+ save the confirmation token for registration, change email and change password
  actions.
 \end_layout
 
@@ -3945,15 +3945,15 @@ reference "fig:Data-models-for-semester"
 \shape italic
 Lecture
 \shape default
- class, all the activites around the homework management is about the lecture,
+ class, all the activities around the homework management is about the lecture,
  a lecture includes assignment (Assignment), git repositories(Repos), a
  forum(Thread) and the lecture evaluation(Evaluation) for students.
- and each assignments should generate a lot of handins(Handins) from the
+ and each assignments should generate a lot of hand ins(Handins) from the
  students.
- besides the lecture related datas, the data of chat system is semester
- related and independently of the lecture.
- at last all these datas are related to the Semesteruser.
- Semesteruser and User are both subclass extends from superclass 
+ besides the lecture related data, the data of chat system is semester related
+ and independently of the lecture.
+ at last all these data are related to the Semesteruser.
+ Semesteruser and User are both subclass extends from super class 
 \shape italic
 Abstractuser
 \shape default
@@ -4046,9 +4046,9 @@ Abstractuser
 \begin_inset Quotes srd
 \end_inset
 
-, the database specific data will be defind in the subclass.
- using this methode can first avoid the redudant code, second the semester
- data can be completely seperate from the other data.
+, the database specific data will be defined in the subclass.
+ using this method can first avoid the redundant code, second the semester
+ data can be completely separate from the other data.
  when a register user want to sing up a new course in a semester, his user
  information should be first transformed from the 
 \begin_inset Quotes sld
@@ -4267,7 +4267,7 @@ name "sub:File-structure"
 
 \begin_layout Standard
 Besides the database design, the semester related files should also be saved
- under a unified sturcture(Figure 
+ under a unified structure(Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Semester-file-structure"
@@ -4275,9 +4275,9 @@ reference "fig:Semester-file-structure"
 \end_inset
 
 ).
- define the upload path within the playframework is strait forward, after
+ define the upload path within the play framework is strait forward, after
  the file was uploaded to the server, then the file can be moved to the
- desired location by the methode 
+ desired location by the method 
 \begin_inset listings
 lstparams "language=Java,basicstyle={\footnotesize}"
 inline true
@@ -4306,7 +4306,7 @@ key "gitscm"
 
 , so it is pointless to just copy a bare repository to other place.
  also the gitolite has its own file structure and can not be changed.
- so a possible way is using git Java Api Jgit
+ so a possible way is using git Java API Jgit
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jgitguide"
@@ -4392,12 +4392,12 @@ reference "fig:Clone-repository"
 
 \end_inset
 
-shows using Jgit(reference here) to clone a bare repository from gitolite
+shows using JGit(reference here) to clone a bare repository from gitolite
  to a 
 \begin_inset Quotes sld
 \end_inset
 
-localpath
+local path
 \begin_inset Quotes srd
 \end_inset
 
@@ -4424,7 +4424,7 @@ The HMS system using git repository to manage the student's submission.
 
 \begin_layout Enumerate
 Access control: students can only have access to their own repository, but
- the teacher or assistent of the course can have the access but limited
+ the teacher or assistant of the course can have the access but limited
  to read to all student's repository.
  
 \end_layout
@@ -4441,10 +4441,10 @@ reference "tab:Features-of-course"
 \end_layout
 
 \begin_layout Standard
-The most importent requirement is the access control over the git repository.
+The most important requirement is the access control over the git repository.
  because Git by itself does not do any access control, it relies on the
- transport medium(authtication of HMS system) to do anthentication, and
- file permissions of the operation system to do authorisation(read or write
+ transport medium(authentication of HMS system) to do authentication, and
+ file permissions of the operation system to do authorization(read or write
  permission)
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -4456,12 +4456,12 @@ key "gitolitedocu"
  without a proper access control over the git repository, it is then impossible
  to integrate the git into the HMS.
  since the basic needs of managing homework is to keep the student's submission
- only between the marker and students themselfs.
+ only between the marker and students themselves.
  
 \end_layout
 
 \begin_layout Standard
-The first part of this secion will present a method using 
+The first part of this section will present a method using 
 \begin_inset Quotes sld
 \end_inset
 
@@ -4478,7 +4478,7 @@ Java-Gitolite-manager
 \end_inset
 
  to solve the access control problem of git repository.
- and the useage of git repository for both course type will be introduced
+ and the usage of git repository for both course type will be introduced
  in the rest part of this section.
 \end_layout
 
@@ -4495,7 +4495,7 @@ reference "fig:Access-rights-for-differentuser"
 
 \end_inset
 
- shows, only the students themself have fully access rights for their course
+ shows, only the students them self have fully access rights for their course
  repository and can not get inside other repository.
  teacher and assistants have to grant a read right only for evaluation.
  
@@ -4701,7 +4701,7 @@ name "fig:Access-rights-for-differentuser"
 \end_layout
 
 \begin_layout Standard
-This access rules can be easiy managed by Gitolite.
+This access rules can be easily managed by Gitolite.
  After properly installing the gitolite in the server, it will generate
  a 
 \begin_inset Quotes sld
@@ -4788,12 +4788,12 @@ foo
 \begin_inset Quotes srd
 \end_inset
 
-.for this repository, alice and bob both have read and write access, but
- carol and david can only read the content of the repository.
+.for this repository, Alice and Bob both have read and write access, but
+ Carol and David can only read the content of the repository.
  The server maintainer only need to modify this configuration file and push
  the changes using a git command back to the Gitolite all the changes will
  be adopted automatically by gitolite.
- addtionally the ssh public keys of the user of this repository are also
+ additionally the ssh public keys of the user of this repository are also
  needed to be copied into 
 \begin_inset Quotes sld
 \end_inset
@@ -4812,9 +4812,9 @@ Java-Gitolite-Manager
 
 \begin_layout Standard
 Gitolite gives the possibility to add access control to git repository,
- but it is still need system maintainer to edit the configuration file manuelly,
+ but it is still need system maintainer to edit the configuration file manually,
  therefore is still can not be directly used in the HMS system.
- Delft University of Technology has developed a java libary which enables
+ Delft University of Technology has developed a java library which enables
  developer to manage the gitolite configuration direct from Java.
 \end_layout
 
@@ -4939,11 +4939,11 @@ gitolite-admin
 \begin_inset Quotes sld
 \end_inset
 
-alice
+Alice
 \begin_inset Quotes srd
 \end_inset
 
- is created alone with the ssh pulic key of user alice.
+ is created alone with the ssh public key of user Alice.
  after user has been created, a new repository 
 \begin_inset Quotes sld
 \end_inset
@@ -4952,7 +4952,7 @@ foo
 \begin_inset Quotes srd
 \end_inset
 
- will also be created and user alice will be added to this repository with
+ will also be created and user Alice will be added to this repository with
  all permission.
  
 \end_layout
@@ -4992,7 +4992,7 @@ Local mode
 
 \begin_layout Standard
 Under local mode, students need use course homepage to upload their solutions
- and actualle repository address is hidden from the student.
+ and actual repository address is hidden from the student.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5001,15 +5001,15 @@ reference "fig:Homework-submission-for-local"
 \end_inset
 
  shows the homework submission part for the course under local mode.
- The grey dot above shows the current status of the repository, under the
+ The gray dot above shows the current status of the repository, under the
  indicator of repository status, is the homework area, student can download
  the assignment's material and use the predefined actions: commit and revert.
 \end_layout
 
 \begin_layout Standard
-The left icon under action column is used for commiting changes, student
+The left icon under action column is used for committing changes, student
  need to use this action to upload the solutions.
- the icon on the right is the predifined action for deleting last submission,
+ the icon on the right is the predefined action for deleting last submission,
  students can use this action to delete their last submission
 \end_layout
 
@@ -5062,7 +5062,7 @@ name "fig:Homework-submission-for-local"
 \begin_layout Standard
 The repository created by the gitolite is a bare repository, a bare repository
  is an named file directory with a .git suffix which contains only the administra
-tiv and controlf files of the repository, and it does'nt have any copy of
+tive and control files of the repository, and it doesn't have any copy of
  the files that present in a normal git repository
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -5071,7 +5071,7 @@ key "loeliger2006collaborating"
 \end_inset
 
 .
- The student's submission then can not be directy uploaded to this repository.
+ The student's submission then can not be directly uploaded to this repository.
  also HMS system requires a unified file structure to save the physical
  files.
  The solutions to this problem has already been presented in the section
@@ -5092,7 +5092,7 @@ JGit
 
 \begin_layout Standard
 JGit is a Java library for working with git repository, with JGit all the
- operations for a git repository can be realised from Java.
+ operations for a git repository can be realized from Java.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jgitguide"
@@ -5185,7 +5185,7 @@ reference "fig:Commit-submission"
 
 \end_inset
 
- shows what happend after submission file and commit message were passed
+ shows what happened after submission file and commit message were passed
  to the HMS system.
  first the gitolite repository will be cloned to the 
 \shape italic
@@ -5199,7 +5199,7 @@ localPath
 \begin_inset Quotes sld
 \end_inset
 
-handin
+hand-in
 \begin_inset Quotes srd
 \end_inset
 
@@ -5354,12 +5354,12 @@ Delete submission
 \end_layout
 
 \begin_layout Standard
-If a student did'nt statisfy the first submission for an assignment, the
+If a student didn't satisfy the first submission for an assignment, the
  last submission can also be deleted.
- the procedure is almoste the same as submission, first the local repository
+ the procedure is almost the same as submission, first the local repository
  created by the submission action will be updated to the latest state, second
- since the submission under the local modes are saved under a unified stucture(F
-igure 
+ since the submission under the local modes are saved under a unified structure(
+Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Repository-file-structure-local"
@@ -5367,9 +5367,9 @@ reference "fig:Repository-file-structure-local"
 \end_inset
 
 ), the folder of relevant assignments will be deleted.
- in the end the delete action will also be commited by the HMS system and
+ in the end the delete action will also be committed by the HMS system and
  the changes will be pushed back to the gitolite repository.
- at last the related handin object from the submission will also be deleted
+ at last the related hand-in object from the submission will also be deleted
  and regenerate by the next submission action.
 \end_layout
 
@@ -5550,7 +5550,8 @@ is the user interface of evaluating students submission.
  green otherwise it is red.
  teacher can use the action button to choose an action towards the students
  repository.
- the student repository can be directy checked out into the git client 
+ the student repository can be directly checked out into the git client
+ 
 \begin_inset Quotes sld
 \end_inset
 
@@ -5575,7 +5576,7 @@ reference "fig:Checkout-student-repository"
 
 \end_inset
 
-), the methode 
+), the method 
 \shape italic
 grandaccess()
 \shape default
@@ -5586,7 +5587,7 @@ reference "fig:Grand-access-to-studentsrepo"
 
 \end_inset
 
- will be automatically excuted.
+ will be automatically executed.
 \end_layout
 
 \begin_layout Standard
@@ -5743,7 +5744,7 @@ course under remote mode.
  so that the teacher can use the HMS system to give a final evaluation to
  the project and saved this into the database.
  and at the same time a copy of the student's repository will be saved under
- the unified file strusture, this is same as the submission action(Figure
+ the unified file structure, this is same as the submission action(Figure
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5752,7 +5753,7 @@ reference "fig:Commit-submission"
 \end_inset
 
 ) from the local modes.
- the only difference is that remote mode will not upload anyfiles.
+ the only difference is that remote mode will not upload any files.
 \end_layout
 
 \begin_layout Standard
@@ -5876,12 +5877,12 @@ reference "fig:Registration-form"
 \end_inset
 
  is the registration form on the HMS home page.
- a new user need to at least type in the email address,firstname,lastname,
+ a new user need to at least type in the email address,first name,last name,
  and the password.
  The student number is optional because the multi user roll management of
  the system.
- only students needs to give the studentsnumber and get a student user role
- as default.
+ only students needs to give the students number and get a student user
+ role as default.
  other user will get a random user id and 
 \begin_inset Quotes sld
 \end_inset
@@ -5898,7 +5899,7 @@ reference "fig:Save-user-registration"
 
 \end_inset
 
- shows what happens when user click the singup button in the registration
+ shows what happens when user click the sing up button in the registration
  form.
 \end_layout
 
@@ -6095,7 +6096,7 @@ Signup.save()
 \shape italic
 registerForm
 \shape default
- will be checked wether all the required field has been filled, if there
+ will be checked whether all the required field has been filled, if there
  is a error the user will be redirected to the home page and do the registration
  process again.
  second if the data are correct, the emails from the 
@@ -6270,7 +6271,7 @@ name "tab:Confirm-registration"
 \begin_layout Standard
 The user need to use the hyper link(contains confirmation token) to confirm
  their registration, after user clicked the confirmation link, the confirmation
- token will be passed to the methode 
+ token will be passed to the method 
 \shape italic
 confirm()
 \shape default
@@ -6334,7 +6335,7 @@ name "fig:Registration-successful"
 \end_layout
 
 \begin_layout Standard
-if the details of the user succussfully updated in the database, the system
+if the details of the user successfully updated in the database, the system
  will render a modal and user can direct log into their account and start
  using the system.
  Figure 
@@ -6344,7 +6345,7 @@ reference "fig:Registration-successful"
 
 \end_inset
 
- shows the result of a successful registration, the url from above is the
+ shows the result of a successful registration, the URL from above is the
  confirmation link with the user token.
 \end_layout
 
@@ -6376,8 +6377,8 @@ Authentication of Git server
 \end_layout
 
 \begin_layout Standard
-The first part is the authentication of the HMS system, this part controlls
- the user login activities and protect the system from unauthroized user
+The first part is the authentication of the HMS system, this part controls
+ the user login activities and protect the system from unauthorized user
  actions, for instance a user with students role can not create a new course
  or make evaluation to a assignment.
 \end_layout
@@ -6454,7 +6455,7 @@ reference "fig:Login-and-Password"
  check the password from the database record and the password from user
  input, since the password is saved as SHA-256 in database for security
  reasons, the clear password of user input should first convert into SHA-256,
- then both passwords will be compared, if they are indentical, then user
+ then both passwords will be compared, if they are identical, then user
  will be redirect to their account homepage.
  
 \end_layout
@@ -6470,14 +6471,14 @@ another function of authentication system is to recover the user password.
 \end_inset
 
  a new page will be generated and ask user to input their email address.
- after user input their email address, the methode from Figure 
+ after user input their email address, the method from Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Reset-Password"
 
 \end_inset
 
- will excuted.
+ will executed.
  
 \end_layout
 
@@ -6607,7 +6608,7 @@ name "fig:Reset-Password"
 \shape italic
 runAsk()
 \shape default
- first check wether a user with the input email exist in the database.
+ first check whether a user with the input email exist in the database.
  for security reason, if the user did not exist, the system shouldn't expose
  any result to the user, instead sending a email to notify the person that
  the reset has failed.
@@ -6620,8 +6621,9 @@ runAsk()
 \begin_layout Standard
 The second part of authentication related to the git server, because the
  git function is using gitolite to manage the access rights of the student's
- repo, it has a seperate authentication system using SSH public key mechanism.
- The detail implementaion has already been discussed in the secion 
+ repository, it has a separate authentication system using SSH public key
+ mechanism.
+ The detail implementation has already been discussed in the section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Integration-of-Git"
@@ -6645,17 +6647,17 @@ reference "fig:Different-user-role"
 \end_inset
 
 ).
- The playframework use actions to serve http request, an action is basically
- a Java method that processes the data from the http request.
+ The play framework use actions to serve HTTP request, an action is basically
+ a Java method that processes the data from the HTTP request.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "playframeworkdocu"
 
 \end_inset
 
-if an unauthorized person can mock a correct http request, this person can
- basically excute any actions implemented in server logic.
- in order to prevent an unauthorized actions, playframework come with a
+if an unauthorized person can mock a correct HTTP request, this person can
+ basically execute any actions implemented in server logic.
+ in order to prevent an unauthorized actions, play framework come with a
  built in authenticator action called 
 \shape italic
 Secured
@@ -6668,9 +6670,9 @@ key "playframeworkdocu"
 
 \end_inset
 
- in the case of HMS system, some actions can only be excuted by user role
- of teacher, the additionally secured class implementation should distiguish
- the current user role and decide whether the actions should be excuted
+ in the case of HMS system, some actions can only be executed by user role
+ of teacher, the additionally secured class implementation should distinguish
+ the current user role and decide whether the actions should be executed
  for the current user.
 \end_layout
 
@@ -6854,17 +6856,17 @@ reference "fig:Secured-actions"
  shows the secured class implementation and usage for user role teacher.
  at first using the 
 \shape italic
-Http.Context
+HTTP.Context
 \shape default
  session to get current user, then compare the current user role to the
- required user role, if they are indentical, the email address of the current
+ required user role, if they are identical, the email address of the current
  user will be returned, otherwise 
 \shape italic
 null
 \shape default
  will be returned.
- after the definition of the playframework documentation.
- if methode 
+ after the definition of the play framework documentation.
+ if method 
 \shape italic
 getUsername()
 \shape default
@@ -6872,7 +6874,7 @@ getUsername()
 \shape italic
 createlecture()
 \shape default
- will be excuted for the current user.
+ will be executed for the current user.
  if 
 \shape italic
 getUsername()
@@ -6881,11 +6883,11 @@ getUsername()
 \shape italic
 null
 \shape default
-, the methode 
+, the method 
 \shape italic
 onUnauthorized()
 \shape default
- will be excuted, in this example, a web page 
+ will be executed, in this example, a web page 
 \begin_inset Quotes sld
 \end_inset
 
@@ -6973,7 +6975,7 @@ reference "fig:Self-management"
 
  shows the component of the self management system, at the settings page
  of user, user can update their ssh, password and email.
- updating password and email using the same mechanismus from the section
+ updating password and email using the same mechanisms from the section
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6983,14 +6985,14 @@ reference "sub:Authentication-system"
 
 , if a user want to change their email or password, the HMS system will
  always sending a confirmation email with a confirmation token, only after
- user comfirming the changes from the url within the email, the changes
- then can be saved into the database, it is a neccssary step to offer more
+ user confirming the changes from the URL within the email, the changes
+ then can be saved into the database, it is a necessary step to offer more
  security to sensitive data.
  and in order to use the git repository, user also need to add at least
  one ssh public key from their working terminals.
  because the HMS system using the gitolite to manage the git repository,
  and gitolite using ssh keys to manage the access rights of the git repository.
- the implenmentation of integration gitolite has already be showed in the
+ the implementation of integration gitolite has already be showed in the
  section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7043,7 +7045,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/remote_course.eps
+	filename images/remote course.png
+	scale 40
 
 \end_inset
 
@@ -7108,7 +7111,7 @@ Type II
 \end_inset
 
  course with a remote git repository, this type of course only contains
- a semester project and did'nt have a normal final exam so there isn't much
+ a semester project and didn't have a normal final exam so there isn't much
  information needed for creating the 
 \begin_inset Quotes sld
 \end_inset
@@ -7135,7 +7138,7 @@ Type I
 \begin_inset Quotes srd
 \end_inset
 
- course student need to do various homework and earn enought points to enter
+ course student need to do various homework and earn enough points to enter
  the final exam.
  so when creating this kind of course, teacher should provide the precondition
  to the final exam, like the number of assignments and how much points are
@@ -7149,7 +7152,7 @@ Server-side logic
 
 \begin_layout Standard
 After sending the course creation form to the server, the data from the
- from will be process by the methode 
+ from will be process by the method 
 \shape italic
 createlecture()
 \shape default
@@ -7164,18 +7167,18 @@ reference "fig:Logic-of-creatingcourse"
 \end_layout
 
 \begin_layout Standard
-the first thing to check is the semester name of this couse, if the semester
- name of the course did'nt present in the semester tracking database, it
+the first thing to check is the semester name of this course, if the semester
+ name of the course didn't present in the semester tracking database, it
  simply means a new semester has already begun, so the first thing system
  will do is to generate a new database for this course and then saving the
  new semester into the semester tracking table.
- after that the course will be saved under the correct semester dabase.
+ after that the course will be saved under the correct semester database.
  
 \end_layout
 
 \begin_layout Standard
 if the semester name of a new course do present, the course will be simply
- saved under this coursename.
+ saved under this course name.
 \end_layout
 
 \begin_layout Standard
@@ -7707,7 +7710,7 @@ Evaluation
 \shape default
  object will be used to save the student's performance for this lecture.
  at last, the student will get a gitolite repository generated by the static
- methode 
+ method 
 \shape italic
 createRemoteRepo()
 \shape default
@@ -7734,8 +7737,8 @@ Assignment management
 \begin_layout Standard
 The management of assignment consists of three parts.
  first part is creating a assignment, second part is collecting and evaluating
- the student submission, third part is returing the assignments result back
- to the student.
+ the student submission, third part is returning the assignments result
+ back to the student.
  the second part of assignment management has already been discussed in
  the section 
 \begin_inset CommandInset ref
@@ -7745,7 +7748,7 @@ reference "sub:Check-out-byteacher"
 \end_inset
 
 .
- this section will focused on the creating assignment and ditributing the
+ this section will focused on the creating assignment and distributing the
  result.
 \end_layout
 
@@ -7849,7 +7852,7 @@ Feedback of result
 \end_layout
 
 \begin_layout Standard
-after evaluationg the student's solution, the result of the submission should
+after evaluation the student's solution, the result of the submission should
  be given back the students.
  the students can direct click the points under in the column under evaluation(F
 igure 
@@ -7859,7 +7862,7 @@ reference "fig:Homework-submission-for-local"
 
 \end_inset
 
-) for details which was showd in Figure 
+) for details which was showed in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Assignment-results"
@@ -7924,7 +7927,7 @@ Communication system
 
 \begin_layout Standard
 There are two way for the user of HMS to communicate with each other: a
- public course forum and a privat instant message system.
+ public course forum and a private instant message system.
 \end_layout
 
 \begin_layout Subsection
@@ -7945,7 +7948,7 @@ reference "fig:Course-Forum"
  is the main page of a course forum.
  the area above are the forum functions, and the forum thread will be listed
  under.
- the latest modified thread will be alway listed at the top.
+ the latest modified thread will be always listed at the top.
 \end_layout
 
 \begin_layout Standard
@@ -7995,17 +7998,17 @@ Private Instant Message
 \end_layout
 
 \begin_layout Standard
-The HMS system use the WebSocket protocol(Section 
+The HMS system use the Web Socket protocol(Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:b.-Instant-message"
 
 \end_inset
 
-) to realise the instant message system.
- Playframework support HMS nativly.
- but WebSockets can't be directly handled by standard Playframework actions.
- a possible way using Websocket in Play is using fuction callbacks.
+) to realize the instant message system.
+ Play framework support HMS natively.
+ but Web Sockets can't be directly handled by standard Play framework actions.
+ a possible way using Web socket in Play is using function callbacks.
 \end_layout
 
 \begin_layout Standard
@@ -8079,7 +8082,7 @@ public static WebSocket<String> socket(){
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Websocket callbacks 
+Web socket callbacks 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Websocket-callbacks"
@@ -8107,11 +8110,11 @@ reference "fig:Websocket-callbacks"
 
 \end_inset
 
- is the WebSocket callback function.
- When the WebSocket is ready, both in and out channels of this connection
+ is the Web Socket callback function.
+ When the Web Socket is ready, both in and out channels of this connection
  will be obtained by the system.
  the channels and the email of the current user will be passed on to the
- methode 
+ method 
 \shape italic
 Chatsocket.start()
 \shape default
@@ -8301,7 +8304,7 @@ tring> out){
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Process WebSocket data 
+Process Web Socket data 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Process-WebSocket-data"
@@ -8322,7 +8325,7 @@ name "fig:Process-WebSocket-data"
 \end_layout
 
 \begin_layout Standard
-The data from the in channel will be processed in the methode from Figure
+The data from the in channel will be processed in the method from Figure
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8333,13 +8336,13 @@ reference "fig:Process-WebSocket-data"
 .
  first the outgoing channel will be saved with its username inside a hashmap,
  so that an outgoing channel can be easily picked up later.
- then the inbound message will be processed by the invoke() methode.
- since the inbound messages are saved in a json string, the first thing
+ then the inbound message will be processed by the invoke() method.
+ since the inbound messages are saved in a Json string, the first thing
  to do is to parse the inbound message.
  the inbound message has two keys: event and data.
- Event defined the message type, and Data store the actuall data from the
+ Event defined the message type, and Data store the actual data from the
  client.
- Three diffren messages are listed below.
+ Three different messages are listed below.
 \end_layout
 
 \begin_layout Enumerate
@@ -8392,7 +8395,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-according the data from the inbond messages, the server can serve different
+according the data from the inbound messages, the server can serve different
  outgoing message.
  for instance, the first type message sending a request to the server for
  all the conversations of user 
@@ -8430,7 +8433,7 @@ WS2016
 \end_inset
 
 .
- the third type of messge will be generated when a user send a new message
+ the third type of message will be generated when a user send a new message
  to another user.
 \end_layout
 
@@ -8438,13 +8441,13 @@ WS2016
 for the first two type of message, the system will simply return the result
  through the out going channel of same user.
  for the third type of message, the system first will first save the content
- of the new message into related converstions and finaly save the messages
+ of the new message into related conversations and finally save the messages
  into the base, then the same conversation with the new content will be
- sended back to both participants of the conversation, as long as the other
- participant has connected to the WebSocket.
+ sent back to both participants of the conversation, as long as the other
+ participant has connected to the Web Socket.
  The out going channel of the other participant will be picked up from the
- hashmap definded in the first line.
- additonaly a notication message will also be sent to the other user.
+ hashmap defined in the first line.
+ additionally a notification message will also be sent to the other user.
 \end_layout
 
 \begin_layout Standard
@@ -8503,7 +8506,7 @@ reference "fig:GUI-of-im"
  If user click the name of another user in the conversation, a second type
  message will be sent and the conversation content will be showed.
  sending the new reply will generate a third type message and the chat content
- will be imdiatly updated.
+ will be immediately updated.
 \end_layout
 
 \begin_layout Chapter
