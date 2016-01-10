@@ -8510,16 +8510,16 @@ reference "fig:GUI-of-im"
 \end_layout
 
 \begin_layout Chapter
-System tests
+Tests
 \end_layout
 
 \begin_layout Standard
 Testing a web application is challenging due to the nature of web applications.
  First, web application have a client/server structure, with asynchronous
  HTTP calls and response to synchronize the state of each side.
- Second, web application is a mix of different techonolgys and programming
+ Second, web application is a mix of different technology and programming
  languages, for instance, in the HMS system, JAVA was used on the server
- side and HTML5, CSS,JavaScript, ScalaTemplate on the client side.
+ side and HTML5, CSS,JavaScript, Scala Template on the client side.
  Third, the dynamic content on the client side of a web application.
  web applications have to manipulate the Document Object Model on the client
  side to serve different content
@@ -8553,7 +8553,7 @@ key "fluentlenium"
  It also has the direct access to the DOM elements of web page on the client
  side, and can assert expected client behavior defined by the developer.
  since selenium works within the browser, it can be used to test the dynamic
- behavior of Javascript and server respond through the interaction between
+ behavior of JavaScript and server respond through the interaction between
  browser and user
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -8572,8 +8572,8 @@ reference "fig:A-Test-Senario-Fluentlenium"
 
 \end_inset
 
- demonstrates one of many test scnarios writting with the Fluentlenium:
- registing a user account in HMS system and getting a confirmation email.
+ demonstrates one of many test scenarios writing with the Fluentlenium:
+ registering a user account in HMS system and getting a confirmation email.
  First ,the web browser open a page at 
 \begin_inset Quotes sld
 \end_inset
@@ -8587,8 +8587,8 @@ http://localhost:9000
 \end_inset
 
 .
- Second, a html form will be filled out and submitted to the server.
- At last, after receving the respond from the server, the excepted behavior
+ Second, a HTML form will be filled out and submitted to the server.
+ At last, after receiving the respond from the server, the excepted behavior
  , in this case , a success label with text "
 \shape italic
 You will receive a confirmation email soon.
@@ -8676,7 +8676,7 @@ assertThat(find(".label-success").getText()).isEqualTo("You will receive a
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-A Test Senario of Fluentlenium
+A Test Scenario of Fluentlenium
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:A-Test-Senario-Fluentlenium"
@@ -8697,7 +8697,7 @@ name "fig:A-Test-Senario-Fluentlenium"
 \end_layout
 
 \begin_layout Standard
-other senarios, for instance, 
+other scenarios, for instance, 
 \begin_inset Quotes sld
 \end_inset
 
@@ -8732,7 +8732,7 @@ JUnit
 Since the server side of HMS system are written in Java, the server logic
  will be tested by the JUnit.
  JUnit is a unit testing framework under Java.
- In order to save the testing time, it is importent to test the server logic
+ In order to save the testing time, it is important to test the server logic
  without starting the whole HMS system.
  
 \end_layout
@@ -8870,8 +8870,8 @@ FakeRequest
 \begin_inset Quotes srd
 \end_inset
 
- from the Playframework, developer can easily test the behavior of the server
- logic withou actually starting the application.
+ from the Play framework, developer can easily test the behavior of the
+ server logic without actually starting the application.
  In the Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8879,7 +8879,7 @@ reference "fig:Controller-Test"
 
 \end_inset
 
- a fake HTTP post request will be sent to the controller with a url query
+ a fake HTTP post request will be sent to the controller with a URL query
  
 \begin_inset Quotes sld
 \end_inset
@@ -8987,11 +8987,371 @@ name "fig:Test-Coverage"
 \end_layout
 
 \begin_layout Chapter
-System usage
+Deployment and maintance
+\end_layout
+
+\begin_layout Standard
+After describing every step of developing phase of the HMS sytem, it is
+ time to put the system into a real practice.
+\end_layout
+
+\begin_layout Standard
+The first part of this chapter will describe the steps to deploy the HMS
+ system to a private server running with Ubuntu 15.04
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The installation procedure has also been tested on the Ubuntu 14.04LTS, however
+ the automatic installation of the Gitolite is not working with Ubuntu 15.10,
+ so Gitolite need to be installed manuelly
+\end_layout
+
+\end_inset
+
+, and second part will demonstrate the maintance procedure (i.e.,backup semester
+ data and managing the user role) of the HMS system.
+\end_layout
+
+\begin_layout Section
+Deployment
+\end_layout
+
+\begin_layout Standard
+Since the HMS system was writting in Java and need Gitolite to manage the
+ git repository 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Submission-management"
+
+\end_inset
+
+, user has to make sure the Gitolite server and Java SDK 8.0 has already
+ installed on the server before running the HMS system.
+ Beside installing the required software, a mail server has also needed
+ to be configured, so that the HMS system can send out Email.
+ Then user can excute the start script within the distribution package of
+ HMS to bring the system online.
+ 
+\end_layout
+
+\begin_layout Standard
+The content of the distribution package are listed on the left side of Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribution-Package-of-hms"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/dispackage1.jpg
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/dispackage2.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distribution Package of HMS 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Distribution-Package-of-hms"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The script 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+first_installation
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ will be used to automatically install and configure the gitolite server.
+ On the right side of Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Distribution-Package-of-hms"
+
+\end_inset
+
+ shows the files inside 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+bin
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ folder, the script 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+hms
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ is for starting the whole HMS system, and the file mail.conf need to be
+ configured to fit the mail server.
+\end_layout
+
+\begin_layout Subsubsection
+Installation of Gitolite
+\end_layout
+
+\begin_layout Standard
+First of all the server maintainer should create a new user with the name
+ 
+\begin_inset Quotes sld
+\end_inset
+
+git
+\begin_inset Quotes srd
+\end_inset
+
+ on the Ubuntu server.
+ Then copy the distirbution package of HMS into a folder and excuting the
+ script 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+first_installation
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset listings
+lstparams "language=bash,basicstyle={\scriptsize}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+chmod +x first_installation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset listings
+lstparams "language=bash,basicstyle={\scriptsize}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+./first_installation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the script will first install Git and Gitolite under user 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+git
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+, then generate the SSH key pair for the user 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+git
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ and configure the Gitolite server based on this SSH key.
+ At last the admin repository of Gitolite will be cloned into the home folder
+ and is ready for using.
+ if the installation process was successfull, user can find two new directory
+ under home folder: 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+repositories
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ and 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+gitolite-admin
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Configure Mail Server
+\end_layout
+
+\begin_layout Standard
+The Mail Server are configured by the file 
+\begin_inset Quotes sld
+\end_inset
+
+mail.conf
+\begin_inset Quotes srd
+\end_inset
+
+, the configuration such as:
+\begin_inset listings
+lstparams "basicstyle={\scriptsize}"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+smtp.host=smtp.gmail.com
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset listings
+lstparams "basicstyle={\scriptsize}"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+smtp.port=587
+\end_layout
+
+\end_inset
+
+ has to be correctly setted according to the mail server which is used for
+ the HMS system.
+\end_layout
+
+\begin_layout Subsubsection
+Starting the HMS system
+\end_layout
+
+\begin_layout Standard
+After setting up the Gitolite Server and Mail Server, The HMS system can
+ finally be started by excuting the script 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+hms
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ with the configuration file of mail server:
+\begin_inset listings
+lstparams "basicstyle={\scriptsize}"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+./hms -Dconfig.file=mail.conf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Maintance
 \end_layout
 
 \begin_layout Chapter
-Summary and Future work
+Summary
 \end_layout
 
 \begin_layout Standard
