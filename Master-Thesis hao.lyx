@@ -8252,17 +8252,7 @@ tring> out){
 
 \begin_layout Plain Layout
 
-		out.write(result.toString());
-\end_layout
-
-\begin_layout Plain Layout
-
-		notification.put("event","noti");
-\end_layout
-
-\begin_layout Plain Layout
-
-		...		
+		out.write(result.toString());	
 \end_layout
 
 \begin_layout Plain Layout
@@ -8336,13 +8326,26 @@ reference "fig:Process-WebSocket-data"
 .
  first the outgoing channel will be saved with its username inside a hashmap,
  so that an outgoing channel can be easily picked up later.
- then the inbound message will be processed by the invoke() method.
- since the inbound messages are saved in a Json string, the first thing
- to do is to parse the inbound message.
+ then the inbound message will be processed by the 
+\shape italic
+invoke()
+\shape default
+ method.
+ The inbound messages are saved in a Json string, the first thing to do
+ is to parse the inbound message.
  the inbound message has two keys: event and data.
- Event defined the message type, and Data store the actual data from the
- client.
- Three different messages are listed below.
+ 
+\shape italic
+Event
+\shape default
+ defined the message type, and 
+\shape italic
+Data
+\shape default
+ store the actual data from the client.
+ The client will generate three different types of messages base on the
+ user actions.
+ Three example messages are listed below:
 \end_layout
 
 \begin_layout Enumerate
@@ -8395,10 +8398,8 @@ status open
 \end_layout
 
 \begin_layout Standard
-according the data from the inbound messages, the server can serve different
- outgoing message.
- for instance, the first type message sending a request to the server for
- all the conversations of user 
+the first message sending a request to the server for all the conversations
+ of user 
 \begin_inset Quotes sld
 \end_inset
 
@@ -8415,8 +8416,8 @@ WS2016
 \end_inset
 
 .
- the second type message requesting the chat content from the conversation
- with id 
+ the second message requesting the chat content from the conversation with
+ id 
 \begin_inset Quotes sld
 \end_inset
 
@@ -8433,21 +8434,31 @@ WS2016
 \end_inset
 
 .
- the third type of message will be generated when a user send a new message
- to another user.
+ the third message will be generated when a user send a new message to another
+ user, it contains the information about the conversation id, the content
+ of the new message and the email address of the other participants of this
+ conversation.
 \end_layout
 
 \begin_layout Standard
-for the first two type of message, the system will simply return the result
+according to the information from the inbound messages, the server can serve
+ outgoing message to different receiver.
+ for the first two type of message, the system will simply return the result
  through the out going channel of same user.
- for the third type of message, the system first will first save the content
- of the new message into related conversations and finally save the messages
- into the base, then the same conversation with the new content will be
- sent back to both participants of the conversation, as long as the other
- participant has connected to the Web Socket.
+ for the third type of message, the system will first save the content of
+ the new message into related conversations and finally into the database,
+ then the updated conversation object will be formatted into Json string
+ and sent back to both participants of the conversation, as long as the
+ other participant is also connected to the Web Socket.
  The out going channel of the other participant will be picked up from the
- hashmap defined in the first line.
- additionally a notification message will also be sent to the other user.
+ hashmap defined in the first line from Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Process-WebSocket-data"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -9009,7 +9020,7 @@ The installation procedure has also been tested on the Ubuntu 14.04LTS, however
 
 \end_inset
 
-, and second part will demonstrate the maintance procedure (i.e.,backup semester
+, and second part will demonstrate the maintaince procedure (i.e.,backup semester
  data and managing the user role) of the HMS system.
 \end_layout
 
@@ -9348,6 +9359,210 @@ status open
 
 \begin_layout Section
 Maintance
+\end_layout
+
+\begin_layout Standard
+The start up phase of the HMS system will generate a account for the system
+ administrator, the user name and password of the account will be saved
+ into a folder with name 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+HMS_Config
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ under the 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+git
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ home directory.
+ The administator account provides two functions: backup semester data and
+ manage user role.
+\end_layout
+
+\begin_layout Subsubsection
+Backup
+\end_layout
+
+\begin_layout Standard
+Since the database file and files which are generated by the activities
+ of the lecture during the semester, are saved under a unified structure
+ (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Semester-file-structure"
+
+\end_inset
+
+).
+ It only needs the maintainer to move these files to other place.
+ and additionaly remove the information of this semester from the system,so
+ that after rebooting the HMS, the system will not try to reload the database
+ of this semester (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Reload-the-database"
+
+\end_inset
+
+), and all the user of the HMS can not access the data of this semester
+ anymore.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Disconnect-Semester-Database"
+
+\end_inset
+
+ shows the user interface of removing semester information from the system.
+ After the maintainer click the 
+\begin_inset Quotes sld
+\end_inset
+
+Disconnect
+\begin_inset Quotes srd
+\end_inset
+
+ button, the information of existence of semester 
+\begin_inset Quotes sld
+\end_inset
+
+WS2016
+\begin_inset Quotes srd
+\end_inset
+
+ will be deleted and the database of 
+\begin_inset Quotes sld
+\end_inset
+
+WS2016
+\begin_inset Quotes srd
+\end_inset
+
+ will not be reloaded after rebooting the HMS.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/databasedisconnect.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Disconnect Semester Database
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Disconnect-Semester-Database"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Manage User Role
+\end_layout
+
+\begin_layout Standard
+Besides maintain the data of HMS, the administrator of the HMS also need
+ to take care of the user role.
+ Base on the request from the user, the administrator can adjust the user
+ role from the 
+\begin_inset Quotes sld
+\end_inset
+
+User Management
+\begin_inset Quotes srd
+\end_inset
+
+ panel (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Manage-User-Role"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/manage user role.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Manage User Role 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Manage-User-Role"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
