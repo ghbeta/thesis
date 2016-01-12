@@ -864,11 +864,39 @@ what were used in this project?explain the basics of the techniques
 \end_layout
 
 \begin_layout Section
-techniques like framework and jpa?
+Used technologies
 \end_layout
 
-\begin_layout Standard
-or?
+\begin_layout Subsection
+Git
+\end_layout
+
+\begin_layout Subsection
+JGit
+\end_layout
+
+\begin_layout Subsection
+Gitolite
+\end_layout
+
+\begin_layout Subsection
+Playframework
+\end_layout
+
+\begin_layout Subsection
+Ebean
+\end_layout
+
+\begin_layout Subsection
+H2 Embeded Database
+\end_layout
+
+\begin_layout Subsection
+WebSocket
+\end_layout
+
+\begin_layout Subsection
+Json
 \end_layout
 
 \begin_layout Section
@@ -876,7 +904,7 @@ Related works
 \end_layout
 
 \begin_layout Standard
-moodle?
+
 \end_layout
 
 \begin_layout Chapter
@@ -8252,17 +8280,7 @@ tring> out){
 
 \begin_layout Plain Layout
 
-		out.write(result.toString());
-\end_layout
-
-\begin_layout Plain Layout
-
-		notification.put("event","noti");
-\end_layout
-
-\begin_layout Plain Layout
-
-		...		
+		out.write(result.toString());	
 \end_layout
 
 \begin_layout Plain Layout

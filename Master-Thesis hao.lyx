@@ -864,19 +864,43 @@ what were used in this project?explain the basics of the techniques
 \end_layout
 
 \begin_layout Section
-techniques like framework and jpa?
+Used technologies
 \end_layout
 
-\begin_layout Standard
-or?
+\begin_layout Subsection
+Git
+\end_layout
+
+\begin_layout Subsection
+JGit
+\end_layout
+
+\begin_layout Subsection
+Gitolite
+\end_layout
+
+\begin_layout Subsection
+Playframework
+\end_layout
+
+\begin_layout Subsection
+Ebean
+\end_layout
+
+\begin_layout Subsection
+H2 Embeded Database
+\end_layout
+
+\begin_layout Subsection
+WebSocket
+\end_layout
+
+\begin_layout Subsection
+Json
 \end_layout
 
 \begin_layout Section
 Related works
-\end_layout
-
-\begin_layout Standard
-moodle?
 \end_layout
 
 \begin_layout Chapter
@@ -915,7 +939,7 @@ register a user account
 
  .
  The second part of the design is to develop the special core features to
- make the HMS system better platform compare to others, the dynamic data
+ make the HMS system a better platform compare to others, the dynamic data
  management and the git based homework management.
  
 \end_layout
@@ -939,7 +963,7 @@ HMS
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -990,8 +1014,8 @@ reference "fig:The-use-case"
 \end_inset
 
  shows,there are several steps within this process from the prospective
- of the user roll.
- First considering the user roll of students,the student should be able
+ of the user role.
+ First considering the user role of students,the student should be able
  to register a account of 
 \begin_inset Quotes sld
 \end_inset
@@ -2004,7 +2028,7 @@ Master Graph-Model : Evaluation through final exam
 \end_layout
 
 \begin_layout Standard
-Above course can be divided into two categories.
+Above courses can be divided into two categories.
  in the first type of course the students have to hand in various homework,
  and the points gained from those homework are usually used as a prerequisite
  for the final exam.
@@ -2526,11 +2550,12 @@ reference "tab:Features-of-course"
 
 \end_inset
 
-course into consideration, it is possible to hand in the semester project
- to the server just using this method, but uploading a whole semester project
- to the system at the end of semester is sometimes risky for the students(Data
- loss of the computer before dead line), and the teachers may need to trace
- the project history to comprehend the work of students(avoiding plagiarism).
+course into consideration at all, though it is still possible to hand in
+ the semester project to the server just using this method, but uploading
+ a whole semester project to the system at the end of semester is sometimes
+ risky for the students(Data loss of the computer before dead line), and
+ the teachers may need to trace the project history to comprehend the work
+ of students(avoiding plagiarism).
  
 \end_layout
 
@@ -2540,7 +2565,7 @@ the second and third problem are related to each other, because all the
  and time consuming.
  all these platform including HMS are designed for a faculty in university,
  it's very common once in a while the faculty need to archive or backup
- the old data from the past term.
+ the old data from the past semester.
  A possible way is query out all the related data based on the semester,
  then dump these data into file and save the course related files some where
  else.
