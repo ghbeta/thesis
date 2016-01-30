@@ -120,6 +120,11 @@
   Url                      = {http://www.h2database.com/html/features.html#embedded_databases}
 }
 
+@Electronic{jacoco,
+  Title                    = {Jacoco for Sbt},
+  Url                      = {https://github.com/sbt/jacoco4sbt}
+}
+
 @Electronic{jgitguide,
   Title                    = {JGit User Guide},
   Url                      = {http://wiki.eclipse.org/JGit/User_Guide}
@@ -137,10 +142,5 @@
 
 @Electronic{playframeworkdocu,
   Url                      = {https://playframework.com/documentation/2.3.x/}
-}
-
-@Electronic{,
-  Title                    = {Jacoco for Sbt},
-  Url                      = {https://github.com/sbt/jacoco4sbt}
 }
 

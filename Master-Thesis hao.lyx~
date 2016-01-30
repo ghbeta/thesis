@@ -903,10 +903,6 @@ Json
 Related works
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Chapter
 Design
 \end_layout
@@ -943,7 +939,7 @@ register a user account
 
  .
  The second part of the design is to develop the special core features to
- make the HMS system better platform compare to others, the dynamic data
+ make the HMS system a better platform compare to others, the dynamic data
  management and the git based homework management.
  
 \end_layout
@@ -967,7 +963,7 @@ HMS
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1018,8 +1014,8 @@ reference "fig:The-use-case"
 \end_inset
 
  shows,there are several steps within this process from the prospective
- of the user roll.
- First considering the user roll of students,the student should be able
+ of the user role.
+ First considering the user role of students,the student should be able
  to register a account of 
 \begin_inset Quotes sld
 \end_inset
@@ -2032,7 +2028,7 @@ Master Graph-Model : Evaluation through final exam
 \end_layout
 
 \begin_layout Standard
-Above course can be divided into two categories.
+Above courses can be divided into two categories.
  in the first type of course the students have to hand in various homework,
  and the points gained from those homework are usually used as a prerequisite
  for the final exam.
@@ -2266,6 +2262,13 @@ creating course
 
 \begin_layout Subsection
 Assignment management
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Assignment-management"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2539,7 +2542,7 @@ Student submit a work with a response.
 and teacher needs to do several settings to make those type work properly,
  this introduced unnecessary extra cost not only for development but also
  for the user of the system.
- on the other hand the this approach didn't take the 
+ on the other hand this approach didn't take the 
 \begin_inset Quotes sld
 \end_inset
 
@@ -2554,11 +2557,12 @@ reference "tab:Features-of-course"
 
 \end_inset
 
-course into consideration, it is possible to hand in the semester project
- to the server just using this method, but uploading a whole semester project
- to the system at the end of semester is sometimes risky for the students(Data
- loss of the computer before dead line), and the teachers may need to trace
- the project history to comprehend the work of students(avoiding plagiarism).
+course into consideration at all, though it is still possible to hand in
+ the semester project to the server just using this method, but uploading
+ a whole semester project to the system at the end of semester is sometimes
+ risky for the students(Data loss of the computer before dead line), and
+ the teachers may need to trace the project history to comprehend the work
+ of students(avoiding plagiarism).
  
 \end_layout
 
@@ -2568,7 +2572,7 @@ the second and third problem are related to each other, because all the
  and time consuming.
  all these platform including HMS are designed for a faculty in university,
  it's very common once in a while the faculty need to archive or backup
- the old data from the past term.
+ the old data from the past semester.
  A possible way is query out all the related data based on the semester,
  then dump these data into file and save the course related files some where
  else.
@@ -2641,7 +2645,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Workflow of git
+Workflow of File Submission using Git
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Workflow-of-git"
@@ -2774,8 +2778,7 @@ Type II
 \end_layout
 
 \begin_layout Subsubsection
-a.
- Local modes
+Local modes
 \end_layout
 
 \begin_layout Standard
@@ -2852,13 +2855,13 @@ name "fig:Repository-file-structure-local"
 
 \begin_layout Standard
 In order to maintain this file structure and avoid introducing unnecessary
- errors, the address of the git repository is hidden from the student, they
- can only using the course homepage to upload their solutions.
+ errors, the address of the git repository is hidden from the student, furthurem
+ore students don't have the access rights to the repository at all.
+ they can only using the course homepage to upload their solutions.
 \end_layout
 
 \begin_layout Subsubsection
-b.
- Remote modes
+Remote modes
 \end_layout
 
 \begin_layout Standard
@@ -2870,23 +2873,341 @@ Type II
 \begin_inset Quotes srd
 \end_inset
 
- course students will obtain the repository address at once when they join
- the course, and use this repository to host their semester project.
+ course students will obtain the repository address and its full access
+ rights at once when they join the course, and use this repository to host
+ their semester project.
  This part works similar as using a remote repository.
- students needs to know their the repository address and using the 
+ students can push the changes from their local machine to the HMS server,
+ without loggin into the HMS system.
+\end_layout
+
+\begin_layout Subsection
+Automatic Evaluation through Git Commits
+\end_layout
+
+\begin_layout Standard
+Until now , evaluating a submission from student require teacher or assistent
+ firstly to check out the repository of student then log into the HMS system
+ using the function described in the section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Assignment-management"
+
+\end_inset
+
+ to register the score of each students.
+ constantly switching two working system not only inconvenient but can also
+ easily introducing errors by registering points.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+List<Class> entity1 = new ArrayList<Class>();
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Semesteruser.class);
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Assignment.class);
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Lecture.class);//+1 Test OK
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Message.class);//1 Test OK
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Repo.class);//-1 Test Not OK
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Evaluation.class);//Test OK +1
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Handin.class);
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(ForumThread.class);//Test OK 1
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(ForumPost.class);
+\end_layout
+
+\begin_layout Plain Layout
+
+        entity1.add(Conversation.class);//Not Test -1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evaluation of a Submission 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Evaluation-of-Submission"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second advantage of using Git to manage the submission is making the
+ process of adding evaluation fully automatic and avoiding the situation
+ of changing working system.
+ Base on the results of interviewing the colleagues of the 
 \begin_inset Quotes sld
 \end_inset
 
-Push
+Faculty: Software Engineering
 \begin_inset Quotes srd
 \end_inset
 
- command of the Git to push the changes from their local machine to the
- HMS server.
- Only at the end of the semester or the deadline is due students need to
- use the course homepage to tag the repository, this can generate a evaluation
- request at the teacher side so that the teacher can register the evaluation
- result into the system.
+, the common behavior of reviewing and evaluating a student submission is
+ to add comments at the end of line as showed in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Evaluation-of-Submission"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+if the reviewer commit the changes, these changes can be easily retrieved
+ using git command 
+\begin_inset listings
+lstparams "language=bash,basicstyle={\footnotesize}"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+git diff
+\end_layout
+
+\end_inset
+
+ and showed in Unified Diff Format 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GNUDiff"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/unidiff.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Unified Diff Format 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Unified-Diff-Format"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Unified-Diff-Format"
+
+\end_inset
+
+ shows the changes made by the reviewer in Unified Diff Format.
+ the two-line header which starts with symbole 
+\series bold
+\shape italic
+\emph on
+
+\begin_inset Quotes sld
+\end_inset
+
+- - -
+\begin_inset Quotes srd
+\end_inset
+
+
+\shape default
+ 
+\series default
+\emph default
+and 
+\series bold
+\emph on
+
+\begin_inset Quotes sld
+\end_inset
+
++ + +
+\begin_inset Quotes srd
+\end_inset
+
+
+\series default
+\emph default
+ indicate the changes has been made from file 
+\shape italic
+java1.java
+\shape default
+ to file 
+\shape italic
+java1.java
+\shape default
+.
+ next line shows where the files has been changed, in this case the changes
+ begins from the line 61 to next 14 more lines.
+ the line begins with symbole 
+\series bold
+\emph on
+
+\begin_inset Quotes sld
+\end_inset
+
+-
+\begin_inset Quotes srd
+\end_inset
+
+
+\series default
+\emph default
+ and 
+\series bold
+\emph on
+
+\begin_inset Quotes sld
+\end_inset
+
++
+\begin_inset Quotes srd
+\end_inset
+
+
+\series default
+\emph default
+ contains the actual differ between two versions of 
+\shape italic
+java1.java
+\shape default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GNUDiff"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The Unified Diff Format can be easily parsed based on these specific symboles,
+ so that the actual changes made by the reviewer can be extracted.
+ After analysing the comments made by the reviewer, most of the comments
+ have following formats:
+\end_layout
+
+\begin_layout Enumerate
+//points text
+\end_layout
+
+\begin_layout Enumerate
+//text points
+\end_layout
+
+\begin_layout Standard
+the comments either starts with a number or ends with a number, using the
+ regular expression the points can be collected programmatically.
+ This makes the automatic evaluation possible.
+ The only precondition is that the reviewer has to commit the changes base
+ on the submission from students, and using the comments format from above,
+ so that the points can be automatically collected by the system and registerted
+ into the database without loggin into the system and manuelly register
+ the points.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -3193,11 +3514,16 @@ reference "fig:Semester-file-structure"
 
 \end_inset
 
-.
+, so that the usage of each file can be easily determined without involving
+ the database.
 \end_layout
 
 \begin_layout Subsection
 Real-time database generation
+\end_layout
+
+\begin_layout Standard
+The HMS system is based on the Play Framework
 \end_layout
 
 \begin_layout Standard
@@ -3304,7 +3630,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Database configuration 
+Database configuration in Play Framework
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Database-configuration"
@@ -3824,8 +4150,9 @@ Data models
 
 \begin_layout Standard
 There are two types database in HMS.
- one is a global database, it is used for authentication and additionally
- tracking the creation of semester database.
+ one is a global database, it is used for authenticating and tracking the
+ information of newly created semester database and lecture repository of
+ students.
  another is semester database, this database saves all the data that related
  to the Course, Assignment, Evaluation, and Communication.
  so the design of data models for these two type database are also different.
