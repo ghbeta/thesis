@@ -3489,10 +3489,11 @@ Implementations
 \end_layout
 
 \begin_layout Standard
-In this chapter the concrete implementation of the functions from the chapter
- 3 will be presented.
- because the data persistent is the precondition for other function to work,
- also it is the key features of the HMS system.
+In this chapter the concrete implementation including used tools and extra
+ library also the methodology to fullfill the requirements of the functions
+ from the chapter 3 will be presented.
+ Because the data persistent and management are the preconditions for other
+ function to work, and they are the key features of the HMS system.
  the implementation of dynamic data management and git based file submission
  will be first discussed.
 \end_layout
@@ -3523,14 +3524,11 @@ Real-time database generation
 \end_layout
 
 \begin_layout Standard
-The HMS system is based on the Play Framework
-\end_layout
-
-\begin_layout Standard
-Play framework uses Ebean ORM to access the database,ORM is a technique
- to convert objected oriented programming language(in this case Java) into
- its persistence as a relational data base, so the data can freely exchange
- between a java object and database table.
+The HMS system is based on the Play Framework and Play framework uses Ebean
+ ORM to access the database,ORM is a technique to convert objected oriented
+ programming language(in this case Java) into its persistence as a relational
+ data base, so the data can freely exchange between a java object and database
+ table.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "K2009"
@@ -4168,8 +4166,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/diagram-global.png
-	scale 50
+	filename images/globaldatabase-diagram.svg
+	scale 60
 
 \end_inset
 
@@ -4253,8 +4251,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/db-diagram-semester.png
-	scale 30
+	filename images/semesterdatabase-model.svg
+	scale 35
 
 \end_inset
 
@@ -4293,33 +4291,30 @@ reference "fig:Data-models-for-semester"
 
 \end_inset
 
- represent the data models of the semester database, because there are more
- activities using semester database, the model is more complicated than
- the global database.
- first is the 
+ represent the data models of the semester database.
+ First is the 
 \shape italic
 Lecture
 \shape default
  class, all the activities around the homework management is about the lecture,
  a lecture includes assignment (Assignment), git repositories(Repos), a
  forum(Thread) and the lecture evaluation(Evaluation) for students.
- and each assignments should generate a lot of hand ins(Handins) from the
- students.
+ and each assignment contains a lot of hand ins(Handins) from the students.
  besides the lecture related data, the data of chat system is semester related
- and independently of the lecture.
+ and independently from the lecture.
  at last all these data are related to the Semesteruser.
  Semesteruser and User are both subclass extends from super class 
 \shape italic
 Abstractuser
 \shape default
-(Figure 
+ as showed in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Class-Diagram-Semesteruser"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -4332,8 +4327,8 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/semesteruser.png
-	scale 45
+	filename images/userclassmodel.svg
+	scale 50
 
 \end_inset
 
@@ -4378,7 +4373,7 @@ Ebean supports the JPA (Java Persistence API) annotation
 \end_inset
 
 , this annotation designates a class whose mapping information is applied
- to the classes that inherit from it, but will be no table generated for
+ to the classes that inherit from it, but will be not able generated for
  the mapped superclass itself.
  
 \begin_inset CommandInset citation
@@ -4402,10 +4397,14 @@ Abstractuser
 \end_inset
 
 , the database specific data will be defined in the subclass.
+ The field variable of the User Class are all related to the authentication
+ data, for instance the passwords and ssh keys, on the other hand Semesteruser
+ class contains only the data related to the lecture activities.
  using this method can first avoid the redundant code, second the semester
  data can be completely separate from the other data.
- when a register user want to sing up a new course in a semester, his user
- information should be first transformed from the 
+ when a register user want to sing up a new course in a semester, the common
+ user information(e.g.
+ user id, email address) should be first transformed from the 
 \begin_inset Quotes sld
 \end_inset
 
@@ -4593,7 +4592,8 @@ reference "fig:User-To-Semesteruser"
 
 \end_inset
 
-shows, when a user want to sign up a course, the system first find his 
+shows, when a user want to sign up a course, the system will first find
+ his 
 \shape italic
 Semesteruser
 \shape default
@@ -4607,6 +4607,12 @@ Semesteruser
 \shape default
  object will be generated in the semester database based on the user information
  from the global database.
+ 
+\end_layout
+
+\begin_layout Standard
+Using this methode can keep the amount of data of the Semesteruser in each
+ semester database as small as possible.
 \end_layout
 
 \begin_layout Subsection
@@ -5500,7 +5506,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/commit.png
+	filename images/upload-assignment.jpg
 	scale 50
 
 \end_inset
@@ -6115,7 +6121,7 @@ reference "fig:Commit-submission"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7404,7 +7410,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/remote course.png
+	filename images/remotelecture.jpg
 	scale 40
 
 \end_inset
@@ -7416,7 +7422,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/local course.png
+	filename images/locallecture.jpg
 	scale 40
 
 \end_inset
@@ -8125,7 +8131,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/uploadassignment.png
+	filename images/modify assignment.jpg
 	scale 40
 
 \end_inset
@@ -8241,7 +8247,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/einzelevaluation.png
+	filename images/result evaluation.jpg
 	scale 50
 
 \end_inset
