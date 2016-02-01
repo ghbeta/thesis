@@ -2882,7 +2882,14 @@ Type II
 \end_layout
 
 \begin_layout Subsection
-Automatic Evaluation through Git Commits
+Automatic Evaluation
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Automatic-Evaluation"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6163,6 +6170,361 @@ name "fig:Remote-mode"
 Automatic Evaluation 
 \end_layout
 
+\begin_layout Standard
+The common behavior of a reviewer rating a student's submission is to add
+ comments directly inside the file of a submission (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Automatic-Evaluation"
+
+\end_inset
+
+).
+ And these comments can be extracted base on the information from the Unified
+ Diff Format , and specific points inside these comments can be automatically
+ collected and assigned to the related to the hand in of a student by HMS.
+ 
+\end_layout
+
+\begin_layout Standard
+To achieve this goal, there are three problems needed to be dealt with:
+\end_layout
+
+\begin_layout Enumerate
+HMS need to aware when a reviewer pushs a evaluation back to repository
+ using a git client.
+\end_layout
+
+\begin_layout Enumerate
+Make sure the comments extracted from Unified Diff are actually made by
+ the reviewer, not by students or anyone else.
+\end_layout
+
+\begin_layout Enumerate
+Collect points from the comments and register the points the corrected person
+ and lecture.
+\end_layout
+
+\begin_layout Standard
+The solution to these problems will be introduced in the rest of this section.
+\end_layout
+
+\begin_layout Subsubsection
+4.2.4.1 Detect changes from repository
+\end_layout
+
+\begin_layout Standard
+Although HMS already has the ability to make changes to git repositories
+ by using Gitolite, however it can not directly detect changes of the repository
+ made outside of the system.
+ Like when reviewer pushes a changes back to the repository directly using
+ other git client, HMS will not aware these changes.
+ Because the HMS using Gitolite to manage the access control over git repositori
+es and these repositories can be accessed remotely using SSH, which isn't
+ supported by the Playframework.
+\end_layout
+
+\begin_layout Standard
+So the HMS system has to detect the changes of the repositories actively,
+ one possible methode is to poll the file system looking for changes , however
+ this approch can not detect the changes in time and is inefficient.
+ Another way is to use a native Java API 
+\begin_inset Quotes sld
+\end_inset
+
+
+\shape italic
+WatchService
+\shape default
+
+\begin_inset Quotes srd
+\end_inset
+
+ from JDK 7.
+ This API enables the system to register any directory with different change
+ events, suche as file deletion,file create or file modification.
+ When the watch service detect any of these events, these events will be
+ handled as needed.
+ This API can also take advantags of native file change notification implemented
+ by the file system itself, so that polling the file system can be avoid.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JavaNio"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Watch Service
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+public class RepoWatcher implements Runnable {
+\end_layout
+
+\begin_layout Plain Layout
+
+    public WatchService watchService;
+\end_layout
+
+\begin_layout Plain Layout
+
+    public RepoWatcher(WatchService repowatcher){
+\end_layout
+
+\begin_layout Plain Layout
+
+        this.watchService=repowatcher;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    @Override
+\end_layout
+
+\begin_layout Plain Layout
+
+    public void run() {
+\end_layout
+
+\begin_layout Plain Layout
+
+       try{
+\end_layout
+
+\begin_layout Plain Layout
+
+           WatchKey key = watchService.take();
+\end_layout
+
+\begin_layout Plain Layout
+
+           while(key!=null){
+\end_layout
+
+\begin_layout Plain Layout
+
+           key.pollEvents();
+\end_layout
+
+\begin_layout Plain Layout
+
+           Path dir=(Path)key.watchable();
+\end_layout
+
+\begin_layout Plain Layout
+
+           GitEvaluation(dir.toString());       
+\end_layout
+
+\begin_layout Plain Layout
+
+           key.reset();
+\end_layout
+
+\begin_layout Plain Layout
+
+           key=watchService.take();
+\end_layout
+
+\begin_layout Plain Layout
+
+           }
+\end_layout
+
+\begin_layout Plain Layout
+
+       }catch (Exception e){
+\end_layout
+
+\begin_layout Plain Layout
+
+           Logger.debug(e.getMessage());
+\end_layout
+
+\begin_layout Plain Layout
+
+       }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+public class Global extends GlobalSettings{
+\end_layout
+
+\begin_layout Plain Layout
+
+    @Override
+\end_layout
+
+\begin_layout Plain Layout
+
+    public void onStart(Application application) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        try {
+\end_layout
+
+\begin_layout Plain Layout
+
+            setWatchService();
+\end_layout
+
+\begin_layout Plain Layout
+
+            RepoWatcher repoWatcher = new RepoWatcher(getWatchService());
+\end_layout
+
+\begin_layout Plain Layout
+
+            Thread watchThread = new Thread(repoWatcher, "repoWatcherThread");
+\end_layout
+
+\begin_layout Plain Layout
+
+            watchThread.start();
+\end_layout
+
+\begin_layout Plain Layout
+
+        } catch (IOException e) {
+\end_layout
+
+\begin_layout Plain Layout
+
+            Logger.debug(e.getMessage());
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+File Watch Service 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:File-Watch-Service"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:File-Watch-Service"
+
+\end_inset
+
+ shows the implementation of Watch Service inside HMS system.
+ Inside the Global class, the methode setWatchService() initiate a Watch
+ Service of the default file system, then the object of Watch Service will
+ pass to a runnable class RepoWatcher.
+ Then a WatchKey ,which contains the detailed change information, will be
+ obtained from the watchService.take().
+ The take() methode returns a queued key.
+ If there is no changes detected by the Watch Service, this methode waits.
+ on the other hand, if a change has been detected by the Watch Service,
+ key will be not a null object, and this key will enter a infinite loop,
+ inside the while loop, the address of changed repository will be getted
+ and passed to the methode GitEvaluation(), this methode will start the
+ evaluation process.
+ after this key is used, it will be cleared and wait for next changes.
+ The RepoWatcher runs in a seperate thread watchThread, and will be started
+ before HMS actually run.
+ Everytime when a new repository was created, it can be easily added to
+ the WatchService as follows: 
+\begin_inset listings
+lstparams "language=Java,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Path addToWatch= Paths.get(System.getProperty("user.home"), "repositories",
+ reponame + ".git", "refs", "heads");
+\end_layout
+
+\begin_layout Plain Layout
+
+addToWatch.register(getWatchService(), ENTRY_MODIFY);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+4.2.4.2 Authentication
+\end_layout
+
 \begin_layout Section
 User management
 \end_layout
@@ -6382,11 +6744,6 @@ indFromRequest();
 
 \begin_layout Plain Layout
 
-            ...
-\end_layout
-
-\begin_layout Plain Layout
-
             user.roles=UserRoll.Students.toString();
 \end_layout
 
@@ -6403,11 +6760,6 @@ indFromRequest();
 \begin_layout Plain Layout
 
             sendMailAskForConfirmation(user);
-\end_layout
-
-\begin_layout Plain Layout
-
-            ...
 \end_layout
 
 \begin_layout Plain Layout
@@ -6513,11 +6865,6 @@ private static void sendMailAskForConfirmation(User user){
 
 \begin_layout Plain Layout
 
-        ...
-\end_layout
-
-\begin_layout Plain Layout
-
         urlString += "/confirm/" + user.confirmationToken;
 \end_layout
 
@@ -6529,10 +6876,6 @@ private static void sendMailAskForConfirmation(User user){
 \begin_layout Plain Layout
 
         String message = Messages.get("mail.confirm.message", url.toString());
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -6562,11 +6905,6 @@ public static Result confirm(String token) {
 \begin_layout Plain Layout
 
         User user = User.findByConfirmationToken(token,"global");
-\end_layout
-
-\begin_layout Plain Layout
-
-        ...
 \end_layout
 
 \begin_layout Plain Layout
@@ -8131,7 +8469,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/uploadassignment.png
+	filename images/modify assignment.jpg
 	scale 40
 
 \end_inset
@@ -8247,7 +8585,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/einzelevaluation.png
+	filename images/result evaluation.jpg
 	scale 50
 
 \end_inset
