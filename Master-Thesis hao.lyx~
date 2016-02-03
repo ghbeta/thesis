@@ -3006,8 +3006,8 @@ name "fig:Evaluation-of-Submission"
 
 \begin_layout Standard
 The second advantage of using Git to manage the submission is making the
- process of adding evaluation fully automatic and avoiding the situation
- of changing working system.
+ process of registering the points and comments fully automatic and avoiding
+ the situation of changing working system.
  Base on the results of interviewing the colleagues of the 
 \begin_inset Quotes sld
 \end_inset
@@ -3029,7 +3029,8 @@ reference "fig:Evaluation-of-Submission"
 
 \begin_layout Standard
 if the reviewer commit the changes, these changes can be easily retrieved
- using git command 
+ by comparing the student's submission and its reviewed version made by
+ the reviewer using git command 
 \begin_inset listings
 lstparams "language=bash,basicstyle={\footnotesize}"
 inline true
@@ -3042,7 +3043,7 @@ git diff
 
 \end_inset
 
- and showed in Unified Diff Format 
+ and result will be saved in Unified Diff Format 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GNUDiff"
@@ -4185,7 +4186,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Data models for global database 
+Global database 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Data-models-for-global"
@@ -4270,7 +4271,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Data models for semester database 
+Semester database 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Data-models-for-semester"
@@ -6226,7 +6227,7 @@ es and these repositories can be accessed remotely using SSH, which isn't
 
 \begin_layout Standard
 So the HMS system has to detect the changes of the repositories actively,
- one possible methode is to poll the file system looking for changes , however
+ one possible methode is to poll the file system looking for changes, however
  this approch can not detect the changes in time and is inefficient.
  Another way is to use a native Java API 
 \begin_inset Quotes sld
@@ -6242,11 +6243,12 @@ WatchService
 
  from JDK 7.
  This API enables the system to register any directory with different change
- events, suche as file deletion,file create or file modification.
- When the watch service detect any of these events, these events will be
- handled as needed.
- This API can also take advantags of native file change notification implemented
- by the file system itself, so that polling the file system can be avoid.
+ events, such as file deletion, file create or file modification.
+ When the watch service detect any of those events, they will be handled
+ as needed.
+ The Watch Service API can also take advantags of native file change notificatio
+n implemented by the file system itself, so that polling the file system
+ can be avoid.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "JavaNio"
@@ -6523,6 +6525,350 @@ addToWatch.register(getWatchService(), ENTRY_MODIFY);
 
 \begin_layout Subsubsection
 4.2.4.2 Authentication
+\end_layout
+
+\begin_layout Standard
+After detecting the changes, the next step is to determin who made the changes,
+ because the precondition of automatic evaluation to work is to get the
+ changes between the commits made by reviewer and students.
+ Base on the different submission methode in diffrent lecture modes, the
+ Authentication of automatic evaluation works also differently in Local
+ and Remote mode.
+\end_layout
+
+\begin_layout Subsubsection
+Local Mode
+\end_layout
+
+\begin_layout Standard
+The situation under local mode is straightforward, each repository will
+ only have two commiters: hms and reviewer.
+ Because under this mode the students don't have any access right to the
+ repository and can only use the lecture home page to upload the submission.
+ Every time when student use the home page to upload a submission, the HMS
+ system will commit the changes.
+\end_layout
+
+\begin_layout Standard
+So under this mode, when the HMS system detect the changes, it will try
+ to find out the name of the commiter.
+ If the name of the commiter was 
+\begin_inset Quotes sld
+\end_inset
+
+hms
+\begin_inset Quotes srd
+\end_inset
+
+, then this is submission from the students.
+ otherwise, it is the evaluation submission from the reviewer.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	RevWalk walk= new RevWalk(repository);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	ObjectId head=repository.resolve(Constants.HEAD);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	RevCommit headCommit=walk.parseCommit(head);
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	String committerofhead=headCommit.getAuthorIdent().getName();
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Get the name of Commiter 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Get-the-nameofcommiter"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Get-the-nameofcommiter"
+
+\end_inset
+
+ shows a code snippt used in the HMS system to get the name of the commiter
+ using JGit API
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jgitguide"
+
+\end_inset
+
+ .
+ Since the latest change of a repository will be saved inside the HEAD which
+ is a reference to the last commit of a repository
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chacon2014pro"
+
+\end_inset
+
+.
+ The HMS will try to obtain the identity information always from the commit
+ referenced by the HEAD.
+\end_layout
+
+\begin_layout Subsubsection
+Remote Mode
+\end_layout
+
+\begin_layout Standard
+Under remote mode, using the name or email address of a commiter to determin
+ the identity becomes unreliable.
+ Because under this mode, student also have the full access to the repository
+ and the identity of a commiter can be easily changed using any git client.
+ The results of a an evaluation can be easily manipulated because of this.
+ For instance, a student using git push command submit a solution to the
+ repository normally, later on he changes his name and email address to
+ a teacher of the lecture, and make comments to his submission by himself,
+ then he pushes the commented version the repository.
+ The results is manipulated.
+\end_layout
+
+\begin_layout Standard
+The solution to this issue is that when student submit a solution to the
+ repository of the lecture, the HMS will revoke all the access rights of
+ this student to this repository immidiatly when it detects the changes
+ of the repository.
+ So that the next commiter can only be the reviewer, because only the reviewer
+ has the access to the repository.
+ This however raises another problem, how to determin a change was a submission
+ from student.
+ This requires student to use a key word 
+\begin_inset Quotes sld
+\end_inset
+
+Assignment
+\begin_inset Quotes srd
+\end_inset
+
+ inside their commit messages, if the HMS detect a change and the commit
+ message of this change contains the keyword, HMS will think this submission
+ is from students, and should revoke their access rights to this repository
+ temporarly.
+ Untile next commit, which is definitely from the reviewer, finishes the
+ evaluation, the HMS will reassign the access rights back to the students
+ until next submission.
+\end_layout
+
+\begin_layout Standard
+However this methode will require the reviewer dont't use the keyword 
+\begin_inset Quotes sld
+\end_inset
+
+Assignment
+\begin_inset Quotes srd
+\end_inset
+
+ inside their commit messages.
+\end_layout
+
+\begin_layout Subsubsection
+4.2.4.3 Collecting and Registering the result of Evaluation
+\end_layout
+
+\begin_layout Standard
+If the HEAD commit was made by the reviewer and the commit before the HEAD
+ was made by the students or HMS.
+ The HMS will start the evaluation phase.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+	ObjectId newhead = repository.resolve("HEAD^{tree}");
+\end_layout
+
+\begin_layout Plain Layout
+
+	ObjectId oldHead = repository.resolve("HEAD^^{tree}");
+\end_layout
+
+\begin_layout Plain Layout
+
+	ByteArrayOutputStream changes = new ByteArrayOutputStream();
+\end_layout
+
+\begin_layout Plain Layout
+
+	DiffFormatter formatter = new DiffFormatter(changes);
+\end_layout
+
+\begin_layout Plain Layout
+
+	formatter.setRepository(repository);
+\end_layout
+
+\begin_layout Plain Layout
+
+	formatter.format(oldHead, newhead);
+\end_layout
+
+\begin_layout Plain Layout
+
+	String diffresult = changes.toString();
+\end_layout
+
+\begin_layout Plain Layout
+
+	evaluationResult = CommitParser(diffresult);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Get Evaluation 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Get-Evaluation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Get-Evaluation"
+
+\end_inset
+
+ demostrates the methode to obtain the git diff result between the current
+ HEAD commit and the commit before the HEAD into a String object.
+ The result which is similar as the result in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Unified-Diff-Format"
+
+\end_inset
+
+ will be passed to the methode CommitParse(), in this methode the String
+ diffresult will be parsed using the java regex, and the total points from
+ the comments made by the reviewer will be calculated.
+\end_layout
+
+\begin_layout Subsubsection
+Registering the result
+\end_layout
+
+\begin_layout Standard
+In order to register the points conveniently, the name of repository is
+ intentionally diesigned as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\footnotesize}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+WS2016_LocalLectureTest_7788414
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the first part is the semester information, second part is the name of a
+ lecture, the last part is the id of the student.
+ with these information, the detail information about the lecture and student
+ can be easily obtained from the related database.
+ So that the evaluation result can be registered accordingly.
 \end_layout
 
 \begin_layout Section
