@@ -860,47 +860,356 @@ Basics
 \end_layout
 
 \begin_layout Standard
-what were used in this project?explain the basics of the techniques
+In order to make this thesis more understandable, the used technologies
+ and their major characteristics will decribed in detail in this chapter.
+ The first part introduces the version control system Git.
+ It is used to manage the submitted file by The Homework Management System
+ (HMS).
+ Then Playframework will be described which the HMS is based on.
+ The last part of this chapter will introduce WebSocket protocol, it is
+ used to build the instant message system in the HMS.
 \end_layout
 
 \begin_layout Section
-Used technologies
-\end_layout
-
-\begin_layout Subsection
 Git
 \end_layout
 
-\begin_layout Subsection
-JGit
+\begin_layout Standard
+Git is a widely used version control system.
+ It was initially designed and developed in 2005 by Linus Trovalds with
+ following features:
 \end_layout
 
-\begin_layout Subsection
-Gitolite
+\begin_layout Subsubsection
+Distributed
 \end_layout
 
-\begin_layout Subsection
-Playframework
+\begin_layout Standard
+Every client will fully mirror the repository when they checkout.
+ If the server dies, any of the repositories on the client can be used to
+ restore the repository on the server.
+ so that a distributed version control system can avoid the risk of losing
+ all the data.
 \end_layout
 
-\begin_layout Subsection
-Ebean
+\begin_layout Subsubsection
+Don't save differences
 \end_layout
 
-\begin_layout Subsection
-H2 Embeded Database
+\begin_layout Standard
+Git don't store the differences between the state of a file.
+ Instead it will make of snapshot, every time when user checks in, it will
+ memorize the state of the files at that moment and saves a reference with
+ it.
 \end_layout
 
-\begin_layout Subsection
-WebSocket
+\begin_layout Subsubsection
+Don't need a server
 \end_layout
 
-\begin_layout Subsection
-Json
+\begin_layout Standard
+Most opertions in Git can be operated locally.
+ It does't need any information from other sources.
+ The changes made during offline can be easily merged to the server later.
+\end_layout
+
+\begin_layout Subsubsection
+Data Integrity
+\end_layout
+
+\begin_layout Standard
+Git uses SHA-1 hash to check sum the contents of files and directorys before
+ they are stored, this hash value will be referred to them and saved later
+ into the database of Git.
+ so that it is impossible to make changes inside a repository without Git
+ detecting it.
+ Besides, all the actions made by the user with Git, will only be added
+ to the database of Git.
+ It will not erase or modify anything which is not undoable.
+ So losing data is very diffcult when using Git.
+\end_layout
+
+\begin_layout Subsubsection
+Workflow
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/Gitworkflow.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Workflow of Git 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chacon2014pro"
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Workflow-of-Git"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Workflow-of-Git"
+
+\end_inset
+
+ demonstrates the basic workflow of git.
+ First the user will modify the files inside the the working directory,
+ then these files will be added to the staging area.
+ When user commit the changes, the data inside the staging area will be
+ permanently saved inside 
+\shape italic
+.git
+\shape default
+ directory which stores the metadata and database of the working directory.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "chacon2014pro"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
-Related works
+Playframework
+\end_layout
+
+\begin_layout Standard
+Playframework is an open source web application framework based on the Java.
+ A play application follows the MVC architectural pattern.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/diagrams_mvc.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+MVC Architecture 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "playframeworkdocu"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MVC-Archtectual"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MVC-Archtectual"
+
+\end_inset
+
+ shows, this architecture splite the web application into two layers.
+ The presentation layer and model layer.
+ The model layer representation of raw data, most application use a persistent
+ mechanism such as database at this layer.
+ The presentation layer devide into two parts: view and controller.
+ The view renders the raw data from the model into a form which can be interacte
+d with the user.
+ The controller receives and responds the events, which normally comes from
+ HTTP Request.
+ 
+\end_layout
+
+\begin_layout Standard
+Play is also completely RESTful and stateless, support full asynchronous
+ HTTP programming model so that the concurrent real-time data can be easily
+ intergrated within play applications, and long-lived request will also
+ be served without interferring other thread.
+ Unlike other java playframeworks, playframework comes with an embedded
+ HTTP server.
+ so that a play application can be easily excuted without any container
+ such as tomcat.
+ So a play application can runs on any computer that with a JVM and without
+ doing complicated configurations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "playframeworkdocu"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+WebSocket
+\end_layout
+
+\begin_layout Standard
+WebSocket is a protocol designed for real-time communications.
+ It provides a persistant, bidirectional, fast connection between the client
+ and server.
+ Beside the WebSocket protocol, there is also a WebSocket API, which is
+ developed by the World Wide Web Consortium (W3C).
+ This api enables the developer to perform actions like openning and closing
+ the WebSocket channels or sending and receving messages within their applicatio
+ns.
+ The WebSocket API is supported by major modern browsers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wang2013definitive"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Chapter
+Related Work
+\end_layout
+
+\begin_layout Standard
+Before the HMS system which is introduced by this work, there are already
+ two projects exist at faculty software engineering.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PHP-Based-Homework"
+
+\end_inset
+
+ demostrats the first homwork management system used inside the faculty.
+ It is a simple static php page attached to the lecture homepage combines
+ with a sql database.
+ It only provides the basic functions: user registration, homework submission,
+ solution submission and evaluation registration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/fohry.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PHP Based Homework Management System 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PHP-Based-Homework"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Second system is more advanced.
+ It is a standalone web application based on the Playframework, provides
+ more function than the first system, such as lecture management, assignment
+ management, and a simple feedback system.
+ However it still has some weak points which were discussed in the chapter
+ 1, for instance, both system didn't provide a easy and quick solution to
+ backup the semester related data, use simple file submission approch to
+ manage the homework files and didn't consider the special nature of the
+ homework in the area of computer science, which contains a lot of source
+ code and multiple files.
+\end_layout
+
+\begin_layout Standard
+In the rest of this thesis, a new HMS system will be introduced, which provides
+ a new way to manage the activities around homework specially the homework
+ of computer science and including a new aproch to manage the data persistent
+ so that the cost of running and maintaincing the system can be minimized.
 \end_layout
 
 \begin_layout Chapter
@@ -4104,8 +4413,8 @@ reference "fig:multiple-database"
 
 \end_inset
 
-), first the global database will be first reconstructed, because the name
- of other semester database are saved within the global database, then using
+), the global database will be first reconstructed, because the name of
+ other semester database are saved within the global database, then using
  a loop to reconstruct other semester database.
  it is also should be noticed that between the line of 12 and 21 in Figure
  
@@ -4600,7 +4909,7 @@ reference "fig:User-To-Semesteruser"
 
 \end_inset
 
-shows, when a user want to sign up a course, the system will first find
+ shows, when a user want to sign up a course, the system will first find
  his 
 \shape italic
 Semesteruser
@@ -4706,22 +5015,22 @@ nt.lecture);
 
 \begin_layout Plain Layout
 
-Git git = Git.cloneRepository()
+Git git = Git.cloneRepository();
 \end_layout
 
 \begin_layout Plain Layout
 
-    .setURI(repo.repofilepath)
+    git.setURI(repo.repofilepath)
 \end_layout
 
 \begin_layout Plain Layout
 
-    .setDirectory(localPath)
+    git.setDirectory(localPath)
 \end_layout
 
 \begin_layout Plain Layout
 
-    .call();
+    git.call();
 \end_layout
 
 \end_inset
@@ -4856,15 +5165,15 @@ Access control using Gitolite
 \end_layout
 
 \begin_layout Standard
-The access control over the student's repository is pretty simple.As Figure
- 
+The access control over the student's repository is pretty simple.
+ As Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Access-rights-for-differentuser"
 
 \end_inset
 
- shows, only the students them self have fully access rights for their course
+ shows, only the students themself have fully access rights for their course
  repository and can not get inside other repository.
  teacher and assistants have to grant a read right only for evaluation.
  
@@ -5596,97 +5905,87 @@ public static Result handinhomework(...){
 
 \begin_layout Plain Layout
 
-        ...
+	try{
 \end_layout
 
 \begin_layout Plain Layout
 
-try{
+	MultipartFormData body = request().body().asMultipartFormData();
 \end_layout
 
 \begin_layout Plain Layout
 
-MultipartFormData body = request().body().asMultipartFormData();
+	FilePart homeworkfile = body.getFile("homeworkfile");
 \end_layout
 
 \begin_layout Plain Layout
 
-FilePart homeworkfile = body.getFile("homeworkfile");
+	if (homeworkfile != null) {
 \end_layout
 
 \begin_layout Plain Layout
 
-if (homeworkfile != null) {
+	    String fileName = homeworkfile.getFilename();
 \end_layout
 
 \begin_layout Plain Layout
 
-    String fileName = homeworkfile.getFilename();
+	    Git git = Git.cloneRepository()
 \end_layout
 
 \begin_layout Plain Layout
 
-    Git git = Git.cloneRepository()
+	    git.setDirectory(localPath);
 \end_layout
 
 \begin_layout Plain Layout
 
-    .setDirectory(localPath);
+	    
 \end_layout
 
 \begin_layout Plain Layout
 
-    ...
+	    FileUtils.moveFile(file, new File(localPath, des+fileName));
 \end_layout
 
 \begin_layout Plain Layout
 
-    FileUtils.moveFile(file, new File(localPath, des+fileName));
+	    git.add().addFilepattern(des+fileName).call();
 \end_layout
 
 \begin_layout Plain Layout
 
-    git.add().addFilepattern(des+fileName).call();
+	    git.commit().setMessage(commit).setAuthor(...).call();
 \end_layout
 
 \begin_layout Plain Layout
 
-    git.commit().setMessage(commit).setAuthor(...).call();
+	    RefSpec refSpec = new RefSpec("master");
 \end_layout
 
 \begin_layout Plain Layout
 
-    RefSpec refSpec = new RefSpec("master");
+	    git.push().setRemote("origin").setRefSpecs(refSpec).call();
 \end_layout
 
 \begin_layout Plain Layout
 
-    git.push().setRemote("origin").setRefSpecs(refSpec).call();
+	    git.getRepository().close();
 \end_layout
 
 \begin_layout Plain Layout
 
-    git.getRepository().close();
+	    
 \end_layout
 
 \begin_layout Plain Layout
 
-    ...
+	    Handin handin= new Handin();
 \end_layout
 
 \begin_layout Plain Layout
 
-    Handin handin= new Handin();
-\end_layout
-
-\begin_layout Plain Layout
-
-    ...
-\end_layout
-
-\begin_layout Plain Layout
-
-    handin.save(semester);}
+	    handin.save(semester);}
 \end_layout
 
 \end_inset
@@ -5724,7 +6023,7 @@ Delete submission
 
 \begin_layout Standard
 If a student didn't satisfy the first submission for an assignment, the
- last submission can also be deleted.
+ last submission can also be deleted before the deadline.
  the procedure is almost the same as submission, first the local repository
  created by the submission action will be updated to the latest state, second
  since the submission under the local modes are saved under a unified structure(
@@ -5746,7 +6045,7 @@ reference "fig:Repository-file-structure-local"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset listings
@@ -5855,7 +6154,8 @@ name "sub:Check-out-byteacher"
 
 \begin_layout Standard
 After student have submit their solutions to the repository, teachers can
- check out the students repository for evaluation.
+ check out the students repository for evaluation after granting the access
+ to the student's repository.
 \end_layout
 
 \begin_layout Standard
@@ -6027,7 +6327,7 @@ if(!admincredential.sshs.isEmpty()
 
 \begin_layout Plain Layout
 
-    ...
+    
 \end_layout
 
 \begin_layout Plain Layout
@@ -7539,7 +7839,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset listings
-lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,showstringspaces=false,captionpos=b,frame=tb"
 inline false
 status open
 
@@ -7733,7 +8033,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset listings
-lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,showstringspaces=false,captionpos=b,frame=tb"
 inline false
 status open
 
@@ -9591,8 +9891,9 @@ key "garousi2013systematic"
 
 .
  Therefore, only using the unit test can not test a web application meaningful.
- In this project Fluentlenium and Junit Test will be used to test the HMS
- system.
+ The test of HMS system divided into two parts, the first part is using
+ Fluentlenium to test the GUI, the second part is using Junit to test the
+ Server-Logic.
 \end_layout
 
 \begin_layout Section
@@ -9791,7 +10092,6 @@ JUnit
 \begin_layout Standard
 Since the server side of HMS system are written in Java, the server logic
  will be tested by the JUnit.
- JUnit is a unit testing framework under Java.
  In order to save the testing time, it is important to test the server logic
  without starting the whole HMS system.
  
@@ -9805,7 +10105,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset listings
-lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,showstringspaces=false,captionpos=b,frame=tb"
 inline false
 status open
 
@@ -9821,47 +10121,41 @@ public void testDeleteSSH() {
 
 \begin_layout Plain Layout
 
-User owner= new User();
+	User owner= new User();
 \end_layout
 
 \begin_layout Plain Layout
 
-...
+	owner.save("global");
 \end_layout
 
 \begin_layout Plain Layout
 
-owner.save("global");
+	SSH ssh= new SSH();
 \end_layout
 
 \begin_layout Plain Layout
 
-SSH ssh= new SSH();
+	ssh.save("global");
 \end_layout
 
 \begin_layout Plain Layout
 
-...
 \end_layout
 
 \begin_layout Plain Layout
 
-ssh.save("global");
+	FakeRequest request=new FakeRequest("POST","/settings/ssh_delete?sshid=1");
 \end_layout
 
 \begin_layout Plain Layout
 
-FakeRequest request=new FakeRequest("POST","/settings/ssh_delete?sshid=1");
+	Result result = route(request);
 \end_layout
 
 \begin_layout Plain Layout
 
-Result result = route(request);
-\end_layout
-
-\begin_layout Plain Layout
-
-assertThat(status(result)).isEqualTo(OK);
+	assertThat(status(result)).isEqualTo(OK);
 \end_layout
 
 \begin_layout Plain Layout
@@ -9980,6 +10274,13 @@ OK
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Result
 \end_layout
@@ -9992,8 +10293,8 @@ reference "fig:Test-Coverage"
 
 \end_inset
 
-shows the test coverage from the test procedure from above, which calculated
- by the Jacoco for SBT 
+shows the test coverage from the test procedure from both aspects (GUI and
+ Logic), which calculated by the Jacoco for SBT 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jacoco"
@@ -10001,7 +10302,9 @@ key "jacoco"
 \end_inset
 
 .
- 
+ However due to the incompability of SBT and Jacoco, many scala methodes
+ which were generated by the Playframework during the runtime were marked
+ by the Jacoco sbt version as not covered, especially in the database tests.
 \end_layout
 
 \begin_layout Standard
