@@ -852,7 +852,80 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-motivation, why we need this kind of hms?
+Using a web-based Learning Management System (LMS) to handle the teaching
+ and learning process in higher education becomes increasingly common 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "romero2008data"
+
+\end_inset
+
+.
+ At the same time, more and more students choose Computer Science as their
+ major.
+ Alone in the winter semester of year 2013 in Germany, there are 33700 students
+ enroll for computer science, which is 4% more than in the year of 2012
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "destatis"
+
+\end_inset
+
+.
+ The current LMS system already provides a lot of features such as creating
+ online course, hand out course materials and assignment.
+ However they are still short on features to meet specific needs of computer
+ science education 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rossling2008enhancing"
+
+\end_inset
+
+.
+ A common lecture format for computer science students is that they have
+ to finish a lecture project through whole semester.
+ In order to avoid the data loss, most of students would use a version control
+ system (VCs) to manage their project, such as Git , and the teacher of
+ the lecture would usually provide a remote git server to let the students
+ to host their project, so that the teacher can checkout the student's repositor
+y to make a review from time to time.
+ And when dead line for the project have passed, teacher have to register
+ the points of each project into the LMS system hand by hand.
+ This is a common scenario when using common LMS for computer science lecture.
+ under this circumstance the teaching staff of the faculty has to maintain
+ two system: LMS and VCs, and they need to constantly change between this
+ two system to make a evaluation.
+ On the other hand, the current LMS system require amounts of maintance
+ work.
+ Based on the research of Debbi Weaver from the Swinburne University 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "weaver2008academic"
+
+\end_inset
+
+ , the academic staff require more local IT support to solve some technical
+ issues of the LMS platform.
+ Which is a big distraction from the teaching task.
+ 
+\end_layout
+
+\begin_layout Standard
+In this work a new LMS system, HMS (Homework Management System) will be
+ introduced which using version control system Git to manage the submission
+ from the students.
+ With Git based submission management, the semester project can be directly
+ hosted within the HMS, additionally a new designed evaluation system based
+ on the git can automatically collect the points of the review made by the
+ teacher and register the points directly into the student`s account, so
+ that the teacher and students no longer needs to change between the systems.
+ Furthermore, HMS uses a file based embedded database and a unified storage
+ structure and can run as a standalone java application on any sever, so
+ that the work of maintenance can be reduced to a minimal level.
+ The detail design of the data management will be introduced in the design
+ chapter.
 \end_layout
 
 \begin_layout Chapter
@@ -861,11 +934,11 @@ Basics
 
 \begin_layout Standard
 In order to make this thesis more understandable, the used technologies
- and their major characteristics will decribed in detail in this chapter.
+ and their major characteristics will described in detail in this chapter.
  The first part introduces the version control system Git.
  It is used to manage the submitted file by The Homework Management System
  (HMS).
- Then Playframework will be described which the HMS is based on.
+ Then Play framework will be described which the HMS is based on.
  The last part of this chapter will introduce WebSocket protocol, it is
  used to build the instant message system in the HMS.
 \end_layout
@@ -10293,8 +10366,8 @@ reference "fig:Test-Coverage"
 
 \end_inset
 
-shows the test coverage from the test procedure from both aspects (GUI and
- Logic), which calculated by the Jacoco for SBT 
+ shows the test coverage from the test procedure from both aspects (GUI
+ and Logic), which calculated by the Jacoco for SBT 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "jacoco"
