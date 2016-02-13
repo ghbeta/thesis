@@ -887,10 +887,16 @@ key "rossling2008enhancing"
  A common lecture format for computer science students is that they have
  to finish a lecture project through whole semester.
  In order to avoid the data loss, most of students would use a version control
- system (VCs) to manage their project, such as Git , and the teacher of
- the lecture would usually provide a remote git server to let the students
- to host their project, so that the teacher can checkout the student's repositor
-y to make a review from time to time.
+ system (VCs) to manage their project, such as Git 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GitOfficial"
+
+\end_inset
+
+, and the teacher of the lecture would usually provide a remote git server
+ to let the students to host their project, so that the teacher can checkout
+ the student's repository to make a review from time to time.
  And when dead line for the project have passed, teacher have to register
  the points of each project into the LMS system hand by hand.
  This is a common scenario when using common LMS for computer science lecture.
@@ -909,11 +915,7 @@ key "weaver2008academic"
  , the academic staff require more local IT support to solve some technical
  issues of the LMS platform.
  Which is a big distraction from the teaching task.
- 
-\end_layout
-
-\begin_layout Standard
-In this work a new LMS system, HMS (Homework Management System) will be
+ In this work a new LMS system, HMS (Homework Management System) will be
  introduced which using version control system Git to manage the submission
  from the students.
  With Git based submission management, the semester project can be directly
@@ -1086,7 +1088,14 @@ Playframework
 \end_layout
 
 \begin_layout Standard
-Playframework is an open source web application framework based on the Java.
+Playframework 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PlayOfficial"
+
+\end_inset
+
+ is an open source web application framework based on the Java.
  A play application follows the MVC architectural pattern.
 \end_layout
 
@@ -1168,8 +1177,9 @@ Play is also completely RESTful and stateless, support full asynchronous
  HTTP server.
  so that a play application can be easily excuted without any container
  such as tomcat.
- So a play application can runs on any computer that with a JVM and without
- doing complicated configurations 
+ So a play application can runs on any computer that with a JVM as a normal
+ standalone java application and without doing complicated server configurations
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "playframeworkdocu"
@@ -1184,7 +1194,14 @@ WebSocket
 \end_layout
 
 \begin_layout Standard
-WebSocket is a protocol designed for real-time communications.
+WebSocket 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WebSocketOffi"
+
+\end_inset
+
+ is a protocol designed for real-time communications.
  It provides a persistant, bidirectional, fast connection between the client
  and server.
  Beside the WebSocket protocol, there is also a WebSocket API, which is
@@ -1267,9 +1284,15 @@ name "fig:PHP-Based-Homework"
 
 \begin_layout Standard
 Second system is more advanced.
- It is a standalone web application based on the Playframework, provides
- more function than the first system, such as lecture management, assignment
- management, and a simple feedback system.
+ It is a standalone web application based on the Playframework 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PlayOfficial"
+
+\end_inset
+
+, provides more function than the first system, such as lecture management,
+ assignment management, and a simple feedback system.
  However it still has some weak points which were discussed in the chapter
  1, for instance, both system didn't provide a easy and quick solution to
  backup the semester related data, use simple file submission approch to
@@ -2999,7 +3022,14 @@ name "sub:Submission-management"
 
 \begin_layout Standard
 Instead uploading a file to a simple folder on the server, the students
- will obtain a git repository when they first entering the course.
+ will obtain a git 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GitOfficial"
+
+\end_inset
+
+ repository when they first entering the course.
  using a git repository other than a normal file folder has several advantages.
  firstly the implementation of different submission type is not needed anymore
  and don't need user to do extra settings.
@@ -3601,7 +3631,14 @@ the comments either starts with a number or ends with a number, using the
 \end_layout
 
 \begin_layout Subsection
-Dynamic data management
+Dynamic data management 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Dynamic-data-management"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3910,7 +3947,7 @@ reference "fig:Semester-file-structure"
 \end_layout
 
 \begin_layout Subsection
-Real-time database generation
+Realtime database generation
 \end_layout
 
 \begin_layout Standard
@@ -5194,8 +5231,8 @@ reference "tab:Features-of-course"
 \begin_layout Standard
 The most important requirement is the access control over the git repository.
  because Git by itself does not do any access control, it relies on the
- transport medium(authentication of HMS system) to do authentication, and
- file permissions of the operation system to do authorization(read or write
+ transport medium (authentication of HMS system) to do authentication, and
+ file permissions of the operation system to do authorization (read or write
  permission)
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -5220,12 +5257,26 @@ Gitolite
 \begin_inset Quotes srd
 \end_inset
 
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GitoliteOffi"
+
+\end_inset
+
  and 
 \begin_inset Quotes sld
 \end_inset
 
 Java-Gitolite-manager
 \begin_inset Quotes srd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GitoliteManagerOffi"
+
 \end_inset
 
  to solve the access control problem of git repository.
@@ -5246,9 +5297,9 @@ reference "fig:Access-rights-for-differentuser"
 
 \end_inset
 
- shows, only the students themself have fully access rights for their course
- repository and can not get inside other repository.
- teacher and assistants have to grant a read right only for evaluation.
+ shows, only the students themself have fully access rights to their course
+ repository.
+ Teacher and assistants have to grant access rights befor evaluation.
  
 \end_layout
 
@@ -7315,20 +7366,29 @@ name "fig:Registration-form"
 \end_layout
 
 \begin_layout Standard
-Figure 
+The registration system of the HMS is modified from a demo project PlayStartApp
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PlayStartAppOffi"
+
+\end_inset
+
+.
+ Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Registration-form"
 
 \end_inset
 
- is the registration form on the HMS home page.
- a new user need to at least type in the email address,first name,last name,
- and the password.
- The student number is optional because the multi user roll management of
- the system.
- only students needs to give the students number and get a student user
- role as default.
+ shows the registration form on the HMS home page.
+ a new user need to at least type in the email address, first name, last
+ name, and the password.
+ The student number is optional because of the multi user role management
+ of the system.
+ Student user will get a student user role as default if they type in their
+ student number.
  other user will get a random user id and 
 \begin_inset Quotes sld
 \end_inset
@@ -7337,7 +7397,8 @@ default user
 \begin_inset Quotes srd
 \end_inset
 
- user role, and need the system admin to change the user role afterwards.
+ user role.
+ The system admin will change their user role afterwards.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7528,7 +7589,7 @@ Signup.save()
 \begin_inset Quotes srd
 \end_inset
 
-, at first the data from the 
+, at first, the data from the 
 \shape italic
 registerForm
 \shape default
@@ -9974,7 +10035,14 @@ Fluentlenium
 \end_layout
 
 \begin_layout Standard
-Fluentlenium is a framework that helps developer to write Selenium tests
+Fluentlenium 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FluentleniumOffi"
+
+\end_inset
+
+ is a framework that helps developer to write Selenium tests
 \begin_inset CommandInset citation
 LatexCommand cite
 key "fluentlenium"
@@ -9982,8 +10050,15 @@ key "fluentlenium"
 \end_inset
 
 .
- Selenium is an in-browser programming system, which allows developer to
- directly drive the real web browser programmatically.
+ Selenium 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SeleniumOffi"
+
+\end_inset
+
+ is an in-browser programming system, which allows developer to directly
+ drive the real web browser programmatically.
  It also has the direct access to the DOM elements of web page on the client
  side, and can assert expected client behavior defined by the developer.
  since selenium works within the browser, it can be used to test the dynamic
@@ -10527,10 +10602,6 @@ name "fig:Distribution-Package-of-hms"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -10991,7 +11062,74 @@ name "fig:Manage-User-Role"
 \end_layout
 
 \begin_layout Chapter
-Summary
+Summary and Future Work
+\end_layout
+
+\begin_layout Standard
+The Homework Management System (HMS) introduced by this thesis has two major
+ differences compare to other Learning Management System (LMS).
+ The first difference is that HMS uses git repository to manage the homework
+ submission.
+ Git based submission management has several advantages, first the complicated
+ implementation of submission strategie can be saved because the features
+ of git repository has already cover most of them (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Submission-management"
+
+\end_inset
+
+).
+ second, automatic evaluation using the result from 
+\begin_inset Quotes sld
+\end_inset
+
+git idff
+\begin_inset Quotes srd
+\end_inset
+
+ is possible (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Automatic-Evaluation"
+
+\end_inset
+
+) so that the teacher can register the points directly into the student`s
+ account simply using the push function of git without loggin into the HMS
+ system at all.
+ Another difference is that in order to reduce the additional work besides
+ the teaching activity such as backup and server maintaince, HMS uses a
+ special mechanism to manage the data.
+ First, HMS is based on the Play framework and embeded database, with this
+ combination the HMS can easily run on any computer with JVM pre-installed
+ as a standalone java application.
+ It does't require addtion server and database configuration.
+ Second, the file based embeded database will be generated seperatedly for
+ each semester, so that each database will only hold the data specific to
+ that semester, and the file database will be saved together with other
+ files under a unified strorage structure on the host computer, so that
+ the backup procedure is almost as easy as copying the semester related
+ files to other location (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Dynamic-data-management"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The current work of HMS focuses on improving the low level functions (e.g.
+ introducing new methods to manage the homework and data).
+ Some other high level features related to the education activities are
+ not supported at the current state or only partially supported, for instance,
+ the course enrollement can only support self enrollement which allows users
+ to enroll themselves, the admin of the lecture however can not control
+ the enrolment.
+ In the furture work of the HMS, these high level features should be added
+ continuously based on the requirements of the education activities.
 \end_layout
 
 \begin_layout Standard

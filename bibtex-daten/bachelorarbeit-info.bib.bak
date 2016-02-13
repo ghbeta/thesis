@@ -60,6 +60,11 @@
   Url                      = {https://github.com/FluentLenium/FluentLenium}
 }
 
+@Electronic{FluentleniumOffi,
+  Title                    = {Fluentlenium},
+  Url                      = {https://github.com/FluentLenium/FluentLenium}
+}
+
 @Article{garousi2013systematic,
   Title                    = {A systematic mapping study of web application testing},
   Author                   = {Garousi, Vahid and Mesbah, Ali and Betin-Can, Aysu and Mirshokraie, Shabnam},
@@ -71,9 +76,24 @@
   Publisher                = {Elsevier}
 }
 
+@Electronic{GitOfficial,
+  Title                    = {Git},
+  Url                      = {https://git-scm.com/}
+}
+
 @Electronic{gitolitedocu,
   Title                    = {Gitolite all-in-one documentation},
   Url                      = {http://gitolite.com/gitolite/gitolite.html}
+}
+
+@Electronic{GitoliteManagerOffi,
+  Title                    = {Java Gitolite Manager},
+  Url                      = {https://github.com/devhub-tud/Java-Gitolite-Manager}
+}
+
+@Electronic{GitoliteOffi,
+  Title                    = {Gitolite},
+  Url                      = {http://gitolite.com/gitolite/index.html}
 }
 
 @Electronic{gitscm,
@@ -166,6 +186,17 @@
   Url                      = {https://playframework.com/documentation/2.3.x/}
 }
 
+@Electronic{PlayOfficial,
+  Title                    = {Playframework},
+  Note                     = {https://www.playframework.com/}
+}
+
+@Electronic{PlayStartAppOffi,
+  Title                    = {PlayStartApp},
+  Author                   = {Yesnault},
+  Url                      = {https://github.com/yesnault/PlayStartApp}
+}
+
 @Article{romero2008data,
   Title                    = {Data mining in course management systems: Moodle case study and tutorial},
   Author                   = {Romero, Crist{\'o}bal and Ventura, Sebasti{\'a}n and Garc{\'\i}a, Enrique},
@@ -186,6 +217,11 @@
   Pages                    = {142--166},
   Volume                   = {40},
   Publisher                = {ACM}
+}
+
+@Electronic{SeleniumOffi,
+  Title                    = {SeleniumHQ},
+  Url                      = {http://www.seleniumhq.org/}
 }
 
 @InCollection{van2010research,
@@ -215,5 +251,10 @@
   Number                   = {1},
   Pages                    = {30--41},
   Volume                   = {24}
+}
+
+@Electronic{WebSocketOffi,
+  Title                    = {WebSocket},
+  Url                      = {http://www.websocket.org/}
 }
 
