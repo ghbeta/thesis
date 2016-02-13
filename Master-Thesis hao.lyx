@@ -8529,7 +8529,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/remotelecture.jpg
-	scale 40
+	scale 45
 
 \end_inset
 
@@ -8541,7 +8541,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/locallecture.jpg
-	scale 40
+	scale 45
 
 \end_inset
 
@@ -8666,6 +8666,7 @@ if the semester name of a new course do present, the course will be simply
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -9599,9 +9600,9 @@ reference "fig:Websocket-callbacks"
  the channels and the email of the current user will be passed on to the
  method 
 \shape italic
-Chatsocket.start()
+start()
 \shape default
-(Figure 
+ (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Process-WebSocket-data"
@@ -9667,11 +9668,6 @@ tring> out){
 
 \begin_layout Plain Layout
 
-		...
-\end_layout
-
-\begin_layout Plain Layout
-
 		out.write(result.toString());
 \end_layout
 
@@ -9696,11 +9692,6 @@ tring> out){
 
 \begin_layout Plain Layout
 
-		...
-\end_layout
-
-\begin_layout Plain Layout
-
 		out.write(result.toString());
 \end_layout
 
@@ -9721,11 +9712,6 @@ tring> out){
 \begin_layout Plain Layout
 
     if(inmsg.findPath("event").asText().equals("newmessage")){
-\end_layout
-
-\begin_layout Plain Layout
-
-		...
 \end_layout
 
 \begin_layout Plain Layout
