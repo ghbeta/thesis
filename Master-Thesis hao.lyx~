@@ -5913,9 +5913,8 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-\align center
 \begin_inset Graphics
-	filename images/local mode git.png
+	filename images/new local modes.png
 	scale 50
 
 \end_inset
@@ -6387,7 +6386,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/evaluation.png
+	filename images/new eval page.png
 	scale 45
 
 \end_inset
@@ -6646,7 +6645,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename images/remote modes.png
+	filename images/new remote page.png
 	scale 45
 
 \end_inset
@@ -10231,7 +10230,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset listings
-lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,captionpos=b,frame=tb"
+lstparams "language=Java,numbers=left,basicstyle={\scriptsize},breaklines=true,showstringspaces=false,captionpos=b,frame=tb"
 inline false
 status open
 
