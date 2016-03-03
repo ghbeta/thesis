@@ -32,8 +32,7 @@
 
 @Electronic{cssoffi,
   Title                    = {Cascading Style Sheets},
-  Author                   = {W3C},
-  Note                     = {Visit on 24.11.2015},
+  Note                     = {Last visited on 24.11.2015},
   Url                      = {https://www.w3.org/Style/CSS/}
 }
 
@@ -51,36 +50,35 @@
 }
 
 @Electronic{destatis,
-  Title                    = {Zahl der Erstsemester im Studienjahr 2013},
-  Author                   = {Statistisches Bundesamt Germany},
+  Title                    = {Statistisches Bundesamt: Zahl der Erstsemester im Studienjahr 2013},
   Month                    = {11},
-  Note                     = {Visit on 12.01.2016},
+  Note                     = {Last visited on 12.01.2016},
   Url                      = {https://www.destatis.de/},
   Year                     = {2013}
 }
 
 @Electronic{documoodle,
   Title                    = {Documentation of moodle},
-  Note                     = {Visit on 02.12.2015},
+  Note                     = {Last visited on 02.12.2015},
   Url                      = {https://docs.moodle.org/30/en/Main_page},
   __markedentry            = {[Hao:1]}
 }
 
 @Electronic{ebeanOffi,
   Title                    = {Ebean ORM for Java},
-  Note                     = {Visit on 23.11.2015},
+  Note                     = {Last visited on 23.11.2015},
   Url                      = {http://ebean-orm.github.io/}
 }
 
 @Electronic{fluentlenium,
   Title                    = {Fluentlenium Github Documentation},
-  Note                     = {Visit on 25.01.2016},
+  Note                     = {Last visited on 25.01.2016},
   Url                      = {https://github.com/FluentLenium/FluentLenium}
 }
 
 @Electronic{FluentleniumOffi,
   Title                    = {Fluentlenium},
-  Note                     = {Visit on 25.01.2016},
+  Note                     = {Last visited on 25.01.2016},
   Url                      = {https://github.com/FluentLenium/FluentLenium}
 }
 
@@ -106,50 +104,49 @@
 
 @Electronic{GitOfficial,
   Title                    = {Git},
-  Note                     = {Visit on 22.10.2015},
+  Note                     = {Last visited on 22.10.2015},
   Url                      = {https://git-scm.com/}
 }
 
 @Electronic{gitolitedocu,
   Title                    = {Gitolite all-in-one documentation},
-  Note                     = {Visit in 10.10.2015},
+  Note                     = {Last visited on 10.10.2015},
   Url                      = {http://gitolite.com/gitolite/gitolite.html}
 }
 
 @Electronic{GitoliteManagerOffi,
   Title                    = {Java Gitolite Manager},
-  Note                     = {Visit on 16.10.2015},
+  Note                     = {Last visited on 16.10.2015},
   Url                      = {https://github.com/devhub-tud/Java-Gitolite-Manager}
 }
 
 @Electronic{GitoliteOffi,
   Title                    = {Gitolite},
-  Note                     = {Visit on 10.10.2015},
+  Note                     = {Last visited on 10.10.2015},
   Url                      = {http://gitolite.com/gitolite/index.html}
 }
 
 @Electronic{gitscm,
   Title                    = {Git on the Server},
-  Note                     = {Visit on 01.10.2015},
+  Note                     = {Last visited on 01.10.2015},
   Url                      = {https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server}
 }
 
 @Electronic{GNUDiff,
-  Title                    = {Unified-Format},
-  Note                     = {Visit on 12.01.2016},
-  Organization             = {GNU.org},
+  Title                    = {GNU.org: Unified-Format},
+  Note                     = {Last visited on 12.01.2016},
   Url                      = {http://www.gnu.org/software/diffutils/manual/html_node/Unified-Format.html}
 }
 
 @Standard{h2database,
   Title                    = {H2 Documentation},
-  Note                     = {Visit on 11.12.2015},
+  Note                     = {Last visited on 11.12.2015},
   Url                      = {http://www.h2database.com/html/features.html#embedded_databases}
 }
 
 @Electronic{H2Offi,
   Title                    = {H2 Database Engine},
-  Note                     = {Visit on 02.12.2015},
+  Note                     = {Last visited on 02.12.2015},
   Url                      = {http://www.h2database.com/html/main.html}
 }
 
@@ -165,52 +162,49 @@
 
 @Electronic{HTMLOffi,
   Title                    = {HTML5},
-  Author                   = {W3C},
-  Note                     = {Visit on 23.11.2015},
+  Note                     = {Last visited on 23.11.2015},
   Url                      = {https://www.w3.org/TR/html5/}
 }
 
 @Electronic{jacoco,
   Title                    = {Jacoco for Sbt},
-  Note                     = {Visit on 12.01.2016},
+  Note                     = {Last visited on 12.01.2016},
   Url                      = {https://github.com/sbt/jacoco4sbt}
 }
 
 @Electronic{JavaNio,
   Title                    = {Watching a Directory for Changes},
-  Note                     = {Visit on 16.01.2016},
-  Organization             = {Oracle},
+  Note                     = {Last visited on 16.01.2016},
   Url                      = {https://docs.oracle.com/javase/tutorial/essential/io/notification.html}
 }
 
 @Electronic{JavaOffi,
   Title                    = {Java Documentation},
-  Author                   = {Oracle},
-  Note                     = {Visit on 15.09.2015},
+  Note                     = {Last visited on 15.09.2015},
   Url                      = {https://docs.oracle.com/javase/7/docs}
 }
 
 @Electronic{JDKOffi,
   Title                    = {Java Development Kit},
-  Note                     = {Visit on 11.09.2015},
+  Note                     = {Last visited on 11.09.2015},
   Url                      = {http://www.oracle.com/technetwork/articles/javase/index-jsp-138363.html}
 }
 
 @Electronic{jgitguide,
   Title                    = {JGit User Guide},
-  Note                     = {Visit on 10.11.2015},
+  Note                     = {Last visited on 10.11.2015},
   Url                      = {http://wiki.eclipse.org/JGit/User_Guide}
 }
 
 @Electronic{JPAOffi,
   Title                    = {Java Persistence API},
-  Note                     = {Visit on 26.11.2015},
+  Note                     = {Last visited on 26.11.2015},
   Url                      = {http://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html}
 }
 
 @Electronic{JSoffi,
   Title                    = {JavaScript},
-  Note                     = {Visit on 10.12.2015},
+  Note                     = {Last visited on 10.12.2015},
   Url                      = {https://www.javascript.com/}
 }
 
@@ -247,21 +241,22 @@
   Year                     = {2006}
 }
 
-@Standard{moodlebackup,
-  Title                    = {Moodle documentation:Course Backup},
+@Electronic{moodlebackup,
+  Title                    = {Moodle documentation: Course Backup},
+  Note                     = {Last visited on 30.09.2015},
   Url                      = {https://docs.moodle.org/30/en/Course_backup}
 }
 
 @Electronic{mozilla,
-  Title                    = {Glossary:WebSockets},
-  Author                   = {Mozilla},
-  Note                     = {Visit on 20.12.2015},
+  Title                    = {Glossary: WebSockets},
+  Note                     = {Last visited on 20.12.2015},
   Url                      = {https://developer.mozilla.org/en-US/docs/Glossary/WebSockets},
   Year                     = {2015}
 }
 
-@Manual{objectdbjpa,
+@Electronic{objectdbjpa,
   Title                    = {ObjectDB JPA Reference},
+  Note                     = {Last visited on 05.10.2015},
   Url                      = {http://www.objectdb.com/api/java/jpa/}
 }
 
@@ -277,20 +272,20 @@
 
 @Electronic{playframeworkdocu,
   Title                    = {Playframework Documentation Version 2.3.x},
-  Note                     = {Visit on 16.09.2015},
+  Note                     = {Last visited on 16.09.2015},
   Url                      = {https://playframework.com/documentation/2.3.x/}
 }
 
 @Electronic{PlayOfficial,
   Title                    = {Playframework},
-  Note                     = {Visit on 16.09.2015},
+  Note                     = {Last visited on 16.09.2015},
   Url                      = {https://www.playframework.com/}
 }
 
 @Electronic{PlayStartAppOffi,
   Title                    = {PlayStartApp},
   Author                   = {Yesnault},
-  Note                     = {Visit on 11.09.2015},
+  Note                     = {Last visited on 11.09.2015},
   Url                      = {https://github.com/yesnault/PlayStartApp}
 }
 
@@ -318,7 +313,7 @@
 
 @Electronic{SeleniumOffi,
   Title                    = {SeleniumHQ},
-  Note                     = {Visit on 12.01.2016},
+  Note                     = {Last visited on 12.01.2016},
   Url                      = {http://www.seleniumhq.org/}
 }
 
@@ -331,7 +326,7 @@
 
 @Electronic{tomcatOffi,
   Title                    = {Apache Tomcat},
-  Note                     = {Visit on 21.02.2016},
+  Note                     = {Last visited on 21.02.2016},
   Url                      = {http://tomcat.apache.org/}
 }
 
@@ -366,7 +361,7 @@
 
 @Electronic{WebSocketOffi,
   Title                    = {WebSocket},
-  Note                     = {Visit on 23.01.2016},
+  Note                     = {Last visited on 23.01.2016},
   Url                      = {http://www.websocket.org/}
 }
 

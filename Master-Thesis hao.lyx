@@ -858,7 +858,7 @@ Introduction
 
 \begin_layout Standard
 Using a web-based Learning Management System (LMS) to handle the teaching
- and learning process in higher education becomes increasingly common
+ and learning process in higher education is becoming increasingly common
 \begin_inset CommandInset citation
 LatexCommand cite
 key "romero2008data"
@@ -868,8 +868,8 @@ key "romero2008data"
 .
  At the same time, more and more students choose Computer Science as their
  major.
- Alone in the winter semester of year 2013 in Germany, there are 33700 students
- enroll for computer science, which is 4% more than in the year of 2012
+ In the winter semester of year 2013 in Germany alone, there were 33700
+ students enrolled in computer science, which is 4% more than in 2012
 \begin_inset CommandInset citation
 LatexCommand cite
 key "destatis"
@@ -878,7 +878,7 @@ key "destatis"
 
 .
  The current LMS system already provides a lot of features such as creating
- online course, hand out course materials and assignment.
+ online courses and handout course materials and assignments.
  However they are still short on features to meet specific needs of computer
  science education
 \begin_inset CommandInset citation
@@ -889,27 +889,28 @@ key "rossling2008enhancing"
 
 .
  A common lecture format for computer science students is that they have
- to finish a lecture project through whole semester.
- In order to avoid the data loss, most of students would use a version control
- system (VCs) to manage their project, such as Git
+ to finish a lecture project throughout the whole semester.
+ In order to avoid data loss, most students use a version control system
+ (VCs) to manage their project, such as Git
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GitOfficial"
 
 \end_inset
 
-, and the teacher of the lecture would usually provide a remote git server
- to let the students to host their project, so that the teacher can checkout
- the student's repository to make a review from time to time.
- And when dead line for the project have passed, teacher have to register
- the points of each project into the LMS system hand by hand.
- This is a common scenario when using common LMS for computer science lecture.
- under this circumstance the teaching staff of the faculty has to maintain
- two system: LMS and VCs, and they need to constantly change between this
- two system to make a evaluation.
- On the other hand, the current LMS system require amounts of maintance
+, and the lecturer would usually provides a remote Git server to let the
+ students host their project, so that the teacher can check out the student’s
+ repository to make a review from time to time.
+ And when deadlines for projects have passed, teachers have to register
+ the points of each project into the LMS system by hand.
+ This is a common scenario when using LMS for computer science lectures.
+ Under this circumstance, the teaching staff has to maintain two systems:
+ LMS and VCs.
+ And they need to constantly change between these two systems to make an
+ evaluation.
+ On the other hand, the current LMS system requires large amounts of maintenance
  work.
- Based on the research of Debbi Weaver from the Swinburne University
+ Based on the research of Debbi Weaver from Swinburne University
 \begin_inset CommandInset citation
 LatexCommand cite
 key "weaver2008academic"
@@ -917,18 +918,17 @@ key "weaver2008academic"
 \end_inset
 
 , the academic staff require more local IT support to solve some technical
- issues of the LMS platform.
- Which is a big distraction from the teaching task.
- In this work a new LMS system, HMS (Homework Management System) will be
- introduced which using version control system Git to manage the submission
- from the students.
- With Git based submission management, the semester project can be directly
- hosted within the HMS, additionally a new designed evaluation system based
- on the git can automatically collect the points of the review made by the
- teacher and register the points directly into the student`s account, so
- that the teacher and students no longer needs to change between the systems.
- Furthermore, HMS uses a file based embedded database and a unified storage
- structure and can run as a standalone java application on any sever, so
+ issues with the LMS platform a big distraction from the teaching task.
+ In this work a new LMS system the HMS (Homework Management System) will
+ be introduced using the version control system Git to manage submissions
+ from students.
+ With Git-based submission management, semester projects can be directly
+ hosted within HMS, additionally a newly designed evaluation system based
+ on the Git can automatically collect the points of the review made by the
+ teacher and register the points directly into the student‘s account, so
+ that the teacher and students no longer need to change between the systems.
+ Furthermore, HMS uses a file-based embedded database and a unified storage
+ structure and can run as a stand-alone java application on any sever, so
  that the work of maintenance can be reduced to a minimal level.
  The detail design of the data management will be introduced in the design
  chapter.
@@ -941,14 +941,13 @@ Background and Related Work
 \begin_layout Standard
 In order to make this thesis more understandable, the used technologies
  and their major characteristics will be described in detail in this chapter.
- The first part introduces the version control system Git.
- It is used to manage the submitted file by The Homework Management System
- (HMS).
- Then Play framework will be described which the HMS is based on.
- At last a communications protocol will be introduced .
- It is used to build the instant message system in the HMS.
- Additionally two related systems which were developed earlierer at Faculty
- Software Engineering of University Kassel will be introduced.
+ The first part introduces the version control system, Git, which is used
+ to manage the submitted file by the HMS system.
+ Then, the Play framework which the HMS is based on will be described.
+ Finally, a communications protocol used to build the instant message system
+ in the HMS will be introduced.
+ Additionally, two related systems, which were developed in the Faculty
+ Software Engineering Department of the University of Kassel will be discussed.
 \end_layout
 
 \begin_layout Section
@@ -958,7 +957,7 @@ Git
 \begin_layout Standard
 Git is a widely used version control system.
  It was initially designed and developed in 2005 by Linus Trovalds with
- following features:
+ the following features:
 \end_layout
 
 \begin_layout Subsubsection
@@ -967,35 +966,34 @@ Distributed
 
 \begin_layout Standard
 Every client will fully mirror the repository when they checkout.
- If the server dies, any of the repositories on the client can be used to
- restore the repository on the server.
- so that a distributed version control system can avoid the risk of losing
- all the data.
+ If the server dies, any of the repositories of the client can be used to
+ restore the repository on the server, so that a distributed version control
+ system can avoid the risk of losing all the data.
 \end_layout
 
 \begin_layout Subsubsection
-Don't save differences
+Doesn’t save differences
 \end_layout
 
 \begin_layout Standard
-Git don't store the differences between the state of a file.
- Instead it will make of snapshot, every time when user checks in, it will
- memorize the state of the files at that moment and saves a reference with
+Git does not store the differences between the state of a file.
+ Instead it will take a snapshot, every time a user checks in, and it will
+ memorize the state of the files at that moment and save a reference with
  it.
 \end_layout
 
 \begin_layout Subsubsection
-Don't need a server
+No server needed
 \end_layout
 
 \begin_layout Standard
-Most opertions in Git can be operated locally.
- It does't need any information from other sources.
- The changes made during offline can be easily merged to the server later.
+Most operations in Git can be operated locally.
+ It doesn’t need any information from other sources.
+ The changes made offline can be easily loaded onto the server later.
 \end_layout
 
 \begin_layout Subsubsection
-Data Integrity
+Data integrity
 \end_layout
 
 \begin_layout Standard
@@ -1006,14 +1004,13 @@ key "stevens2012attacks"
 
 \end_inset
 
- hash to check sum the contents of files and directorys before they are
- stored, this hash value will be referred to them and saved later into the
- database of Git.
- so that it is impossible to make changes inside a repository without Git
- detecting it.
+ hash to check-sum files and directories before they are stored, the hash
+ value that will be referred to them and saved later into the database of
+ Git, so that it is impossible to make changes inside a repository without
+ Git detecting them.
  Besides, all the actions made by the user with Git, will only be added
  to the database of Git.
- It will not erase or modify anything which is not undoable.
+ It will not erase or modify anything, which is not undoable.
  So losing data is very diffcult when using Git.
 \end_layout
 
@@ -1078,15 +1075,12 @@ reference "fig:Workflow-of-Git"
 
 \end_inset
 
- demonstrates the basic workflow of git.
- First the user will modify the files inside the the working directory,
- then these files will be added to the staging area.
- When user commit the changes, the data inside the staging area will be
- permanently saved inside 
-\shape italic
-.git
-\shape default
- directory which stores the metadata and database of the working directory
+ demonstrates the basic workflow of Git.
+ First the user will modify the files inside the working directory, then
+ the snapshot of these files will be added to the staging area.
+ When the user commits the changes, the data inside the staging area will
+ be permanently saved inside the Git directory that stores the metadata
+ and object database for the project.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "chacon2014pro"
@@ -1141,7 +1135,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-MVC Architecture 
+MVC architecture
 \begin_inset CommandInset citation
 LatexCommand cite
 key "playframeworkdocu"
@@ -1176,27 +1170,25 @@ reference "fig:MVC-Archtectual"
 
 \end_inset
 
- shows, this architecture splite the web application into two layers.
- The presentation layer and model layer.
- The model layer representation of raw data, most application use a persistent
- mechanism such as database at this layer.
- The presentation layer devide into two parts: view and controller.
- The view renders the raw data from the model into a form which can be interacte
-d with the user.
- The controller receives and responds the events, which normally comes from
- HTTP Request.
- 
+ shows, this architecture splits the web application into two layers: The
+ presentation layer and the model layer.
+ The model layer representation of raw data, mostly uses a persistent mechanism
+ such as database at this layer.
+ The presentation layer is divided into two parts: The view and the controller.
+ The view renders the raw data from the model into a form, which can be
+ interacted with by the user.
+ The controller receives and responds to events, that normally come from
+ the HTTP Request.
 \end_layout
 
 \begin_layout Standard
-Play is also completely RESTful and stateless, support full asynchronous
- HTTP programming model so that the concurrent real-time data can be easily
- intergrated within play applications, and long-lived request will also
- be served without interferring other thread.
- Unlike other java playframeworks, playframework comes with an embedded
- HTTP server.
- so that a play application can be easily excuted without any container
- such as Tomcat
+Play is also completely RESTful and stateless, fully supported by the asynchrono
+us HTTP programming model so that the concurrent real time data can be easily
+ integrated within play applications, and long-lived requests will also
+ be served without interfering with other threads.
+ Unlike other java playframeworks, Playframework comes with an embedded
+ HTTP server so that a play application can be easily executed without any
+ container such as a Tomcat
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tomcatOffi"
@@ -1204,15 +1196,15 @@ key "tomcatOffi"
 \end_inset
 
 .
- So a play application can runs on any computer that with a JVM
+ So, a play application can run on any computer with a JVM
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lindholm2014java"
 
 \end_inset
 
- as a normal standalone java application and without doing complicated server
- configurations
+ as a normal, stand-alone java application and without having to do complicated
+ server configurations
 \begin_inset CommandInset citation
 LatexCommand cite
 key "playframeworkdocu"
@@ -1234,14 +1226,13 @@ key "WebSocketOffi"
 
 \end_inset
 
- is a protocol designed for real-time communications.
- It provides a persistant, bidirectional, fast connection between the client
- and server.
- Beside the WebSocket protocol, there is also a WebSocket API, which is
+ is a protocol designed for real time communications that provides a persistent,
+ bidirectional, fast connection between the client and server.
+ Beside the WebSocket protocol, there is also a WebSocket API, which was
  developed by the World Wide Web Consortium (W3C).
- This api enables the developer to perform actions like openning and closing
- the WebSocket channels or sending and receving messages within their applicatio
-ns.
+ This api enables the developer to perform actions like opening and closing
+ the WebSocket channels or sending and receiving messages within their applicati
+ons.
  The WebSocket API is supported by major modern browsers
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1253,12 +1244,12 @@ key "wang2013definitive"
 \end_layout
 
 \begin_layout Section
-Related Works
+Related works
 \end_layout
 
 \begin_layout Standard
-Before the HMS system which is introduced by this work, there are already
- two projects exist at faculty software engineering.
+Previous to the HMS system introduced by this work there were already two
+ projects that existed at faculty software engineering.
  On the left side of Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1266,10 +1257,10 @@ reference "fig:PHP-Based-Homework"
 
 \end_inset
 
- demostrats the first homwork management system used inside the faculty.
- It is a simple static php page attached to the lecture homepage combines
+ is the first homework management system used inside the faculty.
+ It is a simple, static php page attached to the lecture homepage combined
  with a sql database.
- It only provides the basic functions: user registration, homework submission,
+ It only provides basic functions: user registration, homework submission,
  solution submission and evaluation registration.
 \end_layout
 
@@ -1329,20 +1320,19 @@ reference "fig:PHP-Based-Homework"
 
 \end_inset
 
- shows the second system which is more advanced.
- It is a standalone web application based on the Playframework
+ the second system is shown, which is more advanced.
+ It is a stand-alone web application based on Playframework
 \begin_inset CommandInset citation
 LatexCommand cite
 key "PlayOfficial"
 
 \end_inset
 
-, provides more function than the first system, such as lecture management,
+, and provides more function than the first system, such as lecture management,
  assignment management, and a simple feedback system.
- However it still has some weak points which were discussed in the chapter
- 1, for instance, both system didn't provide a easy and quick solution to
- backup the semester related data, use simple file submission approch to
- manage the homework files and didn't consider the special nature of the
+ However it still has some weak points which were discussed in Chapter 1;
+ for instance, neither systems provide an easy and quick solution to backup
+ the semester-related data, nor do they consider the special nature of the
  homework in the area of computer science, which contains a lot of source
  code and multiple files.
 \end_layout
@@ -1350,8 +1340,8 @@ key "PlayOfficial"
 \begin_layout Standard
 In the rest of this thesis, a new HMS system will be introduced, which provides
  a new way to manage the activities around homework specially the homework
- of computer science and including a new aproch to manage the data persistent
- so that the cost of running and maintaincing the system can be minimized.
+ of computer science and including a new aproach to manage the data persistently
+ so that the cost of running and maintaining the system can be minimized.
 \end_layout
 
 \begin_layout Chapter
@@ -1359,40 +1349,22 @@ Design
 \end_layout
 
 \begin_layout Standard
-The HMS (Homework Management System) is a web platform to manage the activities
- related to the homework including handing out the related materials to
- the students, collecting the handed in homework and managing the evaluation
- of the assignment.
+HMS is a web platform to manage the activities related to homework including
+ handing out the related materials to the students, collecting the handed
+ in homework and managing the evaluation of the assignment.
  In this chapter the detailed design of functions to support those activities
  will be discussed.
  Furthermore the problems of the current alternative system will be analyzed
- and the solutions to those problem will be introduced.
+ and the solutions to those problems will be introduced.
 \end_layout
 
 \begin_layout Standard
-The functions of the 
-\begin_inset Quotes sld
-\end_inset
-
-HMS
-\begin_inset Quotes srd
-\end_inset
-
- system are divided into two parts.
- The first part is to develop the common features which are similar to other
- web platform,for instance 
-\begin_inset Quotes sld
-\end_inset
-
-register a user account
-\begin_inset Quotes srd
-\end_inset
-
-.
- The second part of the design is to develop the special core features to
- make the HMS system a better platform compare to others, the dynamic data
- management and the git based homework management.
- 
+The functions of the HMS system are divided into two parts: The first part
+ is to develop the common features, which are similar to other web platforms,
+ for instance, the ”register a user account” feature.
+ The second part of the design is to develop the special core features the
+ dynamic data management and the git based homework management which make
+ the HMS system a better platform compared to others.
 \end_layout
 
 \begin_layout Section
@@ -1400,17 +1372,8 @@ Common functions
 \end_layout
 
 \begin_layout Standard
-The main task of 
-\begin_inset Quotes sld
-\end_inset
-
-HMS
-\begin_inset Quotes srd
-\end_inset
-
- is handling the process of handing in and handing out the homework between
- the students and teachers.
- 
+The main task of HMS is handling the process of handing in and handing out
+ the homework between the students and teachers.
 \begin_inset Float figure
 wide false
 sideways false
@@ -1432,7 +1395,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The use case from the perspective of different roll of user.
+The use case from the perspective of different user roles.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:The-use-case"
@@ -1453,163 +1416,72 @@ name "fig:The-use-case"
 \end_layout
 
 \begin_layout Standard
-As the Figure 
+As Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:The-use-case"
 
 \end_inset
 
- shows,there are several steps within this process from the prospective
- of the user role.
- First considering the user role of students,the student should be able
- to register a account of 
-\begin_inset Quotes sld
-\end_inset
-
-HMS
-\begin_inset Quotes srd
-\end_inset
-
-, after logging into the system the students can browsing all the available
- courses in the system and subscribing the target course.
+ shows, there are several steps within this process from the prospective
+ of the user.
+ First, considering the user role of students, the student should be able
+ to register a HMS account.
+ After logging into the system, the students can brows all the available
+ courses in the system and subscribe to their target course.
  Then it is possible for the students to view the homepage of the course
- and download the available homework.
- and finally uploading the solutions to the homework accordingly.
- the process of uploading a homework to the system is finished at the student
+ and download the available homework, and finally, uploading the solutions
+ to the homework accordingly.
+ The process of uploading homework to the system is finished on the student’s
  side.
- Now take a look at the side of Teacher and Assistant, besides the registration
- and logging process, the user group of teacher can create new course and
- new assignment also collecting the handed in homework and give them back
- to the students once the evaluation is finished.
- The assistants however can not creating new course, but should be able
- to add new assignment and evaluate the handed in homework as well.
- In summary, in order to realize the main task of the 
-\begin_inset Quotes sld
-\end_inset
-
-HMS
-\begin_inset Quotes srd
-\end_inset
-
-, the 
-\begin_inset Quotes sld
-\end_inset
-
-HMS
-\begin_inset Quotes srd
-\end_inset
-
- system should have following capabilities:
+ Now take a look at the side of teacher and assistant.
+ Beside the registration and log in process, the user group of teacher can
+ create new course and new assignment materials and also collect the handed
+ in homework and give them back to the students once the evaluation is finished.
+ The assistants, however, cannot create a new course, but should be able
+ to add new assignments and evaluate the handed in homework as well.
+ In summary, in order to realize the main task of the HMS, it should have
+ the following capabilities:
 \end_layout
 
 \begin_layout Enumerate
-User management including 
-\begin_inset Quotes sld
-\end_inset
-
-Registration
-\begin_inset Quotes srd
-\end_inset
-
- , 
-\begin_inset Quotes sld
-\end_inset
-
-Role based access control
-\begin_inset Quotes srd
-\end_inset
-
-,
-\begin_inset Quotes srd
-\end_inset
-
-Self management
-\begin_inset Quotes srd
-\end_inset
-
-.
+User management including ”Registration”, ”Role based access control” and”Self-M
+anagement”
 \end_layout
 
 \begin_layout Enumerate
-Course management including 
-\begin_inset Quotes sld
-\end_inset
-
-Creation of Course
-\begin_inset Quotes srd
-\end_inset
-
-,
-\begin_inset Quotes srd
-\end_inset
-
-Modification of Course
-\begin_inset Quotes srd
-\end_inset
-
-.
+Course management including ”Creation of Course”,”Modification of Course”
 \end_layout
 
 \begin_layout Enumerate
-Assignment management including 
-\begin_inset Quotes sld
-\end_inset
-
-Creation of Assignment
-\begin_inset Quotes srd
-\end_inset
-
-,
-\begin_inset Quotes srd
-\end_inset
-
-Distribution of Assignment
-\begin_inset Quotes srd
-\end_inset
-
-,
-\begin_inset Quotes srd
-\end_inset
-
-Collecting of Assignment
-\begin_inset Quotes srd
-\end_inset
-
-,
-\begin_inset Quotes srd
-\end_inset
-
-Evaluation of Assignment
-\begin_inset Quotes srd
-\end_inset
-
-.
+Assignment management including ”Creation of Assignment”, ”Distribution
+ of Assignments”, ”Collecting of Assignment” and ”Evaluation of Assignment”
 \end_layout
 
 \begin_layout Standard
 Besides the above listed capabilities, the HMS should also provide a way
- that the students and teachers can communicate with each other.
- firstly a private message system will be needed for the students and teachers
- to exchange the information about the problem of assignment or evaluations
- individually, also the new message system should work as a instant message
- system, in this way the questions or the problems between the students
- and teachers can resolve more efficiently.
- secondly, a course forum is also not a bad idea, a common scenario is that
- more students may have a same question for a new assignment, if a students
- write a new post about this question, and the teacher gives a answer to
- the question, the other students with the same question can also get the
- answers and avoiding asking the same questions again.
- This saves the time from both side.
+ for the students and teachers to communicate with each other.
+ Foremost, a private message system will be needed for the students and
+ teachers to exchange information about problems with assignments or evaluations
+ individually.
+ Also, the new message system should work as an instant message system,
+ and, in this way, the questions or the problems between the students and
+ teachers can be resolved more efficiently.
+ Second, a course forum is also not a bad idea, since a common scenario
+ is that more students may have the same question for a new assignment;
+ if a student writes a new post with this question, and the teacher gives
+ an answer to the question, the other students with the same question can
+ also get the answer and avoid asking the same questions again.
+ This saves time on both sides.
  So the communications system for the HMS has two parts:
 \end_layout
 
 \begin_layout Enumerate
-Instant private message system.
+Instant private message system
 \end_layout
 
 \begin_layout Enumerate
-a public course forum for each course.
+A public course forum for each course 
 \end_layout
 
 \begin_layout Subsection
@@ -1624,31 +1496,25 @@ name "sub:User-management"
 \end_layout
 
 \begin_layout Standard
-The user management of the 
-\begin_inset Quotes sld
-\end_inset
-
-HMS
-\begin_inset Quotes srd
-\end_inset
-
- system consists of several modules (Figure 
+The user management of the HMS system consists of several modules (Figure
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:The-Modules-of-usermanagement"
 
 \end_inset
 
-), first is the registration module, with this module the user can use their
- email address to register a account in HMS system.
- Second is the self management module.
+): First is the registration module.
+ With this module, the user can use their email address to register an account
+ in the HMS system.
+ Second is the self-management module.
  After the user has logged into the system, they should be able to change
- their Emails and password or other personal details.third is the user role
- control module, this is necessary for system to arrange the proper functions
- to the current user based on their user role, the user obtains a startup
- role at the registration, later on the user role can be changed by the
- system admin.
- In the rest of this section, all the modules will be detailed discussed.
+ their email and password or other personal details.
+ Third is the user role control module, which is necessary for the system
+ to arrange the proper functions for the current user.
+ Based on their user role, the user obtains a start-up role at registration.
+ Later on, the user role can be changed by the system administrator.
+ In the rest of this section, all the modules will be discussed in detail.
 \end_layout
 
 \begin_layout Standard
@@ -1673,7 +1539,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The Modules of user management
+The modules of user management
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:The-Modules-of-usermanagement"
@@ -1747,25 +1613,26 @@ reference "fig:Registration-activity"
 
 \end_inset
 
- shows the workflow when a user register a new account.
- the user first use the registration form to fill in all the relevant informatio
-n, for instance the password, Email, and students number, after clicking
- the sign up button, the whole process begins, first the validation of the
- registration form will be performed to check whether the user has fill
- in all the required field and without error, if user passed the form validation
-, the HMS system will then send a confirmation email with a confirmation
- URL to the email address from the registration form, if the user click
- the confirmation link, the user will be redirect to the website and can
- directly starting using the account.
- Otherwise the user has to start over the registration process.
+ shows the workflow when a user registers a new account.
+ The user first uses the registration form to fill in all the relevant informati
+on the password, email, and student number after clicking the sign-up button,
+ and the whole process begins.
+ First the validation of the registration form will be performed to check
+ whether the user has filled in all the required fields and without error.
+ Once the user has passed the form validation step, the HMS system will
+ then send a confirmation email with a confirmation URL to the email address
+ from the registration form.
+ Once the user clicks the confirmation link, the user will be redirected
+ to the website and can directly start using the account.
+ Otherwise, the user has to start the registration process over.
  The step of email address confirmation is important because this procedure
  allows the system to check that the user actually signed up for the account
- and guarantee the email of this user is valid and ready to receive the
- system information.
+ and guarantee that the email of this user is valid and ready to receive
+ the system information.
 \end_layout
 
 \begin_layout Subsubsection
-Self Management
+Self-management
 \end_layout
 
 \begin_layout Standard
@@ -1790,7 +1657,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The functions of self management
+The functions of self-management
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:The-functions-of-selfmanagement"
@@ -1811,24 +1678,25 @@ name "fig:The-functions-of-selfmanagement"
 \end_layout
 
 \begin_layout Standard
-It is very common that user may forget their passwords or even worse their
- registered email becomes invalid, so it is necessary to develop the functions,
- user can use to reset their email and passwords.
- The resetting of Email address or the passwords works similar as registration.
- If user choose to reset their email address, first they will be asked to
- type in the new email address, after that user click the reset button,
- the system should send a new confirmation Email to the new address, when
- user click the hyperlink in the Email, a new web page will be generated
- and user can confirm the address change.
- if user choose to reset their passwords, they just need to click the reset
- password button, the system will send another confirmation email with a
- hyperlink, the user can use this link to type in their new passwords.
- Besides the modification of passwords and Email address, there is another
- function should be added to self management, thus the HMS system uses Git
- server to control the access to the homework files, and this git server
- use ssh to authenticate the connections, the system should also provide
- a function that user can add their ssh public key to the git server, so
- that they can connect their computer direct to this Git server.
+It is very common that users may forget their passwords or, even worse,
+ their registered email becomes invalid, so it is necessary to develop functions
+ that users can use to reset their emails and passwords.
+ The resetting of email addresses or passwords works similar to registration.
+ If a user chooses to reset their email address, first they will be asked
+ to type in the new email address, and after that, the user clicks the reset
+ button, and the system should send a new confirmation email to the new
+ address, where the user clicks the hyperlink in the email, and a new web
+ page will be generated so the user can confirm the address change.
+ If a user chooses to reset their password, they just need to click the
+ “reset password button”, and the system will send another confirmation
+ email with a hyperlink that the user can use to type in their new password.
+ Besides the modification of passwords and email addresses, there is another
+ function that should be added to self-management; thus, the HMS system
+ uses the Git server to control access to the homework files, and this Git
+ server use ssh to authenticate the connections.
+ The system should also provide a function where users can add their ssh
+ public key to the Git server, so that they can connect their computer directly
+ to this Git server.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1836,11 +1704,11 @@ reference "fig:The-functions-of-selfmanagement"
 
 \end_inset
 
- gives a overview for all the components of the self management.
+ gives an overview of all the components of user self-management.
 \end_layout
 
 \begin_layout Subsubsection
-Role based access control
+Role-based access control
 \end_layout
 
 \begin_layout Standard
@@ -2373,7 +2241,7 @@ Self Manage
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Different user role in HMS system
+Different user roles in the HMS system
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Different-user-role"
@@ -2394,10 +2262,10 @@ name "fig:Different-user-role"
 \end_layout
 
 \begin_layout Standard
-The user of the HMS system has different roles to perform different actions,
- for instance a teacher can create new course but students can not, so it
+HMS system users have different roles to perform different actions: for
+ instance, a teacher can create a new course but students cannot, so it
  is important to have a subsystem to distinguish the user roles, so that
- the HMS can serve proper functions to the user.
+ the HMS can serve proper functions for the user.
 \end_layout
 
 \begin_layout Standard
@@ -2408,44 +2276,47 @@ reference "fig:Different-user-role"
 
 \end_inset
 
- shows all the user role in HMS system, first is the 
-\begin_inset Quotes sld
-\end_inset
-
-
-\shape slanted
+ shows all the user roles in the HMS system: first, is the 
+\shape italic
 system admin
 \shape default
-
-\begin_inset Quotes srd
-\end_inset
-
-, the job of system admin is to manage other user's role and the system
- data (backup the database and related files in certain times), any other
- functions of the HMS is irrelevant to the system admin.
- Second is the default user, the user with this role can not do much things
- other than updating their personal data (passwords and email).
- Third user role is students, with student account the user can browse all
- the available course and join the course, download and upload homework,
- using the communication system like chat and forum.
- Fourth user role is assistants, besides all the functions of students,
- assistants can review all the student's homework and make a evaluation.
- Last one is the teacher role, the teacher account has all the functions
- of assistant account and additionally the teacher can create new course.
+, whose job is to manage other user’s role and the system data (backup the
+ database and related files in certain times).
+ Any other functions of the HMS are irrelevant to the system admin.
+ Second is the 
+\shape italic
+default user
+\shape default
+.
+ The user with this role cannot do many things other than updating their
+ personal data (passwords and email).
+ The third user role is 
+\shape italic
+students
+\shape default
+, where, with a student account, the user can browse all available courses,
+ join the course, and download and upload homework, all while using the
+ communication features like “chat” and “forum”.
+ The fourth user role is 
+\shape italic
+assistants
+\shape default
+.
+ Besides all the functions of students, assistants can review all the student’s
+ homework and make an evaluation.
+ The last one is the 
+\shape italic
+teacher
+\shape default
+ role.
+ The teacher account has all the functions of the assistant account but
+ additionally the teacher can create new courses.
 \end_layout
 
 \begin_layout Standard
-In the rest of this thesis, the use of teacher, assistent, student will
+In the rest of this thesis, the use of teacher, assistant and student will
  specifically indicate the user group with a certain role.
- For instance, teacher means a user group with user role 
-\begin_inset Quotes sld
-\end_inset
-
-teacher
-\begin_inset Quotes srd
-\end_inset
-
-.
+ For instance, teacher means a user group with user role ”teacher”.
 \end_layout
 
 \begin_layout Standard
@@ -2460,7 +2331,7 @@ Course management
 \end_layout
 
 \begin_layout Standard
-The typical course provided by the faculty software engineering and their
+The typical course provided by the faculty of software engineering and their
  evaluation methods are listed as follows:
 \end_layout
 
@@ -2469,7 +2340,7 @@ Bachelor Programming Methodology: Evaluation through final exam
 \end_layout
 
 \begin_layout Itemize
-Bachelor Design-Pattern: Evaluation from multiple sub project
+Bachelor Design Pattern: Evaluation from multiple sub project
 \end_layout
 
 \begin_layout Itemize
@@ -2481,21 +2352,21 @@ Master Compiler Construction: Evaluation from multiple sub project
 \end_layout
 
 \begin_layout Itemize
-Master Graph-Model : Evaluation through final exam
+Master Graph Model : Evaluation through final exam
 \end_layout
 
 \begin_layout Standard
-Above courses can be divided into two categories.
- in the first type of course the students have to hand in various homework,
- and the points gained from those homework are usually used as a prerequisite
- for the final exam.
- in the second type of course the students will get a semester assignment,
- normally a whole software project, the points gained from this project
- usually is the final points for this course.
- additionally every students will get a git repository after user had signed
- up the course,this repository will also worked in two modes according to
- the type of course,the details of git working modes will be discussed later
- in section 
+The above courses can be divided into two categories: In the first type,
+ of course, the students have to hand in various homework, and the points
+ gained from that homework are usually used as a prerequisite for the final
+ exam.
+ In the second type of course, the students will get a semester assignment
+ normally a whole software project and the points gained from this project
+ are usually the final points for the course.
+ Additionally, every student will get a Git repository after they have signed
+ in as users on the course, and this repository will also worked in two
+ modes according to the type of course.
+ The details of Git working modes will be discussed later in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Submission-management"
@@ -2587,7 +2458,7 @@ Type I
 \begin_layout Enumerate
 
 \size footnotesize
-Students have to hand in at least amount of valid homework.
+Students have to hand in a minimum amount of valid homework
 \end_layout
 
 \begin_layout Enumerate
@@ -2595,14 +2466,14 @@ Students have to hand in at least amount of valid homework.
 \align left
 
 \size footnotesize
-A valid homework requires normally for students to gain more than 50% points
- of a assignment.
+Valid homework requires normally for students to gain more than 50% on an
+ assignment
 \end_layout
 
 \begin_layout Enumerate
 
 \size footnotesize
-A student should gain at least 50% of total points for final exam
+A student should gain at least 50% of total points on the final exam
 \end_layout
 
 \end_inset
@@ -2617,7 +2488,7 @@ Git repository works under local mods
 \begin_inset Newline newline
 \end_inset
 
-(Student can only hand in the homeworks through course homepage)
+(Student can only hand in the homework through the course homepage)
 \end_layout
 
 \end_inset
@@ -2632,7 +2503,7 @@ need detail evaluation of assignments
 \begin_inset Newline newline
 \end_inset
 
-(number of valid handin, percentage of gained points)
+(number of valid hand-ins, percentage of gained points)
 \end_layout
 
 \end_inset
@@ -2656,7 +2527,8 @@ Type II
 \begin_layout Plain Layout
 
 \size footnotesize
-None,Students just need to hand in the final project(may consists sub.
+None, Students just need to hand in the final project (may consist of a
+ sub.
  project)
 \end_layout
 
@@ -2672,7 +2544,7 @@ Git repository works under remote modus
 \begin_inset Newline newline
 \end_inset
 
-(Student can use the course repository as any remote git repository)
+(Student can use the course repository as any remote Git repository)
 \end_layout
 
 \end_inset
@@ -2706,7 +2578,7 @@ Only final evaluation
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Features of different types of course
+Features of different types of courses
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Features-of-course"
@@ -2727,24 +2599,16 @@ name "tab:Features-of-course"
 \end_layout
 
 \begin_layout Standard
-The Table 
+Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Features-of-course"
 
 \end_inset
 
- shows the different features of different types of course.The function of
- 
-\begin_inset Quotes sld
-\end_inset
-
-creating course
-\begin_inset Quotes srd
-\end_inset
-
- should take all the features from above into consideration.
- 
+ shows the different features of different types of courses.The functions
+ of ”course management” should take all the features from above into considerati
+on.
 \end_layout
 
 \begin_layout Subsection
@@ -2808,18 +2672,19 @@ reference "fig:Sequenz-diagram-for-assignment"
 
 \end_inset
 
- shows the sequence of handing in and handing out a assignment, after creating
- a new course, teacher can start adding assignments to the course, when
- a new assignment has been successfully added to the course, the student's
- course homepage will show this new assignment with a download link, student
- can download the assignment and start working on the new assignment.
- Later when students finished the assignment, the solution can be uploaded
- to the system manuelly or directly pushed to the system using a Git client
- based on the lecture type.
- Then teacher can start reviewing them.
- When the evaluation is successfully saved into the system, the student
- will get the results at course homepage.
- 
+ shows the sequence of handing in and handing out a assignment.
+ After creating a new course, the teacher can start adding assignments to
+ the course.
+ When a new assignment has been successfully added to the course, the student’s
+ course homepage will show this new assignment with a downloadable link,
+ where the student can download the assignment and start working on the
+ new assignment.
+ Later, when students have finished the assignment, the solution can be
+ uploaded to the system manually or directly pushed into the system using
+ a Git, client, based on the lecture type.
+ Then the teacher can start reviewing them.
+ When the evaluation has been successfully saved into the system, the student
+ will get the results at the course homepage.
 \end_layout
 
 \begin_layout Subsection
@@ -2831,8 +2696,9 @@ Forum
 \end_layout
 
 \begin_layout Standard
-The HMS system has a standard client-server structure, the client and server
- communicate with each other over internet using HTTP protocol
+The HMS system has a standard client-server structure, where in both the
+ client and server communicate with each other over the internet using HTTP
+ protocol
 \begin_inset CommandInset citation
 LatexCommand cite
 key "daa"
@@ -2840,18 +2706,11 @@ key "daa"
 \end_inset
 
 .
- HTTP has a typical 
-\begin_inset Quotes sld
-\end_inset
-
-Request-Response
-\begin_inset Quotes srd
-\end_inset
-
- pattern, the web client sends a request to the web server, web server serves
- a response according to the web client request.
+ HTTP has a typical “Request-Response” pattern; the web client sends a request
+ to the web server, and the web server serves a response according to the
+ web client request.
  It is a simple but powerful solution to provide a two-way conversation
- for two party over one channel
+ for two parties over one channel
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hohpe2012"
@@ -2859,8 +2718,7 @@ key "Hohpe2012"
 \end_inset
 
 .
- The forum function within the HMS system works also after this pattern.
- 
+ The forum function within the HMS system works also along this pattern.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2875,18 +2733,11 @@ name "sub:b.-Instant-message"
 \end_layout
 
 \begin_layout Standard
-The standard HTTP protocol however is not suited for the instant message
- system, because of the 
-\begin_inset Quotes sld
-\end_inset
-
-Request-Response
-\begin_inset Quotes srd
-\end_inset
-
- message pattern, user has to manually ask for a content upgrade.
- But a instant message system needs automatically update the chat contents
- on both side of a conversations while a new message has been added
+The standard HTTP protocol, however, is not suited for the instant message
+ system, because of the Request-Response message pattern, wherein the user
+ has to manually ask for a content upgrade.
+ But an instant message system needs to automatically update the chat contents
+ on both sides of a conversation while a new message has been added
 \begin_inset CommandInset citation
 LatexCommand cite
 key "day2000model"
@@ -2894,15 +2745,7 @@ key "day2000model"
 \end_inset
 
 .
- Therefore a full-duplex communication system 
-\begin_inset Quotes sld
-\end_inset
-
-Web Socket
-\begin_inset Quotes srd
-\end_inset
-
-
+ Therefore, a full-duplex communication system, “WebSocket”
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mozilla"
@@ -2917,14 +2760,14 @@ reference "fig:Websocket-message-pattern"
 
 \end_inset
 
- illustrate a simple scenario of a dialog based on web socket.
- after logging into their HMS account user A and user B are both connecting
- to the HMS web socket server, later on user A send a new message to user
- B, first the request from user A are passing to the web socket server,
- the server processed the request accordingly and served the response not
- only to the user A but also automatically served the response to the user
- B, this ensure the both side of the conversation can have their message
- received in real time.
+ illustrates a simple scenario of a dialog based on WebSocket.
+ After logging into their HMS account, user A and user B are both connected
+ to the HMS web socket server.
+ Later on, user A sends a new message to user B.
+ First, the request from user A passes to the WebSocket server, the server
+ processes the request accordingly and serves the response not only to user
+ A but also automatically to user B, ensuring both sides of the conversation
+ can have their message received in real time.
 \end_layout
 
 \begin_layout Standard
@@ -2986,16 +2829,16 @@ Centralized data persistent (single database)
 \end_layout
 
 \begin_layout Enumerate
-Complicated back up process
+Complicated backup process
 \end_layout
 
 \begin_layout Standard
-The first problem is the management of the student's submission, besides
- of simply uploading the file to the server, there will be usually more
- additional function needs to be added to support different needs related
- to hand in homework.
- For instance the documentation of moodle has suggested several submission
- type related to file submission
+The first problem is the management of the student’s submission, because,
+ besides simply uploading the file to the server, there will usually be
+ more functions that need to be added to support different needs related
+ to hand-in homework.
+ For instance, the documentation of moodle has suggested several submission
+ types related to file submission
 \begin_inset CommandInset citation
 LatexCommand cite
 key "documoodle"
@@ -3006,38 +2849,37 @@ key "documoodle"
 \end_layout
 
 \begin_layout Enumerate
-Student submit a work and teacher download it later
+Student submits work and the teacher downloads it later 
 \end_layout
 
 \begin_layout Enumerate
-Student submit a work multiple times
+Student submits work multiple times
 \end_layout
 
 \begin_layout Enumerate
-Student submit a work with a response
+Student submits work with a response
 \end_layout
 
 \begin_layout Standard
-And teacher needs to do several settings to make those type work properly,
- this introduced unnecessary extra cost not only for development but also
+And the teacher needs to set several settings to make these types work properly,
+ which introduces unnecessary extra cost not only for development but also
  for the user of the system.
- On the other hand the teachers may need to trace the working history to
- comprehend the work of students (avoiding plagiarism), which is not provided
- by the current system.
- 
+ On the other hand, the teachers may need to trace the work history to comprehen
+d the work of students (avoiding plagiarism), which is not provided by the
+ current system.
 \end_layout
 
 \begin_layout Standard
-The second and third problem are related to each other, because all the
- data are persistent in a single data base, the backup procedure is complicated
- and time consuming.
- All these platform including HMS are designed for a faculty in university,
- it's very common once in a while the faculty need to archive or backup
- the old data from the past semester.
- A possible way is query out all the related data based on the semester,
- then dump these data into file and save the course related files some where
+The second and third problems are related to each other, because all the
+ data is persistent in a single database, and the backup procedure is complicate
+d and time-consuming.
+ All these platforms, including HMS, are designed for a faculty of a university.
+ Once in a while the faculty need to archive or backup the old data from
+ the past semester.
+ A possible way is to query out all the related data based on the semester,
+ then dump these data into a file and save the course-related files somewhere
  else.
- Moodle also use this approach to make a course backup
+ Moodle also uses this approach to make a course backup
 \begin_inset CommandInset citation
 LatexCommand cite
 key "moodlebackup"
@@ -3045,16 +2887,16 @@ key "moodlebackup"
 \end_inset
 
 .
- Since the amount of data will increasing rapidly after years of usage,
- this approach can only consume more times.
+ Since the amount of data will increase rapidly after years of usage, this
+ approach can only consume more time.
 \end_layout
 
 \begin_layout Standard
-The HMS has introduced two new approach to avoid the problem from above:
+The HMS has introduced two new approaches to avoid the problems from above:
 \end_layout
 
 \begin_layout Enumerate
-Git based file submission
+Git-based file submission
 \end_layout
 
 \begin_layout Enumerate
@@ -3062,7 +2904,7 @@ Dynamic data management
 \end_layout
 
 \begin_layout Standard
-this two methods will be detailed introduced in the rest of this section.
+These two methods will be introduced and described in the rest of this section.
 \end_layout
 
 \begin_layout Subsection
@@ -3077,7 +2919,7 @@ name "sub:Submission-management"
 \end_layout
 
 \begin_layout Standard
-Instead uploading a file to a simple folder on the server, the students
+Instead of uploading a file to a simple folder on the server, the students
  will obtain a Git
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3085,10 +2927,10 @@ key "GitOfficial"
 
 \end_inset
 
- repository when they first entering the course.
- Using a git repository other than a normal file folder has several advantages.
- First the implementation of different submission type is not needed anymore
- and don't need user to do extra settings.
+ repository when they first enter the course.
+ Using a Git repository that is different than a normal file folder has
+ several advantages: First, the implementation of different submission types
+ is not needed anymore and don’t need users to set extra settings.
 \end_layout
 
 \begin_layout Standard
@@ -3141,72 +2983,37 @@ reference "fig:Workflow-of-git"
 
 \end_inset
 
- shows the use case for all submission type
+ shows the use case for all submission types
 \begin_inset CommandInset citation
 LatexCommand cite
 key "documoodle"
 
 \end_inset
 
- when using the git repository.
+ when using the Git repository.
  No matter what submission type was chosen by the user, the only difference
- is how many commits were made.
- Especially by the submission type 
-\begin_inset Quotes sld
-\end_inset
-
-
-\shape italic
-upload solution multiple times
-\shape default
-
-\begin_inset Quotes srd
-\end_inset
-
-.
+ is how many commitments were made.
+ Especially by the submission type ”upload solution multiple times”.
  Since the nature of a Git repository is to track the history of all file
- changes, teacher can easily review all the changes were made between the
- uploads with any Git client.
- Secondly using a git repository in 
-\begin_inset Quotes sld
-\end_inset
-
-
-\shape italic
-Type II
-\shape default
-
-\begin_inset Quotes srd
-\end_inset
-
- course is more convenient for students and teachers to manage the project,
- since the assignment of 
-\begin_inset Quotes sld
-\end_inset
-
-
-\shape italic
-Type II
-\shape default
-
-\begin_inset Quotes srd
-\end_inset
-
- course is usually a semester project, the students can use this repository
- to host their project directly in the HMS.
- So that the teacher won't need to set up an extra Git server for students.
+ changes, the teacher can easily review all the changes that were made between
+ the uploads with any Git client.
+ Second of all, using a Git repository in a “Type II” course is more convenient
+ forstudents and teachers to manage the project, since the assignment of
+ “Type II” course is usually a semester project, the students can use this
+ repository to host their project directly on the HMS so that the teacher
+ won’t need to set up an extra Git server for students.
 \end_layout
 
 \begin_layout Standard
-since there are two types of courses (Figure: 
+Since there are two types of courses (Figure: 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Features-of-course"
 
 \end_inset
 
-), the git repository will also work under two modes to fit the property
- of course
+), the Git repository will also work under two modes to fit the property
+ of the course
 \begin_inset CommandInset label
 LatexCommand label
 name "git-working-modes"
@@ -3245,22 +3052,10 @@ Local modes
 \end_layout
 
 \begin_layout Standard
-for the 
-\begin_inset Quotes sld
-\end_inset
-
-
-\shape italic
-Type I
-\shape default
-
-\begin_inset Quotes srd
-\end_inset
-
- course students will get different assignemtns through the whole semester,
- and every assignment needs to be evaluated individually, so the repository
- should have a proper file structure to distinguish the student submission
- based on the assignment.
+For the “Type I” course students will get different assignments throughout
+ the whole semester, and every assignment needs to be evaluated individually,
+ so the repository should have a proper file structure to distinguish the
+ student submissions based on the assignment.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3268,8 +3063,8 @@ reference "fig:Repository-file-structure-local"
 
 \end_inset
 
- shows the file structure inside the local git repository.
- With this file structure the teacher can manage the student submission
+ shows the file structure inside the local Git repository.
+ With this file structure, the teacher can manage the student submissions
  more efficiently.
 \end_layout
 
@@ -3292,7 +3087,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-File structure of a Repository in local modes
+File structure of a repository in local modes
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Repository-file-structure-local"
@@ -3314,9 +3109,9 @@ name "fig:Repository-file-structure-local"
 
 \begin_layout Standard
 In order to maintain this file structure and avoid introducing unnecessary
- errors, the address of the git repository is hidden from the student, furthurem
-ore students don't have the access rights to the repository at all.
- they can only using the course homepage to upload their solutions.
+ errors, the address of the Git repository is hidden from the student.
+ Furthurmore students don’t have access rights to the repository at all;
+ they can only use the course homepage to upload their solutions.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3324,24 +3119,16 @@ Remote modes
 \end_layout
 
 \begin_layout Standard
-For the 
-\begin_inset Quotes sld
-\end_inset
-
-Type II
-\begin_inset Quotes srd
-\end_inset
-
- course students will obtain the repository address and its full access
- rights at once when they join the course, and use this repository to host
- their semester project.
- This part works similar as using a remote repository.
- Students can push the changes from their local machine directly to the
+For the ”Type II” course students will obtain the repository address and
+ its full access rights as soon as they join the course, and use this repository
+ to host their semester project.
+ This part works similarly to using a remote repository.
+ Students can push the changes from their local machine directly into the
  HMS server, without logging into the HMS system.
 \end_layout
 
 \begin_layout Subsection
-Automatic Evaluation
+Automatic evaluation
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Automatic-Evaluation"
@@ -3352,10 +3139,10 @@ name "sub:Automatic-Evaluation"
 \end_layout
 
 \begin_layout Standard
-Until now, evaluating a submission from student require teacher or assistent
- firstly to check out the repository of a student using a Git client and
- make a evaluation then log into the HMS system using the function described
- in the section 
+Until now, evaluating a submission from a student requires a teacher or
+ assistant first to check out the repository of a student using a Git client
+ and make an evaluation before logging into the HMS system using the function
+ described in Section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Assignment-management"
@@ -3363,8 +3150,8 @@ reference "sub:Assignment-management"
 \end_inset
 
  to register the score of the student.
- Constantly switching two working system not only inconvenient but can also
- easily introducing errors by registering points.
+ Constantly switching between two working systems is not only inconvenient
+ but can also easily introduce errors when registering points.
 \end_layout
 
 \begin_layout Standard
@@ -3444,7 +3231,7 @@ List<Class> entity1 = new ArrayList<Class>();
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Evaluation of a Submission 
+Evaluation of a submission
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Evaluation-of-Submission"
@@ -3465,19 +3252,12 @@ name "fig:Evaluation-of-Submission"
 \end_layout
 
 \begin_layout Standard
-The second advantage of using Git to manage the submission is making the
- process of registering the points and comments fully automatic and avoiding
- the situation of changing working system.
- Base on the results of interviewing the colleagues of the 
-\begin_inset Quotes sld
-\end_inset
-
-Faculty: Software Engineering
-\begin_inset Quotes srd
-\end_inset
-
-, the common behavior of reviewing and evaluating a student submission is
- to add comments at the end of line as showed in Figure 
+The second advantage of using Git to manage the submission is that it makes
+ the process of registering the points and comments fully automatic and
+ avoids the situation of changing the working system.
+ Based on the results of interviewing the colleagues of the software engineering
+ faculty, the common behavior of reviewing and evaluating a student submission
+ is to add comments at the end of a line as shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Evaluation-of-Submission"
@@ -3488,9 +3268,9 @@ reference "fig:Evaluation-of-Submission"
 \end_layout
 
 \begin_layout Standard
-if the reviewer commit the changes, these changes can be easily retrieved
- by comparing the student's submission and its reviewed version made by
- the reviewer using git command 
+If the reviewer commits the changes, these changes can be easily retrieved
+ by comparing the student’s submission and its reviewed version made by
+ the reviewer using Git command 
 \begin_inset listings
 lstparams "language=bash,basicstyle={\footnotesize}"
 inline true
@@ -3503,7 +3283,7 @@ git diff
 
 \end_inset
 
- and result will be saved in Unified Diff Format
+ and the results will be saved in Unified Diff Format
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GNUDiff"
@@ -3563,7 +3343,7 @@ reference "fig:Unified-Diff-Format"
 \end_inset
 
  shows the changes made by the reviewer in Unified Diff Format.
- the two-line header which starts with symbole 
+ The two-line header which starts with symbols 
 \series bold
 \shape italic
 \emph on
@@ -3594,14 +3374,14 @@ and
 
 \series default
 \emph default
- indicate the changes has been made in file 
+ indicate the changes that have been made in the file 
 \shape italic
 java1.java
 \shape default
 .
- Next line shows the exact change location of the files, in this case the
- changes begins from the line 61 to next 14 more lines.
- The line begins with symbole 
+ The next line shows the exact change location of the files, and, in this
+ case, the changes begin from line 61 to the next 14 lines.
+ The line begins with symbols 
 \series bold
 \emph on
 
@@ -3629,7 +3409,7 @@ java1.java
 
 \series default
 \emph default
- contains the actual differ between two versions
+ contains the actual difference between the two versions
 \begin_inset CommandInset citation
 LatexCommand cite
 key "GNUDiff"
@@ -3640,10 +3420,10 @@ key "GNUDiff"
 \end_layout
 
 \begin_layout Standard
-The Unified Diff Format can be easily parsed based on these specific symboles,
+The Unified Diff Format can be easily parsed based on these specific symbols,
  so that the actual changes made by the reviewer can be extracted.
- After analysing the comments made by the reviewer, most of the comments
- have following formats:
+ After analyzing the comments made by the reviewer, most of the comments
+ have the following formats:
 \end_layout
 
 \begin_layout Enumerate
@@ -3655,13 +3435,13 @@ The Unified Diff Format can be easily parsed based on these specific symboles,
 \end_layout
 
 \begin_layout Standard
-the comments either starts with a number or ends with a number, using the
+The comments either start with a number or end with a number, using the
  regular expression, the points can be collected programmatically.
  This makes the automatic evaluation possible.
- The only precondition is that the reviewer has to commit the changes base
- on the submission from students, and using the comments format from above,
- so that the points can be automatically collected by the system and registerted
- into the database without loggin into the system.
+ The only precondition is that the reviewer has to commit the changes based
+ on the submissions from students, and using the comments format from above,
+ so that the points can be automatically collected by the system and registered
+ into the database without logging into the system.
 \end_layout
 
 \begin_layout Subsection
@@ -3676,9 +3456,9 @@ name "sub:Dynamic-data-management"
 \end_layout
 
 \begin_layout Standard
-In order to make the backup or achieve process as easy as possible.
- The HMS system introduced a new approach to manage the data.
- first of all the HMS system use multiple databases instead of one central
+To do a backup or achieve the whole process as easily as possible, the HMS
+ system introduced a new approach to manage the data.
+ First of all, the HMS system uses multiple databases instead of one central
  database.
 \end_layout
 
@@ -3706,7 +3486,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-multiple database based on semester
+Multiple databases based on semester
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:multiple-database"
@@ -3735,8 +3515,8 @@ reference "fig:multiple-database"
 \end_inset
 
  shows the database structure in the HMS system.
- The Global database contains all the authentication data including ssh
- public keys, user name, user Email, user role and passwords.
+ The global database contains all the authentication data including ssh
+ public keys, user names, user emails, user role and passwords.
  This database is only used for the user management (section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3745,23 +3525,22 @@ reference "sub:User-management"
 \end_inset
 
 ).
- Another database is semester database.
- Since the data structure of every semester is same, so the data model for
- semester can be reused in every new semester.
- Every time when a new semester begins, a new clean database for this semester
+ Another database is the semester database.
+ Since the data structure of every semester is the same, the data model
+ for each semester can be reused in every new semester.
+ Every time a new semester begins, a new clean database for this semester
  will be generated using the same data structure in real time.
- Therefore in this case there is no need to query the semester data for
- backing up database.
- 
+ Therefore, in this case, there is no need to query the semester data to
+ back up the database.
 \end_layout
 
 \begin_layout Standard
-Also the database in this project should work under the embedded modes using
- file storage, first of all the embedded database runs directly in the applicati
-on that uses them, it requires no extra server and no maintenance for the
- database itself.
- Another advantage of embedded database is the speed, because all the database
- operations happen inside the application process
+Also, the database in this project should work under the embedded modes
+ using file storage.
+ The embedded database runs directly in the application that uses them,
+ and it requires no extra server and no maintenance for the database itself.
+ Another advantage of the embedded database is the speed, because all the
+ database operations happen inside the application process
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Chaudhri2003"
@@ -3770,13 +3549,12 @@ key "Chaudhri2003"
 
 .
  Since all the relevant data of the database are saved in a single file,
- backup the semester database only need to copy the database file to some
- where else.
- 
+ backing up the semester database only means copying the database file somewhere
+ else.
 \end_layout
 
 \begin_layout Standard
-In this project the H2
+In this project, the H2
 \begin_inset CommandInset citation
 LatexCommand cite
 key "H2Offi"
@@ -3784,20 +3562,20 @@ key "H2Offi"
 \end_inset
 
  database engine will be used as the default database engine.
- First H2 support the embedded mode (file storage) and it is purely written
+ First, H2 supports the embedded mode (file storage) and it is purely written
  in java.
- Another reason is that the H2 database support a mixed mode (Figure 
+ Another reason is that the H2 database supports a mixed mode (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Mixed-Mode-of-h2"
 
 \end_inset
 
-), mixed mode is a combination of the embedded mode and server mode, the
- first application (in this case the HMS) will use the database as embedded
- mode, but it also starts a server so that the other application (a SQL
- query tool) can still side load the database.
- Normally embedded database runs within the application, so it is hidden
+); that is, a combination of the embedded mode and the server mode.
+ The first application (in this case, the HMS) will use the database as
+ an embedded mode, but it also starts a server so that the other application
+ (a SQL query tool) can still side-load the database.
+ A normally embedded database runs within the application, so it is hidden
  from the end user
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -3805,9 +3583,10 @@ key "Chaudhri2003"
 
 \end_inset
 
-, there is no way the user can side load the database, but in the real life
- of maintaining the HMS system, direct accessing and manipulating the database
- using a SQL query tool sometimes is more efficiency than the usual routine.
+, and so there is no way the user can side-load the database.
+ But in real life, maintaining the HMS system directly accessing and manipulatin
+g the database using a SQL query tool is sometimes more efficient than the
+ usual routine.
  It is also important to notice that if the application is shut down, the
  server mode will also close all the connections
 \begin_inset CommandInset citation
@@ -3816,14 +3595,14 @@ key "h2database"
 
 \end_inset
 
-, therefore side loading a database using remote mode can only take place
- when HMS is still running.
- However the database file generated by the h2 engine can still be loaded
- from the h2 web based manage tools without needing HMS system to be on
- line.
- This feature is important specially for a archived h2 database, it means
+, and therefore, side-loading a database using remote mode can only take
+ place when the HMS is still running.
+ However the database file generated by the H2 engine can still be loaded
+ from the H2 web-based managing tools without needing the HMS system to
+ be online.
+ This feature is especially important for an archived H2 database, meaning
  that all the contents of the database can still be freely accessed without
- extra works.
+ extra work 
 \end_layout
 
 \begin_layout Standard
@@ -3876,9 +3655,9 @@ name "fig:Mixed-Mode-of-h2"
 \end_layout
 
 \begin_layout Standard
-Besides backing up the database, the files from student submission, course
+Besides backing up the database, the files from student submission and course
  materials should also be backed up at the same time.
- Using a unified file saving structure can make this process more easier.
+ Using a unified file saving structure can make this process easier.
 \end_layout
 
 \begin_layout Standard
@@ -3932,22 +3711,22 @@ reference "fig:Semester-file-structure"
 
 \end_inset
 
- shows the file structure of one semester.
- The uploaded course materials, student's repository are saved with the
+ shows the file structure for one semester.
+ The uploaded course materials and student’s repository are saved with the
  database file under the same folder.
  Using a clear file structure to host the uploaded files along with the
- commit history of the student's repository can let the maintainer of the
- system more easily to distinguish the files without looking into the database.
+ commit history of the student’s repository can help the maintainer of the
+ system more easily distinguish the files without looking into the database.
  Combine these two methods, the backup procedure of the HMS system only
- need the maintainer to relocate the semester folder and without doing any
+ needs the maintainer to relocate the semester folder, without doing any
  database operation.
 \end_layout
 
 \begin_layout Standard
-This approach requires the system to create a database in the run time,
- therefore the standard database configuration of Playframework can not
- be used.
- The details of implementing the dynamic data management will be demonstrated
+This approach requires the system to create a database in the run-time.
+ Therefore the standard database configuration of Playframework cannot be
+ used.
+ The details of implementing dynamic data management will be demonstrated
  in the next chapter.
 \end_layout
 
