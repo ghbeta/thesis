@@ -918,7 +918,7 @@ key "weaver2008academic"
 \end_inset
 
 , the academic staff require more local IT support to solve some technical
- issues with the LMS platform a big distraction from the teaching task.
+ issues with the LMS platform, a big distraction from the teaching task.
  In this work a new LMS system the HMS (Homework Management System) will
  be introduced using the version control system Git to manage submissions
  from students.
@@ -3717,7 +3717,7 @@ reference "fig:Semester-file-structure"
  Using a clear file structure to host the uploaded files along with the
  commit history of the student’s repository can help the maintainer of the
  system more easily distinguish the files without looking into the database.
- Combine these two methods, the backup procedure of the HMS system only
+ Combine these two methods, and the backup procedure of the HMS system only
  needs the maintainer to relocate the semester folder, without doing any
  database operation.
 \end_layout

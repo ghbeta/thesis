@@ -918,7 +918,7 @@ key "weaver2008academic"
 \end_inset
 
 , the academic staff require more local IT support to solve some technical
- issues with the LMS platform a big distraction from the teaching task.
+ issues with the LMS platform, a big distraction from the teaching task.
  In this work a new LMS system the HMS (Homework Management System) will
  be introduced using the version control system Git to manage submissions
  from students.
@@ -3537,7 +3537,7 @@ reference "sub:User-management"
 \begin_layout Standard
 Also, the database in this project should work under the embedded modes
  using file storage.
- The embedded database runs directly inside the application that uses them,
+ The embedded database runs directly in the application that uses them,
  and it requires no extra server and no maintenance for the database itself.
  Another advantage of the embedded database is the speed, because all the
  database operations happen inside the application process
@@ -3584,9 +3584,9 @@ key "Chaudhri2003"
 \end_inset
 
 , and so there is no way the user can side-load the database.
- But in real life, maintaining the HMS system--directly accessing and manipulati
-ng the database using a SQL query tool—is sometimes more efficient than
- the usual routine.
+ But in real life, maintaining the HMS system directly accessing and manipulatin
+g the database using a SQL query tool is sometimes more efficient than the
+ usual routine.
  It is also important to notice that if the application is shut down, the
  server mode will also close all the connections
 \begin_inset CommandInset citation
@@ -3711,22 +3711,22 @@ reference "fig:Semester-file-structure"
 
 \end_inset
 
- shows the file structure of one semester.
- The uploaded course materials, student's repository are saved with the
+ shows the file structure for one semester.
+ The uploaded course materials and student’s repository are saved with the
  database file under the same folder.
  Using a clear file structure to host the uploaded files along with the
- commit history of the student's repository can let the maintainer of the
- system more easily to distinguish the files without looking into the database.
+ commit history of the student’s repository can help the maintainer of the
+ system more easily distinguish the files without looking into the database.
  Combine these two methods, the backup procedure of the HMS system only
- need the maintainer to relocate the semester folder and without doing any
+ needs the maintainer to relocate the semester folder, without doing any
  database operation.
 \end_layout
 
 \begin_layout Standard
-This approach requires the system to create a database in the run time,
- therefore the standard database configuration of Playframework can not
- be used.
- The details of implementing the dynamic data management will be demonstrated
+This approach requires the system to create a database in the run-time.
+ Therefore the standard database configuration of Playframework cannot be
+ used.
+ The details of implementing dynamic data management will be demonstrated
  in the next chapter.
 \end_layout
 
