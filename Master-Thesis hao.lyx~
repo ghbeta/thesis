@@ -1248,8 +1248,8 @@ Related works
 \end_layout
 
 \begin_layout Standard
-Previous to the HMS system introduced by this work there were already two
- projects that existed at faculty software engineering.
+Previous to the HMS system--introduced by this work--there were already
+ two projects that existed at faculty software engineering.
  On the left side of Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1339,7 +1339,7 @@ key "PlayOfficial"
 
 \begin_layout Standard
 In the rest of this thesis, a new HMS system will be introduced, which provides
- a new way to manage the activities around homework specially the homework
+ a new way to manage the activities around homework--specially the homework
  of computer science and including a new aproach to manage the data persistently
  so that the cost of running and maintaining the system can be minimized.
 \end_layout
@@ -1362,8 +1362,8 @@ HMS is a web platform to manage the activities related to homework including
 The functions of the HMS system are divided into two parts: The first part
  is to develop the common features, which are similar to other web platforms,
  for instance, the ”register a user account” feature.
- The second part of the design is to develop the special core features the
- dynamic data management and the git based homework management which make
+ The second part of the design is to develop the special core features--the
+ dynamic data management and the git based homework management--which make
  the HMS system a better platform compared to others.
 \end_layout
 
@@ -1567,7 +1567,7 @@ Registration
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1615,8 +1615,8 @@ reference "fig:Registration-activity"
 
  shows the workflow when a user registers a new account.
  The user first uses the registration form to fill in all the relevant informati
-on the password, email, and student number after clicking the sign-up button,
- and the whole process begins.
+on--the password, email, and student number--after clicking the sign-up
+ button, and the whole process begins.
  First the validation of the registration form will be performed to check
  whether the user has filled in all the required fields and without error.
  Once the user has passed the form validation step, the HMS system will
@@ -2353,9 +2353,9 @@ The above courses can be divided into two categories: In the first type,
  of course, the students have to hand in various homework, and the points
  gained from that homework are usually used as a prerequisite for the final
  exam.
- In the second type of course, the students will get a semester assignment
- normally a whole software project and the points gained from this project
- are usually the final points for the course.
+ In the second type of course, the students will get a semester assignment--norm
+ally a whole software project--and the points gained from this project are
+ usually the final points for the course.
  Additionally, every student will get a Git repository after they have signed
  in as users on the course, and this repository will also worked in two
  modes according to the type of course.
@@ -3577,9 +3577,9 @@ key "Chaudhri2003"
 \end_inset
 
 , and so there is no way the user can side-load the database.
- But in real life, maintaining the HMS system directly accessing and manipulatin
-g the database using a SQL query tool is sometimes more efficient than the
- usual routine.
+ But in real life, maintaining the HMS system--directly accessing and manipulati
+ng the database using a SQL query tool--is sometimes more efficient than
+ the usual routine.
  It is also important to notice that if the application is shut down, the
  server mode will also close all the connections
 \begin_inset CommandInset citation
@@ -3602,7 +3602,7 @@ key "h2database"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -4082,7 +4082,7 @@ reference "fig:Create-Ebean-Server-runtime"
 
  is a static method which creates an Ebean server in run time.
  This method needs two parameters as input: First is the name of the database,
- usually the name of a semester, for instance, “WS2016 “.
+ usually the name of a semester--for instance, “WS2016 “.
  Second is a list of java class, which contains all the java data model
  that is related to this database.
  Ebean needs to use this to create the table for the database.
@@ -4508,7 +4508,7 @@ reference "fig:Data-models-for-semester"
 \end_inset
 
  represents the data models of the semester database.
- First is the Lecture, all the activities around the homework management
+ First is the Lecture--all the activities around the homework management
  is about the lecture.
  A lecture includes assignment (Assignment), Git repositories (Repos), a
  forum (Thread) and the lecture evaluation (Evaluation) for students.
@@ -4617,8 +4617,8 @@ key "objectdbjpa"
  data can be completely separate from the other data.
  When a registered user wants to sign up for a new course in a semester,
  the common user information (e.g.
- user ID and email address) should be first transformed from the “User ”
- to “Semesteruser ”.
+ user ID and email address) should be first transformed from the “User”
+ to “Semesteruser”.
 \end_layout
 
 \begin_layout Standard
@@ -5456,7 +5456,7 @@ reference "fig:onfiguration-from-java"
 
 \end_inset
 
-, every time a student joins a course, no matter what this course type is,
+--every time a student joins a course, no matter what this course type is,
  a repository will be generated for this student if the ssh public of this
  student is present.
  If the teacher needs to access the student’s repository, the HMS system
@@ -5824,16 +5824,15 @@ Delete Submission
 \begin_layout Standard
 If a student didn’t satisfy the first submission for an assignment, the
  last submission can also be deleted before the deadline.
- The procedure is almost the same as submission.
- As Figure 
+ The procedure is almost the same as submission--as Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Delete-last-submission"
 
 \end_inset
 
- shows, the local repository created by the submission action will be first
- updated to the latest state.
+ shows--and the local repository created by the submission action will be
+ first updated to the latest state.
  Second, since the submission under the local modes are saved under a unified
  structure (Figure 
 \begin_inset CommandInset ref
@@ -6191,14 +6190,14 @@ reference "tab:Features-of-course"
  using a normal remote Git repository.
  Thus, all the changes pushed by the student will be directly saved into
  the Gitolite bare repository, and an additionl clone action of the bare
- repository which is same as the submission action (Figure 
+ repository--which is same as the submission action (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Commit-submission"
 
 \end_inset
 
-) in the local modes will be performed in order to maintain the unified
+) in the local modes--will be performed in order to maintain the unified
  file structure.
 \end_layout
 
@@ -9410,7 +9409,7 @@ According to the information from the inbound messages, the server can serve
  For the third type of message, the system will first save the content of
  the new message into related conversations and finally into the database,
  then the updated conversation object will be formatted into a JSON string
- and sent back to both participants of the conversation, as long as the
+ and sent back to both participants of the conversation--as long as the
  other participant is also connected to the WebSocket.
  The outgoing channel of the other participant will be picked up from the
  hashmap defined in the first line from Figure 
@@ -9945,8 +9944,8 @@ The installation procedure has also been tested on the Ubuntu 14.04LTS, however
 
 \end_inset
 
-, and the second part will demonstrate the maintenance procedures; i.e.
- backing up semester data and managing the user role of the HMS system.
+, and the second part will demonstrate the maintenance procedures--i.e.
+ backing up semester data and managing the user role--of the HMS system.
 \end_layout
 
 \begin_layout Section
@@ -10369,7 +10368,7 @@ reference "sub:Dynamic-data-management"
 \end_layout
 
 \begin_layout Standard
-The current work of HMS focuses on improving the low level functions; e.g.
+The current work of HMS focuses on improving the low level functions--e.g.
  introducing new methods to manage the homework and data.
  Some other high level features related to the educational activities are
  not supported in the current state or are only partially supported, for
