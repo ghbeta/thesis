@@ -918,8 +918,8 @@ key "weaver2008academic"
 \end_inset
 
 , the academic staff require more local IT support to solve some technical
- issues with the LMS platform, a big distraction from the teaching task.
- In this work a new LMS system the HMS (Homework Management System) will
+ issues with the LMS platform--a big distraction from the teaching task.
+ In this work a new LMS system--the HMS (Homework Management System)--will
  be introduced using the version control system Git to manage submissions
  from students.
  With Git-based submission management, semester projects can be directly
@@ -944,8 +944,8 @@ In order to make this thesis more understandable, the used technologies
  The first part introduces the version control system, Git, which is used
  to manage the submitted file by the HMS system.
  Then, the Play framework which the HMS is based on will be described.
- Finally, a communications protocol used to build the instant message system
- in the HMS will be introduced.
+ Finally, a communications protocol--used to build the instant message system
+ in the HMS--will be introduced.
  Additionally, two related systems, which were developed in the Faculty
  Software Engineering Department of the University of Kassel will be discussed.
 \end_layout
@@ -2319,13 +2319,6 @@ In the rest of this thesis, the use of teacher, assistant and student will
  For instance, teacher means a user group with user role ”teacher”.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Course management
 \end_layout
@@ -3142,7 +3135,7 @@ name "sub:Automatic-Evaluation"
 Until now, evaluating a submission from a student requires a teacher or
  assistant first to check out the repository of a student using a Git client
  and make an evaluation before logging into the HMS system using the function
- described in Section
+ described in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Assignment-management"
@@ -3517,7 +3510,7 @@ reference "fig:multiple-database"
  shows the database structure in the HMS system.
  The global database contains all the authentication data including ssh
  public keys, user names, user emails, user role and passwords.
- This database is only used for the user management (section 
+ This database is only used for the user management (Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:User-management"
@@ -4538,8 +4531,11 @@ Semesteruser
 \shape italic
 User
 \shape default
- are both subclass extensions from super class Abstractuser as shown in
- Figure 
+ are both subclass extensions from super class 
+\shape italic
+Abstractuser
+\shape default
+ as shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Class-Diagram-Semesteruser"
@@ -4621,8 +4617,15 @@ key "objectdbjpa"
  data can be completely separate from the other data.
  When a registered user wants to sign up for a new course in a semester,
  the common user information (e.g.
- user ID and email address) should be first transformed from the “User ”
- to “Semesteruser ”.
+ user ID and email address) should be first transformed from the “User”
+ to “Semesteruser”.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -5051,6 +5054,7 @@ reference "fig:Access-rights-for-differentuser"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -6649,6 +6653,13 @@ So under this mode, when the HMS system detects the changes, it will try
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -6757,10 +6768,10 @@ b.
 \end_layout
 
 \begin_layout Standard
-Under remote mode, using the name or email address of a committer to determine
- the identity becomes unreliable since, under this mode, students also have
- full access to the repository and the identity of a committer can be easily
- changed using any Git client.
+Under remote mode, using only the name or email address of a committer to
+ determine the identity becomes unreliable since, under this mode, students
+ also have full access to the repository and the identity of a committer
+ can be easily changed using any Git client.
  The results of an evaluation can be easily manipulated because of this.
  For instance, a student using Git push command submits a solution to the
  repository normally, and later on they change their name and email address
@@ -7254,7 +7265,6 @@ reference "tab:Confirm-registration"
 
 \begin_layout Standard
 \begin_inset Float figure
-placement H
 wide false
 sideways false
 status open
@@ -7784,6 +7794,7 @@ key "playframeworkdocu"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
@@ -7909,17 +7920,7 @@ public Result onUnauthorized(Http.Context ctx) {
 
 \begin_layout Plain Layout
 
-public static Result createlecture() {
-\end_layout
-
-\begin_layout Plain Layout
-
-          ...
-\end_layout
-
-\begin_layout Plain Layout
-
-         }
+public static Result createlecture() {...}
 \end_layout
 
 \end_inset
@@ -8012,19 +8013,14 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/updateemail.png
-	scale 60
+	scale 45
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
 \begin_inset Graphics
-	filename images/addssh.png
-	scale 60
+	filename images/addssh_x.png
+	scale 45
 
 \end_inset
 
@@ -8131,7 +8127,7 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-\align right
+\align center
 \begin_inset Graphics
 	filename images/remotelecture.jpg
 	scale 40
@@ -8451,7 +8447,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename images/brwosing.png
-	scale 50
+	scale 40
 
 \end_inset
 
@@ -8773,6 +8769,7 @@ Creating assignments
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status open
