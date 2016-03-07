@@ -683,7 +683,7 @@ Declaration of Authorship
 
 \begin_layout Standard
 I hereby declare that I have authored this thesis independently, that I
- have not used other than the declared resources, and that i have explicity
+ have not used other than the declared resources, and that i have explicitly
  marked all material which has been quoted either literally or by content
  from the used sources.
  According to my knowledge, the content or parts of this thesis have not
@@ -877,7 +877,11 @@ key "destatis"
 \end_inset
 
 .
- The current LMS system already provides a lot of features such as creating
+ 
+\end_layout
+
+\begin_layout Standard
+The current LMS system already provides a lot of features such as creating
  online courses and handout course materials and assignments.
  However they are still short on features to meet specific needs of computer
  science education
@@ -1004,14 +1008,14 @@ key "stevens2012attacks"
 
 \end_inset
 
- hash to check-sum files and directories before they are stored, the hash
+ hash to check-sum files and directories before they are stored--the hash
  value that will be referred to them and saved later into the database of
  Git, so that it is impossible to make changes inside a repository without
  Git detecting them.
  Besides, all the actions made by the user with Git, will only be added
  to the database of Git.
  It will not erase or modify anything, which is not undoable.
- So losing data is very diffcult when using Git.
+ So losing data is very difficult when using Git.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1080,7 +1084,7 @@ reference "fig:Workflow-of-Git"
  the snapshot of these files will be added to the staging area.
  When the user commits the changes, the data inside the staging area will
  be permanently saved inside the Git directory that stores the metadata
- and object database for the project.
+ and object database for the project
 \begin_inset CommandInset citation
 LatexCommand cite
 key "chacon2014pro"
@@ -1186,9 +1190,9 @@ Play is also completely RESTful and stateless, fully supported by the asynchrono
 us HTTP programming model so that the concurrent real time data can be easily
  integrated within play applications, and long-lived requests will also
  be served without interfering with other threads.
- Unlike other java playframeworks, Playframework comes with an embedded
- HTTP server so that a play application can be easily executed without any
- container such as a Tomcat
+ Unlike other java frameworks, Playframework comes with an embedded HTTP
+ server so that a play application can be easily executed without any container
+ such as a Tomcat
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tomcatOffi"
@@ -1230,7 +1234,7 @@ key "WebSocketOffi"
  bidirectional, fast connection between the client and server.
  Beside the WebSocket protocol, there is also a WebSocket API, which was
  developed by the World Wide Web Consortium (W3C).
- This api enables the developer to perform actions like opening and closing
+ This API enables the developer to perform actions like opening and closing
  the WebSocket channels or sending and receiving messages within their applicati
 ons.
  The WebSocket API is supported by major modern browsers
@@ -1292,7 +1296,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Earlier Systems 
+Earlier systems
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:PHP-Based-Homework"
@@ -1321,15 +1325,9 @@ reference "fig:PHP-Based-Homework"
 \end_inset
 
  the second system is shown, which is more advanced.
- It is a stand-alone web application based on Playframework
-\begin_inset CommandInset citation
-LatexCommand cite
-key "PlayOfficial"
-
-\end_inset
-
-, and provides more function than the first system, such as lecture management,
- assignment management, and a simple feedback system.
+ It is a stand-alone web application based on Playframework, and provides
+ more function than the first system, such as lecture management, assignment
+ management, and a simple feedback system.
  However it still has some weak points which were discussed in Chapter 1;
  for instance, neither systems provide an easy and quick solution to backup
  the semester-related data, nor do they consider the special nature of the
@@ -1340,8 +1338,8 @@ key "PlayOfficial"
 \begin_layout Standard
 In the rest of this thesis, a new HMS system will be introduced, which provides
  a new way to manage the activities around homework--specially the homework
- of computer science and including a new aproach to manage the data persistently
- so that the cost of running and maintaining the system can be minimized.
+ of computer science and including a new approach to manage the data persistentl
+y so that the cost of running and maintaining the system can be minimized.
 \end_layout
 
 \begin_layout Chapter
@@ -1412,10 +1410,6 @@ name "fig:The-use-case"
 
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Standard
 As Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1427,7 +1421,7 @@ reference "fig:The-use-case"
  of the user.
  First, considering the user role of students, the student should be able
  to register a HMS account.
- After logging into the system, the students can brows all the available
+ After logging into the system, the students can browse all the available
  courses in the system and subscribe to their target course.
  Then it is possible for the students to view the homepage of the course
  and download the available homework, and finally, uploading the solutions
@@ -1440,7 +1434,18 @@ reference "fig:The-use-case"
  in homework and give them back to the students once the evaluation is finished.
  The assistants, however, cannot create a new course, but should be able
  to add new assignments and evaluate the handed in homework as well.
- In summary, in order to realize the main task of the HMS, it should have
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In summary, in order to realize the main task of the HMS, it should have
  the following capabilities:
 \end_layout
 
@@ -2533,7 +2538,7 @@ None, Students just need to hand in the final project (may consist of a
 \begin_layout Plain Layout
 
 \size footnotesize
-Git repository works under remote modus
+Git repository works under remote mods
 \begin_inset Newline newline
 \end_inset
 
@@ -2592,7 +2597,7 @@ name "tab:Features-of-course"
 \end_layout
 
 \begin_layout Standard
-Table 
+Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Features-of-course"
@@ -2745,7 +2750,7 @@ key "mozilla"
 
 \end_inset
 
- will be used to back up the message module.
+, will be used to back up the message module.
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2830,8 +2835,14 @@ The first problem is the management of the student’s submission, because,
  besides simply uploading the file to the server, there will usually be
  more functions that need to be added to support different needs related
  to hand-in homework.
- For instance, the documentation of moodle has suggested several submission
- types related to file submission
+ For instance, the documentation of Moodle
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moodleoffi"
+
+\end_inset
+
+ has suggested several submission types related to file submission
 \begin_inset CommandInset citation
 LatexCommand cite
 key "documoodle"
@@ -2913,14 +2924,7 @@ name "sub:Submission-management"
 
 \begin_layout Standard
 Instead of uploading a file to a simple folder on the server, the students
- will obtain a Git
-\begin_inset CommandInset citation
-LatexCommand cite
-key "GitOfficial"
-
-\end_inset
-
- repository when they first enter the course.
+ will obtain a Git repository when they first enter the course.
  Using a Git repository that is different than a normal file folder has
  several advantages: First, the implementation of different submission types
  is not needed anymore and don’t need users to set extra settings.
@@ -2948,7 +2952,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Workflow of File Submission using Git
+Workflow of file submission using Git
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Workflow-of-git"
@@ -2991,7 +2995,7 @@ key "documoodle"
  changes, the teacher can easily review all the changes that were made between
  the uploads with any Git client.
  Second of all, using a Git repository in a “Type II” course is more convenient
- forstudents and teachers to manage the project, since the assignment of
+ for students and teachers to manage the project, since the assignment of
  “Type II” course is usually a semester project, the students can use this
  repository to host their project directly on the HMS so that the teacher
  won’t need to set up an extra Git server for students.
@@ -3103,7 +3107,7 @@ name "fig:Repository-file-structure-local"
 \begin_layout Standard
 In order to maintain this file structure and avoid introducing unnecessary
  errors, the address of the Git repository is hidden from the student.
- Furthurmore students don’t have access rights to the repository at all;
+ Furthermore students don’t have access rights to the repository at all;
  they can only use the course homepage to upload their solutions.
 \end_layout
 
@@ -3716,7 +3720,7 @@ reference "fig:Semester-file-structure"
 \end_layout
 
 \begin_layout Standard
-This approach requires the system to create a database in the runtime.
+This approach requires the system to create a database in the run-time.
  Therefore the standard database configuration of Playframework cannot be
  used.
  The details of implementing dynamic data management will be demonstrated
@@ -4086,9 +4090,9 @@ reference "fig:Create-Ebean-Server-runtime"
  Second is a list of java class, which contains all the java data model
  that is related to this database.
  Ebean needs to use this to create the table for the database.
- The configuration of the Ebean server and database is straitforward: After
- setting all the parameters to the Ebean server and data source, the Ebean
- server will be created by the class “EbeanServerFactory”.
+ The configuration of the Ebean server and database is straightforward:
+ After setting all the parameters to the Ebean server and data source, the
+ Ebean server will be created by the class “EbeanServerFactory”.
  In the HMS, the decision to create a new database is made when the teacher
  creates a new course.
  Creating a new course needs the teacher to give the name of the semester.
@@ -4424,7 +4428,7 @@ reference "fig:Data-models-for-global"
 \end_inset
 
  shows the data model for the global database.
- There are four tables defined.
+ There are five tables defined.
  The first are the 
 \shape italic
 Users
@@ -4436,7 +4440,7 @@ Users
 SSH
 \shape default
 , which saves all the ssh keys for the user, and because one user may have
- multiple ssh keys, there is a “One-To-Many ” relation between the 
+ multiple ssh keys, there is a “One-To-Many” relation between the 
 \shape italic
 Users
 \shape default
@@ -4450,12 +4454,17 @@ SSH
 Semesters
 \shape default
 , containing all the names of the already created semester database.
- The last one is 
+ The fourth is 
 \shape italic
 Tokens
 \shape default
 , used to temporarily save the confirmation token for registration, change
  email and password actions.
+ The last one is 
+\shape italic
+Repositories
+\shape default
+, containing all the names of the students' repositories.
 \end_layout
 
 \begin_layout Standard
@@ -4567,7 +4576,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Class Diagram Semesteruser 
+Class diagram Semesteruser 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Class-Diagram-Semesteruser"
@@ -4827,7 +4836,7 @@ reference "fig:Semester-file-structure"
 \end_inset
 
 ).
- Defining the upload path within the Playframework is straitforward: After
+ Defining the upload path within the Playframework is straightforward: After
  the file is uploaded to the server, the file can be moved to the desired
  location by the method 
 \begin_inset listings
@@ -5182,7 +5191,7 @@ Teacher
 \begin_inset Text
 
 \begin_layout Plain Layout
-○
+●
 \end_layout
 
 \end_inset
@@ -5211,7 +5220,7 @@ Assistant
 \begin_inset Text
 
 \begin_layout Plain Layout
-○
+●
 \end_layout
 
 \end_inset
@@ -5824,15 +5833,15 @@ Delete Submission
 \begin_layout Standard
 If a student didn’t satisfy the first submission for an assignment, the
  last submission can also be deleted before the deadline.
- The procedure is almost the same as submission--as Figure 
+ As Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Delete-last-submission"
 
 \end_inset
 
- shows--and the local repository created by the submission action will be
- first updated to the latest state.
+ shows, the local repository created by the submission action will be first
+ updated to the latest state.
  Second, since the submission under the local modes are saved under a unified
  structure (Figure 
 \begin_inset CommandInset ref
@@ -6189,7 +6198,7 @@ reference "tab:Features-of-course"
  Students will use this repository to host their semester project, like
  using a normal remote Git repository.
  Thus, all the changes pushed by the student will be directly saved into
- the Gitolite bare repository, and an additionl clone action of the bare
+ the Gitolite bare repository, and an additional clone action of the bare
  repository--which is same as the submission action (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6588,7 +6597,7 @@ GitEvaluation()
 \shape italic
 RepoWatcher
 \shape default
- runs in a seperate thread, 
+ runs in a separate thread, 
 \shape italic
 watchThread
 \shape default
@@ -6624,7 +6633,7 @@ Authentication
 After detecting the changes, the next step is to determine who made the
  changes, because the precondition of automatic evaluation to work is to
  get the changes between the commits made by reviewer and students.
- Based on the different submission methods in the diffrent lecture modes,
+ Based on the different submission methods in the different lecture modes,
  the Authentication of automatic evaluation works also differently in Local
  and Remote mode.
 \end_layout
@@ -6782,7 +6791,7 @@ s, and push their own commented version to the repository.
 \begin_layout Standard
 The solution to this issue is that when a student submits a solution to
  the repository of the lecture, the HMS will revoke all the access rights
- of this student to this repository immediatley when it detects the changes
+ of this student to this repository immediately when it detects the changes
  of the repository, so that the next committer can only be the reviewer,
  because only the reviewer has access to the repository.
  This, however, raises another problem: How to determine that a change was
@@ -8757,8 +8766,8 @@ The management of assignments consists of three parts: The first part is
  the third part is returning the assignments’ results back to the student.
  The evaluation of the students’ submissions has already been discussed
  in the previous section.
- This next section will focus on creating assignments and distributing the
- results to students.
+ This section will focus on creating assignments and distributing the results
+ to students.
  
 \end_layout
 
@@ -8834,7 +8843,7 @@ reference "fig:Creation-of-assignment"
  there are several things that the teacher needs to input: The details of
  the exercise, the deadline of this assignment, and lastly, the teacher
  can upload the related materials to the assignment.
- The eacher can also give additional information to clarify the problem
+ The teacher can also give additional information to clarify the problem
  inside the assignment.
  Created assignments will be shown below on the homework section of the
  homepage.
@@ -9324,8 +9333,14 @@ reference "fig:Process-WebSocket-data"
 invoke()
 \shape default
  method.
- The inbound messages are saved in a JSON string, The first thing to do
- is to parse the inbound message.
+ The inbound messages are saved in a JSON
+\begin_inset CommandInset citation
+LatexCommand cite
+key "jsonoffi"
+
+\end_inset
+
+ string, The first thing to do is to parse the inbound message.
  The inbound message has two keys: event and data.
  
 \shape italic
@@ -9531,8 +9546,14 @@ key "garousi2013systematic"
 .
  Therefore, only using the unit test cannot test a web application meaningfully.
  The test of the HMS system is divided into two parts: The first part is
- using Fluentlenium to test the GUI, and the second part is using JUnit
- to test the Server-Logic.
+ using Fluentlenium
+\begin_inset CommandInset citation
+LatexCommand cite
+key "FluentleniumOffi"
+
+\end_inset
+
+ to test the GUI, and the second part is using JUnit to test the Server-Logic.
 \end_layout
 
 \begin_layout Section
@@ -9540,14 +9561,14 @@ Fluentlenium
 \end_layout
 
 \begin_layout Standard
-Fluentlenium
+Fluentlenium is a framework that helps developers write Selenium
 \begin_inset CommandInset citation
 LatexCommand cite
-key "FluentleniumOffi"
+key "SeleniumOffi"
 
 \end_inset
 
- is a framework that helps developers write Selenium tests
+ tests
 \begin_inset CommandInset citation
 LatexCommand cite
 key "fluentlenium"
@@ -9555,15 +9576,8 @@ key "fluentlenium"
 \end_inset
 
 .
- Selenium
-\begin_inset CommandInset citation
-LatexCommand cite
-key "SeleniumOffi"
-
-\end_inset
-
- is an in-browser programming system, which allows developers to directly
- drive the real web browser programmatically.
+ Selenium is an in-browser programming system, which allows developers to
+ directly drive the real web browser programmatically.
  It also has direct access to the DOM elements of the web page on the client
  side, and can assert expected client behavior defined by the developer.
  Since Selenium works within the browser, it can be used to test the dynamic
@@ -9926,7 +9940,7 @@ Deployment and maintenance
 \end_layout
 
 \begin_layout Standard
-After describing every step of the development phase of the HMS sytsem,
+After describing every step of the development phase of the HMS system,
  it is time to put the system into real practice.
 \end_layout
 
@@ -9939,7 +9953,7 @@ status open
 \begin_layout Plain Layout
 The installation procedure has also been tested on the Ubuntu 14.04LTS, however
  the automatic installation of the Gitolite is not working with Ubuntu 15.10,
- so Gitolite needs to be installed manuelly
+ so Gitolite needs to be installed manually
 \end_layout
 
 \end_inset
@@ -10105,6 +10119,9 @@ Configuring the mail server
 \begin_layout Standard
 The mail servers are configured by the file “mail.conf”, and the configurations
  are:
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 lstparams "basicstyle={\scriptsize},breaklines=true"
 inline true
@@ -10142,6 +10159,9 @@ Starting the HMS system
 After setting up the Gitolite server and the mail server, the HMS system
  can finally be started by executing the script “hms” with the configuration
  file of mail server:
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 lstparams "basicstyle={\scriptsize},breaklines=true"
 inline true
@@ -10350,7 +10370,7 @@ Another difference is that, in order to reduce the additional work besides
  special mechanism to manage the data.
  First, HMS is based on the Playframework and embedded database.
  With this combination the HMS can easily run on any computer with JVM pre-insta
-lled as a stand-alone Java application; it doesn’t require an addtional
+lled as a stand-alone Java application; it doesn’t require an additional
  server and database configuration.
  Second, the file-based embedded database will be generated separately for
  each semester, so that each database will only hold the data specific to
@@ -10371,7 +10391,7 @@ reference "sub:Dynamic-data-management"
 The current work of HMS focuses on improving the low level functions--e.g.
  introducing new methods to manage the homework and data.
  Some other high level features related to the educational activities are
- not supported in the current state or are only partially supported, for
+ not supported in the current state or are only partially supported--for
  instance, the course enrollment can only support self-enrollment which
  allows users to enroll themselves, and the admin of the lecture however
  cannot control the enrollment.

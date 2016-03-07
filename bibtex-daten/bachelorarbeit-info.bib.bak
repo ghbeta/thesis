@@ -247,6 +247,12 @@
   Url                      = {https://docs.moodle.org/30/en/Course_backup}
 }
 
+@Electronic{moodleoffi,
+  Title                    = {Moodle},
+  Note                     = {Last visited on 20.09.2015},
+  Url                      = {https://moodle.org/}
+}
+
 @Electronic{mozilla,
   Title                    = {Glossary: WebSockets},
   Note                     = {Last visited on 20.12.2015},
@@ -363,5 +369,11 @@
   Title                    = {WebSocket},
   Note                     = {Last visited on 23.01.2016},
   Url                      = {http://www.websocket.org/}
+}
+
+@Electronic{,
+  Title                    = {JSON},
+  Note                     = {Last visited on 13.10.2015},
+  Url                      = {http://www.json.org/}
 }
 
