@@ -3138,8 +3138,8 @@ name "sub:Automatic-Evaluation"
 \begin_layout Standard
 Until now, evaluating a submission from a student requires a teacher or
  assistant first to check out the repository of a student using a Git client
- and make an evaluation before logging into the HMS system using the function
- described in Section 
+ and make an evaluation before logging into the HMS system and using the
+ function described in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Assignment-management"
@@ -5687,7 +5687,7 @@ localPath
 .
  After the clone operation is finished, the uploaded file from the student
  will be copied into the newly created local repository.
- Then ,use JGit to commit the changes, and after that all the changes will
+ Then, use JGit to commit the changes, and after that all the changes will
  be pushed through to the master branch of the Gitolite bare repository.
  In the end, a new “hand in” object will be generated and saved into the
  database under the name of the student.

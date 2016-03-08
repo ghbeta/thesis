@@ -3138,8 +3138,8 @@ name "sub:Automatic-Evaluation"
 \begin_layout Standard
 Until now, evaluating a submission from a student requires a teacher or
  assistant first to check out the repository of a student using a Git client
- and make an evaluation before logging into the HMS system using the function
- described in Section 
+ and make an evaluation before logging into the HMS system and using the
+ function described in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Assignment-management"
@@ -10194,7 +10194,7 @@ status open
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Section
