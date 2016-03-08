@@ -9128,7 +9128,7 @@ reference "fig:Websocket-callbacks"
 \end_inset
 
  is the WebSocket callback function.
- When the Web Socket is ready, both in and out channels of this connection
+ When the WebSocket is ready, both in and out channels of this connection
  will be obtained by the system.
  The channels and the email of the current user will be passed on to the
  method 
@@ -9201,6 +9201,11 @@ tring> out){
 
 \begin_layout Plain Layout
 
+        ...
+\end_layout
+
+\begin_layout Plain Layout
+
 		out.write(result.toString());
 \end_layout
 
@@ -9221,6 +9226,11 @@ tring> out){
 \begin_layout Plain Layout
 
     if(inmsg.findPath("event").asText().equals("chatcontent")){
+\end_layout
+
+\begin_layout Plain Layout
+
+		...
 \end_layout
 
 \begin_layout Plain Layout
@@ -9249,17 +9259,27 @@ tring> out){
 
 \begin_layout Plain Layout
 
+		...
+\end_layout
+
+\begin_layout Plain Layout
+
 		conversation.update(semester);
 \end_layout
 
 \begin_layout Plain Layout
 
-		out.write(result.toString());	
+		out.write(result.toString());
 \end_layout
 
 \begin_layout Plain Layout
 
-		connections.get(other).write(notification.toString());
+		if(connections.get(other)!=null){	
+\end_layout
+
+\begin_layout Plain Layout
+
+		connections.get(other).write(notification.toString());}
 \end_layout
 
 \begin_layout Plain Layout
@@ -9581,7 +9601,7 @@ key "fluentlenium"
  It also has direct access to the DOM elements of the web page on the client
  side, and can assert expected client behavior defined by the developer.
  Since Selenium works within the browser, it can be used to test the dynamic
- behavior of JavaScript and the server can respond through the interaction
+ behavior of JavaScript and the server response through the interaction
  between the browser and user
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -10174,7 +10194,7 @@ status open
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Section
